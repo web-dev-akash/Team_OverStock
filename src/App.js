@@ -7,10 +7,12 @@ import LeftSidebar from "./Pages/leftSidebar";
 import {LeftBars} from "./Pages/leftSidebar";
 
 import { Grid } from '@chakra-ui/react'
+import SortDropdown from "./Pages/sortDropdown";
 function App() {
   return (
     <div className="App">
-      <Grid templateColumns="0.3fr 1fr" spacing={10}>
+      <SortDropdown/>
+      <Grid templateColumns="0.3fr 1fr" spacing={20} gap={5}>
         <LeftBars />
         <Products />
       </Grid>

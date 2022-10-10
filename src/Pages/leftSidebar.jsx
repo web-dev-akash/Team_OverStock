@@ -15,7 +15,7 @@ const LeftSidebar = () => {
                 <AccordionItem>
                     <h2>
                         <AccordionButton>
-                            <Box flex='1' textAlign='left'>
+                            <Box flex='1' textAlign='left' p={2}>
                                 Section 1 title
                             </Box>
                             <AccordionIcon />

@@ -1,8 +1,10 @@
 import { Badge, Box, Image, Icon, Container, Center } from '@chakra-ui/react'
 import { StarIcon } from "@chakra-ui/icons"
 import { Grid, GridItem } from '@chakra-ui/react'
+import { useState } from 'react';
 
 function AirbnbCard() {
+    const [isHovered, setIsHovered] = useState(false);
     const property = {
         imageUrl: 'https://bit.ly/2Z4KKcF',
         imageAlt: 'Rear view of modern home with pool',
@@ -15,7 +17,11 @@ function AirbnbCard() {
     }
 
     return (
-        <Box maxW='sm' borderWidth='1px' overflow='hidden'>
+        <Box maxW='sm' borderWidth='1px' overflow='hidden' onMouseEnter={() => {
+            setIsHovered(true);
+          }}  onMouseLeave={() => {
+            setIsHovered(false);
+          }}>
             <Image src={property.imageUrl} alt={property.imageAlt} />
 
             <Box p='6' pl={1}>
@@ -29,13 +35,13 @@ function AirbnbCard() {
                     {property.title}
                 </Box>
 
-                <Box display='flex' mt='2' alignItems='center'>
+                <Box display='flex' mt='2' alignItems='center' style={{display: isHovered ? "none" : "flex"}}>
                     {Array(5)
                         .fill('')
                         .map((_, i) => (
                             <StarIcon
                                 key={i}
-                                color={i < property.rating ? 'teal.500' : 'gray.300'}
+                                color={i < property.rating ? 'yellow.500' : 'gray.300'}
                             />
                         ))}
                     <Box as='span' ml='2' color='gray.600' fontSize='sm'>
