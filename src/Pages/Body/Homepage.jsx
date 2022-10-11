@@ -14,6 +14,8 @@ import {
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { slides } from "./SliderData";
+import { Footer } from "../../Components/Footer/Footer";
+import { Navbar } from "../../Components/Navbar/Navbar";
 export const Homepage = () => {
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(3);
@@ -29,6 +31,7 @@ export const Homepage = () => {
 
   return (
     <Container maxW="8xl" centerContent>
+      <Navbar />
       <Container maxW="100%" centerContent>
         <Box
           background={`no-repeat center/100% url("https://ak1.ostkcdn.com/img/mxc/10032022-HP-A1-INTL-1400x550_DesktopA1_Intl_FallIntoSavings.jpg")`}
@@ -458,34 +461,7 @@ export const Homepage = () => {
           </Box>
         </SimpleGrid>
       </Box>
-      <Box
-        background={"#2f3337"}
-        w="107.9%"
-        textAlign={"left"}
-        padding={"30px 80px"}
-      >
-        <Flex color={"white"} align="center">
-          <Box w={"350px"} fontSize={"15px"}>
-            © Copyright 2022, Overstock.com®, Inc. 799 Coliseum Way Midvale, UT
-            84047 | 1-800-843-2446
-          </Box>
-          <Spacer />
-          <Flex align={"center"} gap={8} fontSize={"15px"}>
-            <Text>Privacy Policy</Text>
-            <Text>Terms & Conditions</Text>
-            <Text>*Promotion Terms</Text>
-            <Flex align={"center"}>
-              Ship to :
-              <Image
-                ml={1}
-                w={30}
-                src="https://ak1.ostkcdn.com/img/mxc/intFlag_IN.gif"
-                alt="flag"
-              />
-            </Flex>
-          </Flex>
-        </Flex>
-      </Box>
+      <Footer />
     </Container>
   );
 };
