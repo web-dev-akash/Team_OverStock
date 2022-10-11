@@ -30,7 +30,7 @@ export const Homepage = () => {
   };
 
   return (
-    <Container maxW="8xl" centerContent>
+    <Container maxW="8xl" centerContent mt={130}>
       <Navbar />
       <Container maxW="100%" centerContent>
         <Box
