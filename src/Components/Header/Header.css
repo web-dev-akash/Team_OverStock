@@ -7,7 +7,7 @@
 }
 body {
   background-color: rgb(255, 255, 255);
-  width: 100%;
+  /* width: 100%; */
 }
 #navbar {
   width: 100%;
@@ -34,7 +34,22 @@ body {
   border-bottom: 1px solid rgb(214, 214, 214);
   background-color: rgb(255, 255, 255);
 }
-
+#dropDiv_1,
+#dropDiv_2,
+#dropDiv_3,
+#dropDiv_4,
+#dropDiv_5,
+#dropDiv_6,
+#dropDiv_7,
+#dropDiv_8,
+#dropDiv_9,
+#dropDiv_10,
+#dropDiv_11,
+#dropDiv_12,
+#dropDiv_13 {
+  border: 1px solid;
+  padding: 9px;
+}
 #dropDiv_1:hover #drop_1 {
   visibility: visible;
 }
@@ -75,38 +90,8 @@ body {
   visibility: visible;
 }
 
-#dropDiv_12 {
-  height: 97%;
-  width: auto;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-left: 150px;
-}
 #dropDiv_13 {
-  height: 97%;
-  width: auto;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-left: 30px;
   color: rgb(206, 60, 70);
-  display: flex;
-  flex-direction: column;
-}
-
-#nav_3 > div:last-child:hover {
-  border-bottom: 3px solid red;
-  cursor: pointer;
-}
-
-#nav_3 > div:hover {
-  border-bottom: 3px solid black;
-  cursor: pointer;
-}
-
-#nav_3 > div > p {
-  margin-top: 10px;
-  font-size: 15px;
-  font-weight: 600;
 }
 
 #brand_p {
@@ -134,7 +119,6 @@ body {
 #drop_4,
 #drop_5 {
   visibility: hidden;
-  width: 1700px;
   display: flex;
   font-size: 15px;
   letter-spacing: 1;
@@ -142,7 +126,10 @@ body {
   color: rgb(66, 66, 66);
   position: absolute;
   top: 128px;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 50px 5000px;
+  z-index: 2;
+  padding: 0 0 20px 40px;
+  background-color: white;
 }
 #drop_6,
 #drop_7,
@@ -153,7 +140,6 @@ body {
 #drop_12,
 #drop_13 {
   visibility: hidden;
-  width: 1700px;
   display: flex;
   font-size: 15px;
   letter-spacing: 1;
@@ -161,13 +147,11 @@ body {
   color: rgb(66, 66, 66);
   position: absolute;
   top: 128px;
-  left: 34%;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-}
-#drop_13 #drop_1 p:hover {
-  text-decoration: underline;
-  text-decoration-color: black;
-  cursor: pointer;
+  right: 0;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 50px 5000px;
+  z-index: 2;
+  padding: 0 0 20px 40px;
+  background-color: white;
 }
 
 #drop_1 > div {
@@ -176,34 +160,11 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
-#drop_1 > div:nth-child(4) {
-  width: 330px;
-}
-
-#drop_2 p:hover {
-  text-decoration: underline;
-  text-decoration-color: black;
-  cursor: pointer;
-}
-
 #drop_2 > div {
   width: 180px;
   background-color: rgb(255, 255, 255);
   line-height: 1.9;
   padding-left: 20px;
-}
-#drop_2 > div:nth-child(4) {
-  width: 330px;
-}
-
-#drop_3 img {
-  height: 250px;
-}
-
-#drop_3 p:hover {
-  text-decoration: underline;
-  text-decoration-color: black;
-  cursor: pointer;
 }
 
 #drop_3 > div {
@@ -213,39 +174,11 @@ body {
   padding-left: 20px;
 }
 
-#drop_3 > div:nth-child(4) {
-  width: 330px;
-}
-
-#drop_4 img {
-  height: 250px;
-}
-
-#drop_4 p:hover {
-  text-decoration: underline;
-  text-decoration-color: black;
-  cursor: pointer;
-}
-
 #drop_4 > div {
   line-height: 1.95;
   width: 220px;
   background-color: rgb(255, 255, 255);
   padding-left: 20px;
-}
-
-#drop_4 > div:nth-child(4) {
-  width: 330px;
-}
-
-#drop_5 img {
-  height: 250px;
-}
-
-#drop_5 p:hover {
-  text-decoration: underline;
-  text-decoration-color: black;
-  cursor: pointer;
 }
 
 #drop_5 > div {
@@ -254,19 +187,6 @@ body {
   padding-left: 20px;
   line-height: 1.95;
 }
-#drop_5 > div:nth-child(4) {
-  width: 330px;
-}
-
-#drop_6 img {
-  height: 250px;
-}
-
-#drop_6 p:hover {
-  text-decoration: underline;
-  text-decoration-color: black;
-  cursor: pointer;
-}
 
 #drop_6 > div {
   width: 220px;
@@ -274,113 +194,35 @@ body {
   background-color: rgb(255, 255, 255);
   padding-left: 20px;
 }
-#drop_6 > div:nth-child(4) {
-  width: 330px;
-}
-
-#drop_7 img {
-  height: 250px;
-}
-
-#drop_7 p:hover {
-  text-decoration: underline;
-  text-decoration-color: black;
-  cursor: pointer;
-}
-
 #drop_7 > div {
   width: 220px;
   line-height: 1.95;
   background-color: rgb(255, 255, 255);
   padding-left: 20px;
 }
-#drop_7 > div:nth-child(4) {
-  width: 330px;
-}
-
-#drop_8 img {
-  height: 250px;
-}
-
-#drop_8 p:hover {
-  text-decoration: underline;
-  text-decoration-color: black;
-  cursor: pointer;
-}
-
 #drop_8 > div {
   width: 220px;
   line-height: 1.95;
   background-color: rgb(255, 255, 255);
   padding-left: 20px;
 }
-#drop_8 > div:nth-child(4) {
-  width: 330px;
-}
-
-#drop_9 img {
-  height: 250px;
-}
-
-#drop_9 p:hover {
-  text-decoration: underline;
-  text-decoration-color: black;
-  cursor: pointer;
-}
-
 #drop_9 > div {
   width: 220px;
   line-height: 1.95;
   background-color: rgb(255, 255, 255);
   padding-left: 20px;
 }
-#drop_9 > div:nth-child(4) {
-  width: 330px;
-}
-
-#drop_10 img {
-  height: 250px;
-}
-
-#drop_10 p:hover {
-  text-decoration: underline;
-  text-decoration-color: black;
-  cursor: pointer;
-}
-
 #drop_10 > div {
   width: 220px;
   line-height: 1.95;
   background-color: rgb(255, 255, 255);
   padding-left: 20px;
 }
-#drop_10 > div:nth-child(4) {
-  width: 330px;
-}
-
-#drop_11 img {
-  height: 250px;
-}
-#drop_11 p:hover {
-  text-decoration: underline;
-  text-decoration-color: black;
-  cursor: pointer;
-}
-
 #drop_11 > div {
   width: 220px;
   line-height: 1.95;
   background-color: rgb(255, 255, 255);
   padding-left: 20px;
-}
-#drop_11 > div:nth-child(4) {
-  width: 330px;
-}
-
-#drop_12 {
-  position: absolute;
-  width: 970px;
-  visibility: hidden;
 }
 #drop_12 > div {
   background-color: rgb(255, 255, 255);
@@ -417,7 +259,6 @@ body {
   height: 130px;
   margin-bottom: 0cm;
 }
-
 #drop13_div1 {
   display: flex;
   gap: 20px;

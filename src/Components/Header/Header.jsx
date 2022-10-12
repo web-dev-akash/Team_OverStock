@@ -7,6 +7,7 @@ import {
   Image,
   Input,
   Link,
+  Spacer,
   Text,
 } from "@chakra-ui/react";
 import React from "react";
@@ -21,7 +22,7 @@ import {
 
 export const Header = () => {
   return (
-    <Container id="header-container">
+    <Container id="header-container" maxW={"8xl"}>
       <Box id="navbar">
         <Flex id="nav_1" textAlign={"left"}>
           <Text>Ships to:</Text>
@@ -68,9 +69,21 @@ export const Header = () => {
             </Box>
             <Box>
               <Link href="#">
-                <Text>0</Text>
-                <AiOutlineShoppingCart />
-                <Text>Cart</Text>
+                <Flex>
+                  <AiOutlineShoppingCart fontSize={30} />
+                  <Text
+                    position={"absolute"}
+                    top={"34px"}
+                    right="161px"
+                    zIndex={10}
+                    fontSize="12px"
+                    color={"red"}
+                    fontWeight="800"
+                  >
+                    0
+                  </Text>
+                  <Text>Cart</Text>
+                </Flex>
               </Link>
             </Box>
             <Box>
@@ -82,6 +95,8 @@ export const Header = () => {
           </Flex>
         </Flex>
         <Flex
+          gap={10}
+          margin={"0px 30px 0px 10px"}
           align={"center"}
           justify={"space-around"}
           borderBottom={"1px solid #cecece"}
@@ -91,7 +106,7 @@ export const Header = () => {
             <Link href="#">
               <Text>Furniture</Text>
             </Link>
-            <Box id="drop_1" pl={6} pb={3}>
+            <Box id="drop_1">
               <Box>
                 <Text id="brand_p" class="livingRoom">
                   Living Room furniture
@@ -177,15 +192,15 @@ export const Header = () => {
               </Box>
             </Box>
           </Box>
-          <div id="dropDiv_2">
+          <Box id="dropDiv_2">
             <a href="#">
-              <p>Rugs</p>
+              <Text>Rugs</Text>
             </a>
-            <div id="drop_2">
-              <div>
-                <p id="brand_p" class="rug">
+            <Box id="drop_2">
+              <Box>
+                <Text id="brand_p" class="rug">
                   Area Rugs By Size
-                </p>
+                </Text>
                 <p class="rug">3'x5'</p>
                 <p class="rug">4'x6'</p>
                 <p class="rug">5'x8'</p>
@@ -195,20 +210,20 @@ export const Header = () => {
                 <p class="rug">9'x10'</p>
                 <p class="rug">10'x14'</p>
                 <p class="rug">Runner</p>
-                <p id="brand_p" class="trendingRug">
+                <Text id="brand_p" class="trendingRug">
                   Trending Rugs
-                </p>
+                </Text>
                 <p class="washableRug">Washable Rugs</p>
                 <p class="roundRug">Round Rugs</p>
                 <p class="shagRug">Shag Rugs</p>
                 <p class="woolRug">Wool Rugs</p>
                 <p class="juteRug">Jute Rugs</p>
                 <p class="cowhideRug">Cowhide Rugs</p>
-              </div>
-              <div>
-                <p id="brand_p" class="rug">
+              </Box>
+              <Box>
+                <Text id="brand_p" class="rug">
                   Area Rugs By Color
-                </p>
+                </Text>
                 <p class="greyRug">Grey</p>
                 <p class="blueRug">Blue</p>
                 <p class="ivoryRug">Ivory</p>
@@ -218,20 +233,20 @@ export const Header = () => {
                 <p class="brownRug">Brown</p>
                 <p class="orangeRug">Orange</p>
                 <p class="pinkRug">Pink</p>
-                <p id="brand_p" class="rug">
+                <Text id="brand_p" class="rug">
                   Area Rugs By Style
-                </p>
+                </Text>
                 <p class="modernRug">Modern & Contemporary</p>
                 <p class="bohemianRug">Bohemian & Eclectic</p>
                 <p class="PersianRug">Persian</p>
                 <p class="geomatricRug">Geometric</p>
                 <p class="abstractRug">Abstract</p>
                 <p class="solidRug">Solid</p>
-              </div>
-              <div>
-                <p id="brand_p" class="rug">
+              </Box>
+              <Box>
+                <Text id="brand_p" class="rug">
                   Rugs By Type
-                </p>
+                </Text>
                 <p class="rug">Area Rugs</p>
                 <p class="outdoorRug">Outdoor Rugs</p>
                 <p class="rugPad">Rug Pads</p>
@@ -241,33 +256,33 @@ export const Header = () => {
                 <p class="stairTreads">Stair Treads</p>
                 <p class="kitchenMat">Kitchen Mats & Rugs</p>
                 <p class="BathRug">Bath & Rugs</p>
-              </div>
-              <div>
+              </Box>
+              <Box>
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
                   src="https://ak1.ostkcdn.com/images/products/is/images/direct/b320fbbc82c3e52fbc4d9677db915ee03aa504c1/SAFAVIEH-Madison-Diederike-Boho-Medallion-Distressed-Rug.jpg?imwidth=320"
                   alt=""
                 />
-                <p id="extraOff_p">Extra 15% off</p>
-                <p>Select Furniture by Christopher Knight</p>
-                <p id="brand_p">More Ways to Shop</p>
-                <p id="red_p">Featured sales</p>
-                <p id="red_p">New Arrivals</p>
-                <p id="red_p">Clearance</p>
-                <p id="red_p">Furniture Advice</p>
-              </div>
-            </div>
-          </div>
-          <div id="dropDiv_3">
+                <Text id="extraOff_p">Extra 15% off</Text>
+                <Text>Select Furniture by Christopher Knight</Text>
+                <Text id="brand_p">More Ways to Shop</Text>
+                <Text id="red_p">Featured sales</Text>
+                <Text id="red_p">New Arrivals</Text>
+                <Text id="red_p">Clearance</Text>
+                <Text id="red_p">Furniture Advice</Text>
+              </Box>
+            </Box>
+          </Box>
+          <Box id="dropDiv_3">
             <a href="#">
-              <p>Decor</p>
+              <Text>Decor</Text>
             </a>
-            <div id="drop_3">
-              <div>
-                <p id="brand_p" class="mirror">
+            <Box id="drop_3">
+              <Box>
+                <Text id="brand_p" class="mirror">
                   Mirrors
-                </p>
+                </Text>
                 <p class="wallMirror">Wall Mirrors</p>
                 <p class="bathroomMirror">Bathroom Vanity Mirrors</p>
                 <p class="floorMirror">Floor Mirrors</p>
@@ -276,9 +291,9 @@ export const Header = () => {
                 <p class="roundMirror">Round Mirrors</p>
                 <p class="windowMirror">Window Mirrors</p>
                 <p class="mirrorSet">Mirror Sets</p>
-                <p id="brand_p" class="art">
+                <Text id="brand_p" class="art">
                   Art Gallery
-                </p>
+                </Text>
                 <p class="galleryWrappedCanvas">Gallery Wrapped Canvas</p>
                 <p class="canvasArt">Canvas Art</p>
                 <p class="framedArt">Framed Prints</p>
@@ -286,11 +301,11 @@ export const Header = () => {
                 <p class="metalArt">Metal Art</p>
                 <p class="woodWallArt">Wood wall Art</p>
                 <p class="matchingArtSet">Matching Sets</p>
-              </div>
-              <div>
-                <p id="brand_p" class="decorativeAccessories">
+              </Box>
+              <Box>
+                <Text id="brand_p" class="decorativeAccessories">
                   Decorative Accessories
-                </p>
+                </Text>
                 <p class="indoorFireplaces">Indoor Fireplaces</p>
                 <p class="outdoorDecor">Outdoor Decor</p>
                 <p class="accentPieces">Accent Pieces</p>
@@ -300,9 +315,9 @@ export const Header = () => {
                 <p class="roomDivider">Room Dividers</p>
                 <p class="photoFrame">Photo Frames and Albums</p>
                 <p class="planter">Planters, Hangers & Stands</p>
-                <p id="brand_p" class="windowTreatments">
+                <Text id="brand_p" class="windowTreatments">
                   Window Treatments
-                </p>
+                </Text>
                 <p class="curtain">Curtains & Drapes</p>
                 <p class="blinds">Blinds & Shades</p>
                 <p class="curtainRod">Curtain Rods & Hardware</p>
@@ -310,52 +325,52 @@ export const Header = () => {
                 <p class="blackotCurtain">Blackout Curtains</p>
                 <p class="kitchenCurtain">Kitchen Curtains</p>
                 <p class="valances">Valances</p>
-              </div>
-              <div>
-                <p id="brand_p" class="wallDecor">
+              </Box>
+              <Box>
+                <Text id="brand_p" class="wallDecor">
                   Wall Decor
-                </p>
+                </Text>
                 <p class="decorativeShelves">Decorative Shelves</p>
                 <p class="wallTapestries">Wall Tapestries</p>
                 <p class="clock">Clocks</p>
                 <p class="wallClocks">Wall Decals</p>
                 <p class="acrylicWallArt">Acrylic Wall Art</p>
-                <p id="brand_p" class="throwPillow">
+                <Text id="brand_p" class="throwPillow">
                   Throw Pillows
-                </p>
+                </Text>
                 <p class="accentPillow">Accent Pillows</p>
                 <p class="outdoorPiloow">Outdoor Pillows</p>
                 <p class="floorPillow">Floor Pillows</p>
                 <p class="pouf">Poufs</p>
                 <p class="pillowCover">Pillow Covers</p>
                 <p class="bedRest">Bed Rest</p>
-              </div>
-              <div>
+              </Box>
+              <Box>
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
                   src="https://ak1.ostkcdn.com/images/products/is/images/direct/d28cbaf23c439090fa43c0cf806ac147b7e1040f/Arched-Dressing-Mirror-Full-length-Floor-Mirror-with-Standing.jpg"
                   alt=""
                 />
-                <p id="extraOff_p">Extra 15% off</p>
-                <p>Select Furniture by Christopher Knight</p>
-                <p id="brand_p">More Ways to Shop</p>
-                <p id="red_p">Featured sales</p>
-                <p id="red_p">New Arrivals</p>
-                <p id="red_p">Clearance</p>
-                <p id="red_p">Furniture Advice</p>
-              </div>
-            </div>
-          </div>
-          <div id="dropDiv_4">
+                <Text id="extraOff_p">Extra 15% off</Text>
+                <Text>Select Furniture by Christopher Knight</Text>
+                <Text id="brand_p">More Ways to Shop</Text>
+                <Text id="red_p">Featured sales</Text>
+                <Text id="red_p">New Arrivals</Text>
+                <Text id="red_p">Clearance</Text>
+                <Text id="red_p">Furniture Advice</Text>
+              </Box>
+            </Box>
+          </Box>
+          <Box id="dropDiv_4">
             <a href="#">
-              <p>Bedding</p>
+              <Text>Bedding</Text>
             </a>
-            <div id="drop_4">
-              <div>
-                <p id="brand_p" class="bedding">
+            <Box id="drop_4">
+              <Box>
+                <Text id="brand_p" class="bedding">
                   Bedding
-                </p>
+                </Text>
                 <p class="comforterSet">Comforter Sets</p>
                 <p class="duvetCover">Duvet Covers</p>
                 <p class="bed">Bed in a Bag</p>
@@ -368,30 +383,30 @@ export const Header = () => {
                 <p class="bathAccessories">Bath Accessories</p>
                 <p class="bathRobe">Bath Robes</p>
                 <p class="bathRobe"> Kids Bath</p>
-              </div>
-              <div>
-                <p id="brand_p" class="beddingBasics">
+              </Box>
+              <Box>
+                <Text id="brand_p" class="beddingBasics">
                   Bedding Basics
-                </p>
+                </Text>
                 <p class="sheets">Sheets & Pillowcases</p>
                 <p class="mattress">Mattress & Toppers</p>
                 <p class="comforter">Comforters & Duvet Inserts</p>
                 <p class="pillow">Pillows</p>
                 <p class="cottonBedding">Cotton Bedding</p>
-                <p id="brand_p" class="kidsBedding">
+                <Text id="brand_p" class="kidsBedding">
                   Kids Bedding
-                </p>
+                </Text>
                 <p class="kidsSheet">Kids Sheets</p>
                 <p class="kidComforter">Kids Comforter Sets</p>
                 <p class="kidBed">Kids Bed in a Bag</p>
                 <p class="kidQuilt">Kids Quilts</p>
                 <p class="bed">Kids Bed Tents & Canopies</p>
                 <p class="kidMattress">Kids Mattress</p>
-              </div>
-              <div>
-                <p id="brand_p" class="mattress">
+              </Box>
+              <Box>
+                <Text id="brand_p" class="mattress">
                   Mattress
-                </p>
+                </Text>
                 <p class="twinMattress">Twin</p>
                 <p class="twinMattress">Twin XL</p>
                 <p class="fullMattress">Full</p>
@@ -400,9 +415,9 @@ export const Header = () => {
                 <p class="twinMattress">California King</p>
                 <p class="airMattress">Air Mattress</p>
                 <p class="mattress">Mattress in a Box</p>
-                <p id="brand_p" class="bathroomFurniture">
+                <Text id="brand_p" class="bathroomFurniture">
                   Bathroom Furniture
-                </p>
+                </Text>
                 <p class="bathroomVanities">Bathroom Vanities</p>
                 <p class="bathroomMirror">Bathroom Vanity Mirrors</p>
                 <p class="bathroomSink">Bathroom Sinks</p>
@@ -410,33 +425,33 @@ export const Header = () => {
                 <p class="bathroomCabinet">Bathroom Cabinets</p>
                 <p class="tub">Tubs</p>
                 <p class="shower">Showers</p>
-              </div>
-              <div>
+              </Box>
+              <Box>
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
                   src="https://ak1.ostkcdn.com/images/products/is/images/direct/aae7298c6dad6ee752e90b9ada8625407c000547/Intelligent-Design-Leena-Shaggy-Faux-Fur-Comforter-Set.jpg"
                   alt=""
                 />
-                <p id="extraOff_p">Extra 15% off</p>
-                <p>Select Furniture by Christopher Knight</p>
-                <p id="brand_p">More Ways to Shop</p>
-                <p id="red_p">Featured sales</p>
-                <p id="red_p">New Arrivals</p>
-                <p id="red_p">Clearance</p>
-                <p id="red_p">Furniture Advice</p>
-              </div>
-            </div>
-          </div>
-          <div id="dropDiv_5">
+                <Text id="extraOff_p">Extra 15% off</Text>
+                <Text>Select Furniture by Christopher Knight</Text>
+                <Text id="brand_p">More Ways to Shop</Text>
+                <Text id="red_p">Featured sales</Text>
+                <Text id="red_p">New Arrivals</Text>
+                <Text id="red_p">Clearance</Text>
+                <Text id="red_p">Furniture Advice</Text>
+              </Box>
+            </Box>
+          </Box>
+          <Box id="dropDiv_5">
             <a href="#">
-              <p>Home Improve</p>
+              <Text>Home Improve</Text>
             </a>
-            <div id="drop_5">
-              <div>
-                <p id="brand_p" class="kitchen">
+            <Box id="drop_5">
+              <Box>
+                <Text id="brand_p" class="kitchen">
                   Kitchen
-                </p>
+                </Text>
                 <p class="rangeAndOven">ranges & Ovens</p>
                 <p class="refrigerators">Refrigerators</p>
                 <p class="kitchenFaucets">Kitchen Faucets</p>
@@ -446,9 +461,9 @@ export const Header = () => {
                 <p class="rangeAndOven">ranges & Ovens</p>
                 <p class="refrigerators">Refrigerators</p>
                 <p class="kitchenFaucets">Kitchen Faucets</p>
-                <p id="brand_p" class="flooring">
+                <Text id="brand_p" class="flooring">
                   Flooring & Wall
-                </p>
+                </Text>
                 <p class="tile">Tile</p>
                 <p class="laminateFlooring">Laminate Flooring</p>
                 <p class="vinylFlooring">Vinyl Flooring</p>
@@ -456,11 +471,11 @@ export const Header = () => {
                 <p class="laminateFlooring">Laminate Flooring</p>
                 <p class="vinylFlooring">Vinyl Flooring</p>
                 <p class="wallpaper">Wallpaper</p>
-              </div>
-              <div>
-                <p id="brand_p" class="bathroom">
+              </Box>
+              <Box>
+                <Text id="brand_p" class="bathroom">
                   Bathroom
-                </p>
+                </Text>
                 <p class="bathroomVanities">Bathroom Vanities</p>
                 <p class="bathroomMirror">Bathroom Vanity Mirrors</p>
                 <p class="bathroomSink">Bathroom Sinks</p>
@@ -468,20 +483,20 @@ export const Header = () => {
                 <p class="bathroomCabinet">Bathroom Cabinets</p>
                 <p class="tub">Tubs</p>
                 <p class="shower">Showers</p>
-                <p id="brand_p" class="bathroom">
+                <Text id="brand_p" class="bathroom">
                   Bathroom
-                </p>
+                </Text>
                 <p class="homeEssential">Home Essentials</p>
                 <p class="vacuum">Vacuums & Floorcare</p>
                 <p class="heating">Heating & Cooling</p>
                 <p class="airQuality">Air Quality</p>
                 <p class="sewingMachine">Sewing Machines</p>
                 <p class="craftMachine">Craft Machines</p>
-              </div>
-              <div>
-                <p id="brand_p" class="storage">
+              </Box>
+              <Box>
+                <Text id="brand_p" class="storage">
                   Storage & Organization
-                </p>
+                </Text>
                 <p class="outdoorStorage">Outdoor Storage</p>
                 <p class="garageStorage">Garage Storage</p>
                 <p class="decorativeStorage">Decorative Storage</p>
@@ -491,545 +506,546 @@ export const Header = () => {
                 <p class="furnitureStorage">Furniture Storage</p>
                 <p class="safes">Safes</p>
                 <p class="laundry">Laundry Room</p>
-              </div>
-              <div>
+              </Box>
+              <Box>
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
                   src="https://ak1.ostkcdn.com/images/products/is/images/direct/fe65fb3c91f141cb3bc6d2f2f06911180a97c388/Proox-Single-handle-Kitchen-Faucet-Pull-Down-Sprayer-w--Soap-dispenser.jpg"
                   alt=""
                 />
-                <p id="extraOff_p">Extra 15% off</p>
-                <p>Select Furniture by Christopher Knight</p>
-                <p id="brand_p">More Ways to Shop</p>
-                <p id="red_p">Featured sales</p>
-                <p id="red_p">New Arrivals</p>
-                <p id="red_p">Clearance</p>
-                <p id="red_p">Furniture Advice</p>
-              </div>
-            </div>
-          </div>
-          <div id="dropDiv_6">
+                <Text id="extraOff_p">Extra 15% off</Text>
+                <Text>Select Furniture by Christopher Knight</Text>
+                <Text id="brand_p">More Ways to Shop</Text>
+                <Text id="red_p">Featured sales</Text>
+                <Text id="red_p">New Arrivals</Text>
+                <Text id="red_p">Clearance</Text>
+                <Text id="red_p">Furniture Advice</Text>
+              </Box>
+            </Box>
+          </Box>
+          <Box id="dropDiv_6">
             <a href="#">
-              <p>Kitchen</p>
+              <Text>Kitchen</Text>
             </a>
-            <div id="drop_6">
-              <div>
-                <p id="brand_p">Dinnerware</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p id="brand_p">Cookware & Bakeware</p>
-                <p>Tile</p>
-                <p>Laminate Flooring</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-              </div>
-              <div>
-                <p id="brand_p">Kitchen Furniture</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p id="brand_p">Kitchen Appliances</p>
-                <p>Tile</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Wallpaper</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-              </div>
-              <div>
-                <p id="brand_p">Serveware</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p id="brand_p">Kitchen Storage</p>
-                <p>Tile</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-              </div>
-              <div>
+            <Box id="drop_6">
+              <Box>
+                <Text id="brand_p">Dinnerware</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text id="brand_p">Cookware & Bakeware</Text>
+                <Text>Tile</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+              </Box>
+              <Box>
+                <Text id="brand_p">Kitchen Furniture</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text id="brand_p">Kitchen Appliances</Text>
+                <Text>Tile</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Wallpaper</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+              </Box>
+              <Box>
+                <Text id="brand_p">Serveware</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text id="brand_p">Kitchen Storage</Text>
+                <Text>Tile</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+              </Box>
+              <Box>
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
                   src="https://ak1.ostkcdn.com/images/products/7508194/Hamilton-Beach-26030-Belgian-Waffle-Maker-9e4e0fb9-116d-44c4-9b97-2805b4e2519c_1000.jpg"
                   alt=""
                 />
-                <p id="extraOff_p">Extra 15% off</p>
-                <p>Select Furniture by Christopher Knight</p>
-                <p id="brand_p">More Ways to Shop</p>
-                <p id="red_p">Featured sales</p>
-                <p id="red_p">New Arrivals</p>
-                <p id="red_p">Clearance</p>
-                <p id="red_p">Furniture Advice</p>
-              </div>
-            </div>
-          </div>
-          <div id="dropDiv_7">
+                <Text id="extraOff_p">Extra 15% off</Text>
+                <Text>Select Furniture by Christopher Knight</Text>
+                <Text id="brand_p">More Ways to Shop</Text>
+                <Text id="red_p">Featured sales</Text>
+                <Text id="red_p">New Arrivals</Text>
+                <Text id="red_p">Clearance</Text>
+                <Text id="red_p">Furniture Advice</Text>
+              </Box>
+            </Box>
+          </Box>
+          <Box id="dropDiv_7">
             <a href="#">
-              <p>Outdoor</p>
+              <Text>Outdoor</Text>
             </a>
-            <div id="drop_7">
-              <div>
-                <p id="brand_p">Dinnerware</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p id="brand_p">Cookware & Bakeware</p>
-                <p>Tile</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-              </div>
-              <div>
-                <p id="brand_p">Kitchen Furniture</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p id="brand_p">Kitchen Appliances</p>
-                <p>Tile</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-              </div>
-              <div>
-                <p id="brand_p">Serveware</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p id="brand_p">Kitchen Storage</p>
-                <p>Tile</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-              </div>
-              <div>
+            <Box id="drop_7">
+              <Box>
+                <Text id="brand_p">Dinnerware</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text id="brand_p">Cookware & Bakeware</Text>
+                <Text>Tile</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+              </Box>
+              <Box>
+                <Text id="brand_p">Kitchen Furniture</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text id="brand_p">Kitchen Appliances</Text>
+                <Text>Tile</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+              </Box>
+              <Box>
+                <Text id="brand_p">Serveware</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text id="brand_p">Kitchen Storage</Text>
+                <Text>Tile</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+              </Box>
+              <Box>
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
                   src="https://ak1.ostkcdn.com/images/products/is/images/direct/3735ba1b91fa8acfb23da0e7afe50208ada16293/Elias-Outdoor-Acacia-Wood-Outdoor-Chat-Set-by-Christopher-Knight-Home.jpg"
                   alt=""
                 />
-                <p id="extraOff_p">Extra 15% off</p>
-                <p>Select Furniture by Christopher Knight</p>
-                <p id="brand_p">More Ways to Shop</p>
-                <p id="red_p">Featured sales</p>
-                <p id="red_p">New Arrivals</p>
-                <p id="red_p">Clearance</p>
-                <p id="red_p">Furniture Advice</p>
-              </div>
-            </div>
-          </div>
-          <div id="dropDiv_9">
+                <Text id="extraOff_p">Extra 15% off</Text>
+                <Text>Select Furniture by Christopher Knight</Text>
+                <Text id="brand_p">More Ways to Shop</Text>
+                <Text id="red_p">Featured sales</Text>
+                <Text id="red_p">New Arrivals</Text>
+                <Text id="red_p">Clearance</Text>
+                <Text id="red_p">Furniture Advice</Text>
+              </Box>
+            </Box>
+          </Box>
+          <Box id="dropDiv_9">
             <a href="#">
-              <p>Lighting</p>
+              <Text>Lighting</Text>
             </a>
-            <div id="drop_9">
-              <div>
-                <p id="brand_p">Dinnerware</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p id="brand_p">Cookware & Bakeware</p>
-                <p>Tile</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-              </div>
-              <div>
-                <p id="brand_p">Kitchen Furniture</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Kitchen Faucets</p>
-                <p id="brand_p">Kitchen Appliances</p>
-                <p>Tile</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-              </div>
-              <div>
-                <p id="brand_p">Serveware</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p id="brand_p">Kitchen Storage</p>
-                <p>Tile</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-              </div>
-              <div>
+            <Box id="drop_9">
+              <Box>
+                <Text id="brand_p">Dinnerware</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text id="brand_p">Cookware & Bakeware</Text>
+                <Text>Tile</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+              </Box>
+              <Box>
+                <Text id="brand_p">Kitchen Furniture</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text id="brand_p">Kitchen Appliances</Text>
+                <Text>Tile</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+              </Box>
+              <Box>
+                <Text id="brand_p">Serveware</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text id="brand_p">Kitchen Storage</Text>
+                <Text>Tile</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+              </Box>
+              <Box>
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
                   src="https://ak1.ostkcdn.com/images/products/is/images/direct/69d6ab9a69fc24a9f5adf1ccef4d0fcf833bf07e/Aged-Wood-Beaded-6-Light-Candle-Chandelier.jpg"
                   alt=""
                 />
-                <p id="extraOff_p">Extra 15% off</p>
-                <p>Select Furniture by Christopher Knight</p>
-                <p id="brand_p">More Ways to Shop</p>
-                <p id="red_p">Featured sales</p>
-                <p id="red_p">New Arrivals</p>
-                <p id="red_p">Clearance</p>
-                <p id="red_p">Furniture Advice</p>
-              </div>
-            </div>
-          </div>
-          <div id="dropDiv_10">
+                <Text id="extraOff_p">Extra 15% off</Text>
+                <Text>Select Furniture by Christopher Knight</Text>
+                <Text id="brand_p">More Ways to Shop</Text>
+                <Text id="red_p">Featured sales</Text>
+                <Text id="red_p">New Arrivals</Text>
+                <Text id="red_p">Clearance</Text>
+                <Text id="red_p">Furniture Advice</Text>
+              </Box>
+            </Box>
+          </Box>
+          <Box id="dropDiv_10">
             <a href="#">
-              <p>Kids & Baby</p>
+              <Text>Kids & Baby</Text>
             </a>
-            <div id="drop_10">
-              <div>
-                <p id="brand_p">Dinnerware</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
+            <Box id="drop_10">
+              <Box>
+                <Text id="brand_p">Dinnerware</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
 
-                <p id="brand_p">Cookware & Bakeware</p>
-                <p>Tile</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-              </div>
-              <div>
-                <p id="brand_p">Kitchen Furniture</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
+                <Text id="brand_p">Cookware & Bakeware</Text>
+                <Text>Tile</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+              </Box>
+              <Box>
+                <Text id="brand_p">Kitchen Furniture</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
 
-                <p id="brand_p">Kitchen Appliances</p>
+                <Text id="brand_p">Kitchen Appliances</Text>
 
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-              </div>
-              <div>
-                <p id="brand_p">Kids Bedding</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-              </div>
-              <div>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+              </Box>
+              <Box>
+                <Text id="brand_p">Kids Bedding</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+              </Box>
+              <Box>
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
                   src="https://ak1.ostkcdn.com/images/products/is/images/direct/b5b17dc8e98e0cfb4ea68622068adf35178581c0/Qaba-Large-Kids-Kitchen-Playset-with-Telephone%2C-Water-Dispenser-Simulation-Cooking-Set-for-Girls-and-Boys%2C-White.jpg"
                   alt=""
                 />
-                <p id="extraOff_p">Extra 15% off</p>
-                <p>Select Furniture by Christopher Knight</p>
-                <p id="brand_p">More Ways to Shop</p>
-                <p id="red_p">Featured sales</p>
-                <p id="red_p">New Arrivals</p>
-                <p id="red_p">Clearance</p>
-                <p id="red_p">Furniture Advice</p>
-              </div>
-            </div>
-          </div>
-          <div id="dropDiv_11">
+                <Text id="extraOff_p">Extra 15% off</Text>
+                <Text>Select Furniture by Christopher Knight</Text>
+                <Text id="brand_p">More Ways to Shop</Text>
+                <Text id="red_p">Featured sales</Text>
+                <Text id="red_p">New Arrivals</Text>
+                <Text id="red_p">Clearance</Text>
+                <Text id="red_p">Furniture Advice</Text>
+              </Box>
+            </Box>
+          </Box>
+          <Box id="dropDiv_11">
             <a href="#">
-              <p>More</p>
+              <Text>More</Text>
             </a>
-            <div id="drop_11">
-              <div>
-                <p id="brand_p">Holiday</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Kitchen Faucets</p>
-                <p id="brand_p">Health & Beauty</p>
-                <p>Tile</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-              </div>
-              <div>
-                <p id="brand_p">Gifting</p>
-                <p>ranges & Ovens</p>
+            <Box id="drop_11">
+              <Box>
+                <Text id="brand_p">Holiday</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text id="brand_p">Health & Beauty</Text>
+                <Text>Tile</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+              </Box>
+              <Box>
+                <Text id="brand_p">Gifting</Text>
+                <Text>ranges & Ovens</Text>
 
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p id="brand_p">Exercise Equipemnts</p>
-                <p>Tile</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text id="brand_p">Exercise Equipemnts</Text>
+                <Text>Tile</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
 
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-              </div>
-              <div>
-                <p id="brand_p">Pet Supplies</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p>Refrigerators</p>
-                <p>Kitchen Faucets</p>
-                <p>ranges & Ovens</p>
-                <p id="brand_p">Entryway</p>
-                <p>Tile</p>
-                <p>Laminate Flooring</p>
-                <p>Wallpaper</p>
-                <p>Wallpaper</p>
-                <p>Laminate Flooring</p>
-                <p>Vinyl Flooring</p>
-                <p>Wallpaper</p>
-              </div>
-              <div>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+              </Box>
+              <Box>
+                <Text id="brand_p">Pet Supplies</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text>Refrigerators</Text>
+                <Text>Kitchen Faucets</Text>
+                <Text>ranges & Ovens</Text>
+                <Text id="brand_p">Entryway</Text>
+                <Text>Tile</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Wallpaper</Text>
+                <Text>Wallpaper</Text>
+                <Text>Laminate Flooring</Text>
+                <Text>Vinyl Flooring</Text>
+                <Text>Wallpaper</Text>
+              </Box>
+              <Box>
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
                   src="https://ak1.ostkcdn.com/images/products/is/images/direct/d9d332346a904102baba51d75106bdad99541592/Soozier-Heavy-Duty-Multi-Function-Power-Rack-Cage-Home-Gym-Exercise-Workout-Station-Strength-Training-w--Stand-Rod.jpg"
                   alt=""
                 />
-                <p id="extraOff_p">Extra 15% off</p>
-                <p>Select Furniture by Christopher Knight</p>
-                <p id="brand_p">More Ways to Shop</p>
-                <p id="red_p">Featured sales</p>
-                <p id="red_p">New Arrivals</p>
-                <p id="red_p">Clearance</p>
-                <p id="red_p">Furniture Advice</p>
-              </div>
-            </div>
-          </div>
-          <div id="dropDiv_12">
-            <p>Ideas</p>
-            <div id="drop_12">
-              <div id="drop12_div1">
-                <p>More Ways to Shop</p>
-                <div id="drop12_div">
-                  <div>
+                <Text id="extraOff_p">Extra 15% off</Text>
+                <Text>Select Furniture by Christopher Knight</Text>
+                <Text id="brand_p">More Ways to Shop</Text>
+                <Text id="red_p">Featured sales</Text>
+                <Text id="red_p">New Arrivals</Text>
+                <Text id="red_p">Clearance</Text>
+                <Text id="red_p">Furniture Advice</Text>
+              </Box>
+            </Box>
+          </Box>
+          <Spacer />
+          <Box id="dropDiv_12">
+            <Text>Ideas</Text>
+            <Box id="drop_12">
+              <Box id="drop12_div1">
+                <Text>More Ways to Shop</Text>
+                <Box id="drop12_div">
+                  <Box>
                     <img
                       src="https://ak1.ostkcdn.com/img/mxc/12202021-IdeasTab-R1MOD1.png"
                       alt=""
                     />
-                    <p>Room Ideas</p>
-                  </div>
-                  <div>
+                    <Text>Room Ideas</Text>
+                  </Box>
+                  <Box>
                     <img
                       src="https://ak1.ostkcdn.com/img/mxc/12202021-IdeasTab-R1MOD2.png"
                       alt=""
                     />
-                    <p>Shop by Style</p>
-                  </div>
-                  <div>
+                    <Text>Shop by Style</Text>
+                  </Box>
+                  <Box>
                     <img
                       src="https://ak1.ostkcdn.com/img/mxc/12202021-IdeasTab-R1MOD3.png"
                       alt=""
                     />
-                    <p>Shop by Room</p>
-                  </div>
-                  <div>
+                    <Text>Shop by Room</Text>
+                  </Box>
+                  <Box>
                     <img
                       src="https://ak1.ostkcdn.com/img/mxc/02222021-ID4-Shop_Easter_Decor.png"
                       alt=""
                     />
-                    <p>Shop Easter Decor</p>
-                  </div>
-                </div>
-              </div>
-              <div id="drop12_div1">
-                <p>Inspiration & Ideas</p>
-                <div id="drop12_div">
-                  <div>
+                    <Text>Shop Easter Decor</Text>
+                  </Box>
+                </Box>
+              </Box>
+              <Box id="drop12_div1">
+                <Text>Inspiration & Ideas</Text>
+                <Box id="drop12_div">
+                  <Box>
                     <img
                       src="https://ak1.ostkcdn.com/img/mxc/12202021-IdeasTab-R2MOD1.png"
                       alt=""
                     />
-                    <p>Stylists Top & Shag Rugs</p>
-                  </div>
-                  <div>
+                    <Text>Stylists Top & Shag Rugs</Text>
+                  </Box>
+                  <Box>
                     <img
                       src="https://ak1.ostkcdn.com/img/mxc/12202021-IdeasTab-R2MOD2.png"
                       alt=""
                     />
-                    <p>Pairing Lights & Seating</p>
-                  </div>
-                  <div>
+                    <Text>Pairing Lights & Seating</Text>
+                  </Box>
+                  <Box>
                     <img
                       src="https://ak1.ostkcdn.com/img/mxc/12202021-IdeasTab-R2MOD3.png"
                       alt=""
                     />
-                    <p>Multifunctional Furniture Guide</p>
-                  </div>
-                  <div>
+                    <Text>Multifunctional Furniture Guide</Text>
+                  </Box>
+                  <Box>
                     <img
                       src="https://ak1.ostkcdn.com/img/mxc/12202021-IdeasTab-R2MOD4.png"
                       alt=""
                     />
-                    <p>Best Faux-Down Comforters</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="dropDiv_13">
-            <p>Sales & deals</p>
-            <div id="drop_13">
-              <div id="drop13_div1">
-                <div>
-                  <p>sales & deals</p>
-                </div>
-                <div>
-                  <p>shop.save.love.repeat</p>
-                </div>
-                <div>
-                  <p>Shop Now</p>
-                </div>
-              </div>
-              <div id="drop13_div2">
-                <div>
+                    <Text>Best Faux-Down Comforters</Text>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+          <Box id="dropDiv_13">
+            <Text>Sales & deals</Text>
+            <Box id="drop_13">
+              <Box id="drop13_div1">
+                <Box>
+                  <Text>sales & deals</Text>
+                </Box>
+                <Box>
+                  <Text>shop.save.love.repeat</Text>
+                </Box>
+                <Box>
+                  <Text>Shop Now</Text>
+                </Box>
+              </Box>
+              <Box id="drop13_div2">
+                <Box>
                   <img
                     src="https://ak1.ostkcdn.com/img/mxc/02172022-TNFlyoutINTL.jpg?imwidth=320"
                     alt=""
                   />
-                  <div>
-                    <p>Clearance Prices</p>
-                    <p>On Winter Essentials</p>
-                  </div>
-                </div>
-                <div>
+                  <Box>
+                    <Text>Clearance Prices</Text>
+                    <Text>On Winter Essentials</Text>
+                  </Box>
+                </Box>
+                <Box>
                   <img
                     src="https://ak1.ostkcdn.com/img/mxc/12132021-MOPS-StorageWithStyle.png?imwidth=320"
                     alt=""
                   />
-                  <div>
-                    <p>Storage with Style</p>
-                    <p>Organize with Ease</p>
-                  </div>
-                </div>
-                <div>
+                  <Box>
+                    <Text>Storage with Style</Text>
+                    <Text>Organize with Ease</Text>
+                  </Box>
+                </Box>
+                <Box>
                   <img
                     src="https://ak1.ostkcdn.com/img/mxc/12132021-MOPS-ShagRugs.png?imwidth=320"
                     alt=""
                   />
-                  <div>
-                    <p>Chik Shag Rugs</p>
-                    <p>Shop Rugs Both Plush & Pretty</p>
-                  </div>
-                </div>
-                <div>
+                  <Box>
+                    <Text>Chik Shag Rugs</Text>
+                    <Text>Shop Rugs Both Plush & Pretty</Text>
+                  </Box>
+                </Box>
+                <Box>
                   <img
                     src="https://ak1.ostkcdn.com/img/mxc/12132021-MOPS-MultifunctionalFurniture.png?imwidth=320"
                     alt=""
                   />
-                  <div>
-                    <p>multifunctional furniture</p>
-                    <p>Furnish with form & function</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <Box>
+                    <Text>multifunctional furniture</Text>
+                    <Text>Furnish with form & function</Text>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
         </Flex>
       </Box>
     </Container>
