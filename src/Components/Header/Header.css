@@ -1,9 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #header-container {
   text-align: left;
   position: fixed;
-  left: 0;
+  left: -15px;
   top: 0;
-  z-index: 100;
+  z-index: 10;
 }
 body {
   background-color: rgb(255, 255, 255);
@@ -22,18 +28,6 @@ body {
   border-bottom: 1px solid rgb(214, 214, 214);
   background-color: rgb(249, 250, 251);
 }
-
-#nav_2 {
-  height: 60px;
-  border-bottom: 1px solid rgb(214, 214, 214);
-  background-color: rgb(255, 255, 255);
-}
-
-#nav_3 {
-  height: 40px;
-  border-bottom: 1px solid rgb(214, 214, 214);
-  background-color: rgb(255, 255, 255);
-}
 #dropDiv_1,
 #dropDiv_2,
 #dropDiv_3,
@@ -47,8 +41,22 @@ body {
 #dropDiv_11,
 #dropDiv_12,
 #dropDiv_13 {
-  border: 1px solid;
-  padding: 9px;
+  padding: 6px 0;
+}
+#dropDiv_1:hover,
+#dropDiv_2:hover,
+#dropDiv_3:hover,
+#dropDiv_4:hover,
+#dropDiv_5:hover,
+#dropDiv_6:hover,
+#dropDiv_7:hover,
+#dropDiv_8:hover,
+#dropDiv_9:hover,
+#dropDiv_10:hover,
+#dropDiv_11:hover,
+#dropDiv_12:hover,
+#dropDiv_13:hover {
+  border-bottom: 2px solid;
 }
 #dropDiv_1:hover #drop_1 {
   visibility: visible;
@@ -125,8 +133,8 @@ body {
   font-weight: 500;
   color: rgb(66, 66, 66);
   position: absolute;
-  top: 128px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 50px 5000px;
+  top: 145px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 5000px 0px 5000px;
   z-index: 2;
   padding: 0 0 20px 40px;
   background-color: white;
@@ -146,9 +154,9 @@ body {
   font-weight: 500;
   color: rgb(66, 66, 66);
   position: absolute;
-  top: 128px;
-  right: 0;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 50px 5000px;
+  top: 145px;
+  right: 0px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 5000px 0px 5000px;
   z-index: 2;
   padding: 0 0 20px 40px;
   background-color: white;

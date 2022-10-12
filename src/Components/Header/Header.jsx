@@ -7,103 +7,161 @@ import {
   Image,
   Input,
   Link,
+  SimpleGrid,
   Spacer,
   Text,
 } from "@chakra-ui/react";
 import React from "react";
 import "./Header.css";
-import {} from "react-icons/fa";
+import { CgShoppingCart } from "react-icons/cg";
 import {
   AiOutlineUser,
-  AiOutlineShoppingCart,
   AiOutlineHeart,
   AiOutlineLock,
+  AiOutlineSearch,
 } from "react-icons/ai";
 
 export const Header = () => {
   return (
-    <Container id="header-container" maxW={"8xl"}>
+    <Container id="header-container" maxW={"2xl"}>
       <Box id="navbar">
-        <Flex id="nav_1" textAlign={"left"}>
-          <Text>Ships to:</Text>
-          <Image src="https://ak1.ostkcdn.com/img/mxc/intFlag_IN.gif" alt="" />
-          <Text>INDIA</Text>
+        <Flex id="nav_1" textAlign={"left"} pl={"20px"} align={"center"}>
+          <Text fontSize={"12px"} color={"blackAlpha.700"}>
+            Ships to:
+          </Text>
+          <Image
+            m={"0 10px"}
+            boxSize={"30px"}
+            borderRadius={"50%"}
+            src="https://ak1.ostkcdn.com/img/mxc/intFlag_IN.gif"
+            alt=""
+          />
+          <Text as={"b"} fontSize={"12px"}>
+            INDIA
+          </Text>
         </Flex>
         <Flex
+          h={"80px"}
           align={"center"}
           justify={"space-between"}
           borderBottom={"1px solid #cecece"}
         >
-          <Flex gap={2} align={"center"}>
+          <Flex gap={"2px"} alignItems={"center"}>
             <Image
-              w={8}
-              h={8}
+              mt={"5px"}
+              ml={"20px"}
+              w={"30px"}
+              h={"30px"}
               src="https://media.glassdoor.com/sqll/14907/overstock-com-squarelogo-1529535998697.png"
               alt=""
             />
-
-            <Link href="#">
-              <Heading fontWeight={"600"}>overstock</Heading>
+            <Link
+              href="#"
+              _hover={{
+                textDecoration: "none",
+              }}
+              letterSpacing={"tighter"}
+            >
+              <Heading fontWeight={"400"} fontSize={"35px"}>
+                overstock
+              </Heading>
             </Link>
           </Flex>
           <Flex>
             <Input
+              borderRadius={"5px 0 0 5px"}
+              h={"35px"}
+              w={"4xl"}
               type="text"
               id="search_inp"
               placeholder="Search... everything you find ships for free"
             />
-            <Button>Search</Button>
+            <Button
+              bg={"#ff1f2c"}
+              borderRadius={"0 5px 5px 0"}
+              h={"35px"}
+              p={0}
+            >
+              <AiOutlineSearch fontSize={28} fontWeight={"800"} color="white" />{" "}
+            </Button>
           </Flex>
-          <Flex>
+          <Flex gap={5} align={"center"} justify={"space-between"} pr={"20px"}>
             <Box>
-              <Link href="#">
-                <AiOutlineUser />
-                <Text>Account</Text>
-              </Link>
+              <Flex direction={"column"} align={"center"}>
+                <AiOutlineUser fontSize={"30px"} />
+                <Text fontSize={"13px"} color={"blackAlpha.800"}>
+                  Account
+                </Text>
+              </Flex>
             </Box>
             <Box>
-              <Link href="#">
-                <AiOutlineHeart />
-                <Text>Lists</Text>
-              </Link>
+              <Flex direction={"column"} align={"center"}>
+                <AiOutlineHeart fontSize={"30px"} />
+                <Text fontSize={"13px"} color={"blackAlpha.800"}>
+                  Lists
+                </Text>
+              </Flex>
             </Box>
             <Box>
-              <Link href="#">
-                <Flex>
-                  <AiOutlineShoppingCart fontSize={30} />
+              <Link
+                href="#"
+                _hover={{
+                  textDecoration: "none",
+                }}
+              >
+                <Flex direction={"column"} align={"center"}>
+                  <CgShoppingCart fontSize={"30px"} />
                   <Text
-                    position={"absolute"}
-                    top={"34px"}
-                    right="161px"
+                    background={"white"}
+                    p={"0 2px"}
+                    pos={"absolute"}
+                    top={"42px"}
+                    right={"151px"}
                     zIndex={10}
-                    fontSize="12px"
+                    fontSize="14px"
                     color={"red"}
                     fontWeight="800"
                   >
                     0
                   </Text>
-                  <Text>Cart</Text>
+                  <Text fontSize={"13px"} color={"blackAlpha.800"}>
+                    Cart
+                  </Text>
                 </Flex>
               </Link>
             </Box>
             <Box>
-              <Button>
-                <AiOutlineLock />
-                Check Out
+              <Button
+                bg={"#2f3337"}
+                color={"white"}
+                fontSize={"15px"}
+                fontWeight={"400"}
+                p={"0px 10px"}
+                _hover={{
+                  background: "blackAlpha.700",
+                }}
+              >
+                <AiOutlineLock /> Check Out
               </Button>
             </Box>
           </Flex>
         </Flex>
         <Flex
-          gap={10}
-          margin={"0px 30px 0px 10px"}
+          gap={14}
+          p={"0 20px"}
           align={"center"}
-          justify={"space-around"}
+          justify={"space-between"}
           borderBottom={"1px solid #cecece"}
           height={"35px"}
+          fontSize={"14px"}
         >
           <Box id="dropDiv_1">
-            <Link href="#">
+            <Link
+              href="#"
+              _hover={{
+                textDecoration: "none",
+              }}
+            >
               <Text>Furniture</Text>
             </Link>
             <Box id="drop_1">
@@ -261,7 +319,7 @@ export const Header = () => {
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
-                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/b320fbbc82c3e52fbc4d9677db915ee03aa504c1/SAFAVIEH-Madison-Diederike-Boho-Medallion-Distressed-Rug.jpg?imwidth=320"
+                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/de606948ccce443204e01475ccb723975954f245/Balta-Levine-Modern-Geometric-Berber-Shag-Area-Rug.jpg?imwidth=320"
                   alt=""
                 />
                 <Text id="extraOff_p">Extra 15% off</Text>
@@ -349,7 +407,7 @@ export const Header = () => {
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
-                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/d28cbaf23c439090fa43c0cf806ac147b7e1040f/Arched-Dressing-Mirror-Full-length-Floor-Mirror-with-Standing.jpg"
+                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/ee1cc0e4a0ff9956f448f775f1dcdd6c77d572fb/Glitzhome-42%22H-Halloween-Wooden-Coffin-Porch-Leaning-Decor.jpg"
                   alt=""
                 />
                 <Text id="extraOff_p">Extra 15% off</Text>
@@ -430,7 +488,7 @@ export const Header = () => {
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
-                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/aae7298c6dad6ee752e90b9ada8625407c000547/Intelligent-Design-Leena-Shaggy-Faux-Fur-Comforter-Set.jpg"
+                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/fa5e4b3598e2f3c6ba4a347857b5317eeaab3cb6/Barefoot-Bungalow-Topanga-Bohemian-Floral-Orange-Quilt-Set.jpg"
                   alt=""
                 />
                 <Text id="extraOff_p">Extra 15% off</Text>
@@ -511,7 +569,7 @@ export const Header = () => {
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
-                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/fe65fb3c91f141cb3bc6d2f2f06911180a97c388/Proox-Single-handle-Kitchen-Faucet-Pull-Down-Sprayer-w--Soap-dispenser.jpg"
+                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/538a45f243553fad39e5d9a2ea6d8c50c9ed0a6b/8-Shelves-Staggered-Bookshelf-Industrial-Etagere-Bookcase.jpg"
                   alt=""
                 />
                 <Text id="extraOff_p">Extra 15% off</Text>
@@ -597,7 +655,7 @@ export const Header = () => {
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
-                  src="https://ak1.ostkcdn.com/images/products/7508194/Hamilton-Beach-26030-Belgian-Waffle-Maker-9e4e0fb9-116d-44c4-9b97-2805b4e2519c_1000.jpg"
+                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/6a2fcd98ed80ede082617bbc17f68509457c13f9/Wooden-Round-Pastry-Serving-Plate-Rectangle-Food-Dish-Dried-Fruit-Tray-Tableware.jpg"
                   alt=""
                 />
                 <Text id="extraOff_p">Extra 15% off</Text>
@@ -677,7 +735,7 @@ export const Header = () => {
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
-                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/3735ba1b91fa8acfb23da0e7afe50208ada16293/Elias-Outdoor-Acacia-Wood-Outdoor-Chat-Set-by-Christopher-Knight-Home.jpg"
+                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/97c88a8d00c67dc026fe0a2f3291c947cc5d8ca1/Vernon-Outdoor-Outdoor-50000-BTU-Rectangular-Fire-Pit-with-Tank-Holder-by-Christopher-Knight-Home.jpg"
                   alt=""
                 />
                 <Text id="extraOff_p">Extra 15% off</Text>
@@ -755,7 +813,7 @@ export const Header = () => {
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
-                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/69d6ab9a69fc24a9f5adf1ccef4d0fcf833bf07e/Aged-Wood-Beaded-6-Light-Candle-Chandelier.jpg"
+                  src="https://ak1.ostkcdn.com/images/products/28594799/The-Curated-Nomad-Nayla-Nautical-Green-Table-Lamp-with-Burlap-Shade-1cd62ef7-5283-459d-b500-48fa127d79c7_320.jpg"
                   alt=""
                 />
                 <Text id="extraOff_p">Extra 15% off</Text>
@@ -827,7 +885,7 @@ export const Header = () => {
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
-                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/b5b17dc8e98e0cfb4ea68622068adf35178581c0/Qaba-Large-Kids-Kitchen-Playset-with-Telephone%2C-Water-Dispenser-Simulation-Cooking-Set-for-Girls-and-Boys%2C-White.jpg"
+                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/2c973d86bac975d020ee827a95a06544d8a2615c/Dina-Dinosaurs-Kids-Area-Rug.jpg?imwidth=320"
                   alt=""
                 />
                 <Text id="extraOff_p">Extra 15% off</Text>
@@ -903,7 +961,7 @@ export const Header = () => {
                 <Image
                   w={"300px"}
                   p={"30px 30px 0 0"}
-                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/d9d332346a904102baba51d75106bdad99541592/Soozier-Heavy-Duty-Multi-Function-Power-Rack-Cage-Home-Gym-Exercise-Workout-Station-Strength-Training-w--Stand-Rod.jpg"
+                  src="https://ak1.ostkcdn.com/images/products/is/images/direct/330b18b3d83f74bb594b761389886094617cf872/Soozier-Sit-Up-Bench-Core-Workout-Adjustable-Thigh-Support-for-Home-Gym-Black.jpg"
                   alt=""
                 />
                 <Text id="extraOff_p">Extra 15% off</Text>
@@ -919,9 +977,9 @@ export const Header = () => {
           <Spacer />
           <Box id="dropDiv_12">
             <Text>Ideas</Text>
-            <Box id="drop_12">
-              <Box id="drop12_div1">
-                <Text>More Ways to Shop</Text>
+            <Flex direction={"column"} id="drop_12" padding={0} gap={"20px"}>
+              <Box>
+                <Text m={"20px 0"}>More Ways to Shop</Text>
                 <Box id="drop12_div">
                   <Box>
                     <img
@@ -953,8 +1011,8 @@ export const Header = () => {
                   </Box>
                 </Box>
               </Box>
-              <Box id="drop12_div1">
-                <Text>Inspiration & Ideas</Text>
+              <Box>
+                <Text m={"20px 0"}>Inspiration & Ideas</Text>
                 <Box id="drop12_div">
                   <Box>
                     <img
@@ -986,24 +1044,25 @@ export const Header = () => {
                   </Box>
                 </Box>
               </Box>
-            </Box>
+            </Flex>
           </Box>
           <Box id="dropDiv_13">
             <Text>Sales & deals</Text>
-            <Box id="drop_13">
+            <Flex
+              direction={"column"}
+              gap={4}
+              id="drop_13"
+              width={"870px"}
+              align={"center"}
+            >
               <Box id="drop13_div1">
-                <Box>
-                  <Text>sales & deals</Text>
-                </Box>
-                <Box>
-                  <Text>shop.save.love.repeat</Text>
-                </Box>
-                <Box>
-                  <Text>Shop Now</Text>
-                </Box>
+                <Image
+                  src="https://ak1.ostkcdn.com/img/mxc/05142018DealsSales_OUTLINED.svg"
+                  alt="logo"
+                />
               </Box>
-              <Box id="drop13_div2">
-                <Box>
+              <SimpleGrid columns={4} gap={4}>
+                <Box border={"1px solid #cecece"}>
                   <img
                     src="https://ak1.ostkcdn.com/img/mxc/02172022-TNFlyoutINTL.jpg?imwidth=320"
                     alt=""
@@ -1013,7 +1072,7 @@ export const Header = () => {
                     <Text>On Winter Essentials</Text>
                   </Box>
                 </Box>
-                <Box>
+                <Box border={"1px solid #cecece"}>
                   <img
                     src="https://ak1.ostkcdn.com/img/mxc/12132021-MOPS-StorageWithStyle.png?imwidth=320"
                     alt=""
@@ -1023,7 +1082,7 @@ export const Header = () => {
                     <Text>Organize with Ease</Text>
                   </Box>
                 </Box>
-                <Box>
+                <Box border={"1px solid #cecece"}>
                   <img
                     src="https://ak1.ostkcdn.com/img/mxc/12132021-MOPS-ShagRugs.png?imwidth=320"
                     alt=""
@@ -1033,7 +1092,7 @@ export const Header = () => {
                     <Text>Shop Rugs Both Plush & Pretty</Text>
                   </Box>
                 </Box>
-                <Box>
+                <Box border={"1px solid #cecece"}>
                   <img
                     src="https://ak1.ostkcdn.com/img/mxc/12132021-MOPS-MultifunctionalFurniture.png?imwidth=320"
                     alt=""
@@ -1043,8 +1102,8 @@ export const Header = () => {
                     <Text>Furnish with form & function</Text>
                   </Box>
                 </Box>
-              </Box>
-            </Box>
+              </SimpleGrid>
+            </Flex>
           </Box>
         </Flex>
       </Box>

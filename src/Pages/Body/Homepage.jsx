@@ -355,7 +355,14 @@ export const Homepage = () => {
             </SimpleGrid>
           </Box>
           <Box mb={"70px"}>
-            <Button background={"#2f3337"} color="white" p="15px 30px">
+            <Button
+              background={"#2f3337"}
+              color="white"
+              p="15px 30px"
+              _hover={{
+                background: "blackAlpha.700",
+              }}
+            >
               See All Styles
             </Button>
           </Box>
