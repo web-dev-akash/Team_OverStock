@@ -254,7 +254,7 @@ export const Homepage = () => {
           </Box>
           <Box
             margin={"60px auto"}
-            background={`no-repeat center/100% url("https://ak1.ostkcdn.com/img/mxc/10032022-SB-Bedding-Desktop.jpg?imwidth=3840)`}
+            background={`no-repeat center/100% url("https://ak1.ostkcdn.com/img/mxc/10032022-SB-Bedding-Desktop.jpg?imwidth=3840")`}
           >
             <Image
               src="https://ak1.ostkcdn.com/img/mxc/10032022-SB-Bedding-Desktop.svg?imwidth=1920"

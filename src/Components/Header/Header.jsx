@@ -1055,12 +1055,10 @@ export const Header = () => {
               width={"870px"}
               align={"center"}
             >
-              <Box id="drop13_div1">
-                <Image
-                  src="https://ak1.ostkcdn.com/img/mxc/05142018DealsSales_OUTLINED.svg"
-                  alt="logo"
-                />
-              </Box>
+              <Box
+                id="drop13_div1"
+                background={`no-repeat center/100% url("https://ak1.ostkcdn.com/img/mxc/05142018DealsSales_OUTLINED.svg")`}
+              ></Box>
               <SimpleGrid columns={4} gap={4}>
                 <Box border={"1px solid #cecece"}>
                   <img
