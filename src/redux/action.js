@@ -5,25 +5,23 @@ export const getFurniture = (data) => ({
   payload: data,
 });
 
-export const getLoading = (data) => ({
-  type: GET_LOADING,
-  payload: data,
+export const getLoading = () => ({
+  type: GET_LOADING
 });
 
-export const getError = (data) => ({
+export const getError = () => ({
   type: GET_ERROR,
-  payload: data,
 });
 
 
-export const getFurnitureData = (payload) => async (dispatch) => {
+export const getFurnitureData = () => async (dispatch) => {
+  dispatch(getLoading());
   return axios
-    .post("https://overstock-clone-akash.herokuapp.com/products", payload)
+    .get("https://overstock-clone-akash.herokuapp.com/products")
     .then((response) => {
-      // dispatch(getFurniture(response));
-      console.log(response);
+      dispatch(getFurniture(response.data));
     })
     .catch((err) => {
-      console.log(err + "something went wrong");
+      dispatch(getError());
     });
 };

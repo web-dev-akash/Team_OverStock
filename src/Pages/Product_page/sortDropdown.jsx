@@ -5,9 +5,9 @@ export default function SortDropdown() {
         <HStack justifyContent="flex-end" m={3}>
             <Heading fontSize={22} fontWeight="normal" marginRight={2}>Sort By: </Heading>
             <Select placeholder='Select option' w={200} >
-                <option value='option1'>Option 1</option>
-                <option value='option2'>Option 2</option>
-                <option value='option3'>Option 3</option>
+                <option value='htl'>High to Low</option>
+                <option value='lth'>Low to High</option>
+                <option value=''>Reset Data</option>
             </Select>
         </HStack >
     )

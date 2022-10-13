@@ -1,41 +1,46 @@
-import { Badge, Box, Image, Icon, Container, Center } from '@chakra-ui/react'
+import { Badge, Box, Image, Icon, Container, Center, Button } from '@chakra-ui/react'
 import { StarIcon } from "@chakra-ui/icons"
 import { Grid, GridItem } from '@chakra-ui/react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { getFurnitureData } from '../../redux/action';
 
-function AirbnbCard() {
+function AirbnbCard({ elements }) {
     const [isHovered, setIsHovered] = useState(false);
     const property = {
-        imageUrl: 'https://bit.ly/2Z4KKcF',
+        imageUrl: elements.thumbnails[0][6],
         imageAlt: 'Rear view of modern home with pool',
         beds: 3,
         baths: 2,
-        title: 'Modern home in city center in the heart of historic Los Angeles',
-        formattedPrice: '$1,900.00',
-        reviewCount: 34,
-        rating: 4,
+        title: elements.title,
+        formattedPrice: elements.price,
+        reviewCount: elements.reviews,
+        rating: elements.rating,
+        delivery: elements.delivery.free,
     }
 
     return (
         <Box maxW='sm' borderWidth='1px' overflow='hidden' onMouseEnter={() => {
             setIsHovered(true);
-          }}  onMouseLeave={() => {
+        }} onMouseLeave={() => {
             setIsHovered(false);
-          }}>
+        }}>
             <Image src={property.imageUrl} alt={property.imageAlt} />
 
             <Box p='6' pl={1}>
                 <Box
-                    fontWeight='semibold'
-                    as='h3'
+                    fontWeight='bold'
+                    as='h1'
                     lineHeight='tight'
                     noOfLines={1}
                     textAlign="left"
+                    color="red.600"
+                    fontSize="19px"
                 >
-                    {property.title}
+                    Sales Starts at USD {property.formattedPrice}
                 </Box>
 
-                <Box display='flex' mt='2' alignItems='center' style={{display: isHovered ? "none" : "flex"}}>
+                <Box display='flex' mt='2' alignItems='center' style={{ display: isHovered ? "none" : "flex" }}>
                     {Array(5)
                         .fill('')
                         .map((_, i) => (
@@ -49,22 +54,36 @@ function AirbnbCard() {
                     </Box>
 
                 </Box>
-                <Box fontSize='sm' noOfLines={1} textAlign="left" mt={2}>
+                <Box fontWeight='semibold'
+                    as='h3'
+                    lineHeight='tight'
+                    noOfLines={1}
+                    textAlign="left">
                     {property.title}
                 </Box>
+                {
+                    property.delivery && <Box textAlign="left" mt={2}><Badge colorScheme='green'>Free Delivery</Badge></Box>
+                }
+
             </Box>
         </Box>
     )
 }
-const t= [1,2,3,4,5,6,7,8,9,10,11,12]
+const t = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 export const Products = () => {
+    const state = useSelector((state) => state);
+    const { loading, error, furnitures } = state;
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getFurnitureData())
+    }, [])
     return (
         <Center key={Math.random()}>
             <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-            {
-              t.map(()=> <AirbnbCard key={Math.random()}/>)  
-            }
-        </Grid>
+                {
+                    furnitures.map((elm) => <AirbnbCard key={Math.random()} elements={elm} />)
+                }
+            </Grid>
         </Center>
     )
 }

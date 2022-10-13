@@ -1,11 +1,13 @@
+import {
+  legacy_createStore as createStore,
+  compose,
+  applyMiddleware,
+} from "redux";
 import { reducer } from "./reducer";
-import { legacy_createStore as createStore } from "redux";
+import thunk from "redux-thunk";
 
-export const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const createComposer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-store.subscribe(() => {
-  console.log(store.getState());
-});
+const store = createStore(reducer, createComposer(applyMiddleware(thunk)));
+
+export { store };
