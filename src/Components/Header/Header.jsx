@@ -6,11 +6,11 @@ import {
   Heading,
   Image,
   Input,
-  Link,
   SimpleGrid,
   Spacer,
   Text,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import React from "react";
 import "./Header.css";
 import { CgShoppingCart } from "react-icons/cg";
@@ -56,11 +56,12 @@ export const Header = () => {
               alt=""
             />
             <Link
-              href="#"
+              to={"/"}
               _hover={{
                 textDecoration: "none",
               }}
               letterSpacing={"tighter"}
+              end
             >
               <Heading fontWeight={"400"} fontSize={"35px"}>
                 overstock
@@ -73,8 +74,10 @@ export const Header = () => {
               h={"35px"}
               w={"4xl"}
               type="text"
-              id="search_inp"
               placeholder="Search... everything you find ships for free"
+              _focus={{
+                outline: "none",
+              }}
             />
             <Button
               bg={"#ff1f2c"}
@@ -104,10 +107,11 @@ export const Header = () => {
             </Box>
             <Box>
               <Link
-                href="#"
+                to={"/cart"}
                 _hover={{
                   textDecoration: "none",
                 }}
+                end
               >
                 <Flex direction={"column"} align={"center"}>
                   <CgShoppingCart fontSize={"30px"} />
@@ -157,10 +161,11 @@ export const Header = () => {
         >
           <Box id="dropDiv_1">
             <Link
-              href="#"
+              to={"/furniture"}
               _hover={{
                 textDecoration: "none",
               }}
+              end
             >
               <Text>Furniture</Text>
             </Link>
@@ -251,9 +256,9 @@ export const Header = () => {
             </Box>
           </Box>
           <Box id="dropDiv_2">
-            <a href="#">
+            <Link to={"/rugs"} end>
               <Text>Rugs</Text>
-            </a>
+            </Link>
             <Box id="drop_2">
               <Box>
                 <Text id="brand_p" class="rug">
@@ -421,9 +426,9 @@ export const Header = () => {
             </Box>
           </Box>
           <Box id="dropDiv_4">
-            <a href="#">
+            <Link to={"/bedding"} end>
               <Text>Bedding</Text>
-            </a>
+            </Link>
             <Box id="drop_4">
               <Box>
                 <Text id="brand_p" class="bedding">
