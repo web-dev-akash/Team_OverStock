@@ -1,13 +1,8 @@
 import "./App.css";
-import { Navbar } from "./Components/Navbar/Navbar";
-import { AllRoutes } from "./Routes/AllRoutes";
-import { Body } from "./Pages/Body/Body";
-import { Products } from "./Pages/product_page";
-import LeftSidebar from "./Pages/leftSidebar";  
-import {LeftBars} from "./Pages/leftSidebar";
-
+import { Products } from "./Pages/Product_page/product_page";
+import {LeftBars} from "./Pages/product_page/leftSidebar";
 import { Grid } from '@chakra-ui/react'
-import SortDropdown from "./Pages/sortDropdown";
+import SortDropdown from "./Pages/Product_page/sortDropdown";
 function App() {
   return (
     <div className="App">

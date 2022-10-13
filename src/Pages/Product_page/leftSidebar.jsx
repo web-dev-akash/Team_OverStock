@@ -55,4 +55,4 @@ export const LeftBars = () => {
         </Box>
     )
 }
-export default LeftSidebar;
+export default LeftBars;
