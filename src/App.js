@@ -2,6 +2,8 @@ import "./App.css";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { AllRoutes } from "./Routes/AllRoutes";
 import { Body } from "./Pages/Body/Body";
+import {Cartpage} from "./Pages/CartPage.jsx"
+
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
       <Navbar />
       <AllRoutes />
       <Body />
+      <Cartpage/>
     </div>
   );
 }
