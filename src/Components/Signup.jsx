@@ -1,5 +1,6 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
 
 import {
   Input,
@@ -15,6 +16,7 @@ import { Link } from "react-router-dom";
 function Signup() {
   const initialvalues = { email: "", password: "" };
   const [inputValues, setInputValues] = useState(initialvalues);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (inp) => {
     const { name, value } = inp.target;
@@ -22,19 +24,39 @@ function Signup() {
     console.log(inputValues);
   };
   const handleSignup = (body) => {
+    setLoading(true);
     fetch(`http://localhost:3000/User`, {
       method: "POST",
       body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    })
+      .then(() => {
+        alert("Signup successful");
+      })
+      .catch(() => alert("Duplicate username"))
+      .finally(() => setLoading(false));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleSignup(inputValues);
   };
 
-  handleSignup(inputValues);
+  if (loading) {
+    return (
+      <Container mt={100}>
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+        />
+      </Container>
+    );
+  }
+
   return (
     <>
       <Box width="40%" ml="10%">
