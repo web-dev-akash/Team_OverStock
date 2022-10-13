@@ -1,3 +1,5 @@
+import { Grid } from "@chakra-ui/react";
+import LeftBars from "./leftSidebar";
 import { Products } from "./product_page";
 import SortDropdown from "./sortDropdown";
 
@@ -10,3 +12,5 @@ function Product_page() {
       </Grid>
     </> 
 }
+
+export default Product_page;
