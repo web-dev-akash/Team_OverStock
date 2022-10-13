@@ -1,31 +1,31 @@
-import { GET_TODO, GET_TODO_ERROR, GET_TODO_LOADING } from "./actionTypes";
+import { GET_FURNITURE,GET_ERROR,GET_LOADING } from "./actionTypes";
 
 const initState = {
   loading: false,
   error: false,
-  todos: [],
+  furnitures: [],
 };
 export const reducer = (state = initState, { type, payload }) => {
   switch (type) {
-    case GET_TODO_LOADING: {
+    case GET_LOADING: {
       return {
         loading: true,
         error: false,
-        todos: [],
+        furnitures: [],
       };
     }
-    case GET_TODO: {
+    case GET_FURNITURE: {
       return {
         loading: false,
         error: false,
-        todos: payload,
+        furnitures: payload,
       };
     }
-    case GET_TODO_ERROR: {
+    case GET_ERROR: {
       return {
         loading: false,
         error: true,
-        todos: [],
+        furnitures: [],
       };
     }
     default: {

@@ -1,3 +1,5 @@
-export const GET_TODO = "GET_TODO";
-export const GET_TODO_LOADING = "GET_TODO_LOADING";
-export const GET_TODO_ERROR = "GET_TODO_ERROR";
+export const GET_FURNITURE = "GET_FURNITURE";
+export const GET_LOADING= "GET_LOADING";
+export const GET_ERROR = "GET_ERROR";
+
+
