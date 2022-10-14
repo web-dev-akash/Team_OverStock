@@ -338,9 +338,9 @@ export const Header = () => {
             </Box>
           </Box>
           <Box id="dropDiv_3">
-            <a href="#">
+            <Link to={"/decor"}>
               <Text>Decor</Text>
-            </a>
+            </Link>
             <Box id="drop_3">
               <Box>
                 <Text id="brand_p" class="mirror">
@@ -507,9 +507,9 @@ export const Header = () => {
             </Box>
           </Box>
           <Box id="dropDiv_5">
-            <a href="#">
+            <Link to={"/home_improvement"} end>
               <Text>Home Improve</Text>
-            </a>
+            </Link>
             <Box id="drop_5">
               <Box>
                 <Text id="brand_p" class="kitchen">
@@ -588,9 +588,9 @@ export const Header = () => {
             </Box>
           </Box>
           <Box id="dropDiv_6">
-            <a href="#">
+            <Link to={"/kitchen"} end>
               <Text>Kitchen</Text>
-            </a>
+            </Link>
             <Box id="drop_6">
               <Box>
                 <Text id="brand_p">Dinnerware</Text>
@@ -674,9 +674,9 @@ export const Header = () => {
             </Box>
           </Box>
           <Box id="dropDiv_7">
-            <a href="#">
+            <Link to={"/outdoor"} end>
               <Text>Outdoor</Text>
-            </a>
+            </Link>
             <Box id="drop_7">
               <Box>
                 <Text id="brand_p">Dinnerware</Text>
@@ -754,9 +754,9 @@ export const Header = () => {
             </Box>
           </Box>
           <Box id="dropDiv_9">
-            <a href="#">
+            <Link to={"/lighting"} end>
               <Text>Lighting</Text>
-            </a>
+            </Link>
             <Box id="drop_9">
               <Box>
                 <Text id="brand_p">Dinnerware</Text>
@@ -832,9 +832,9 @@ export const Header = () => {
             </Box>
           </Box>
           <Box id="dropDiv_10">
-            <a href="#">
+            <Link to={"/kids_baby"} end>
               <Text>Kids & Baby</Text>
-            </a>
+            </Link>
             <Box id="drop_10">
               <Box>
                 <Text id="brand_p">Dinnerware</Text>
@@ -904,9 +904,9 @@ export const Header = () => {
             </Box>
           </Box>
           <Box id="dropDiv_11">
-            <a href="#">
+            <Link to={"/more"} end>
               <Text>More</Text>
-            </a>
+            </Link>
             <Box id="drop_11">
               <Box>
                 <Text id="brand_p">Holiday</Text>

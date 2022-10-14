@@ -8,18 +8,16 @@ export const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Homepage />}></Route>
-      <Route
-        path="/furniture"
-        element={<Product_page_new/>}
-      ></Route>
-      <Route
-        path="/rugs"
-        element={<Heading pt={"150px"}>Rugs page</Heading>}
-      ></Route>
-      <Route
-        path="/bedding"
-        element={<Heading pt={"150px"}>Bedding page</Heading>}
-      ></Route>
+      <Route path="/furniture" element={<Product_page_new />}></Route>
+      <Route path="/rugs" element={<Product_page_new />}></Route>
+      <Route path="/decor" element={<Product_page_new />}></Route>
+      <Route path="/bedding" element={<Product_page_new />}></Route>
+      <Route path="/home_improvement" element={<Product_page_new />}></Route>
+      <Route path="/kitchen" element={<Product_page_new />}></Route>
+      <Route path="/outdoor" element={<Product_page_new />}></Route>
+      <Route path="/lighting" element={<Product_page_new />}></Route>
+      <Route path="/kids_baby" element={<Product_page_new />}></Route>
+      <Route path="/more" element={<Product_page_new />}></Route>
     </Routes>
   );
 };
