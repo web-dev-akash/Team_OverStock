@@ -1,6 +1,6 @@
 import { Box, Container } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
-import { Spinner } from "@chakra-ui/react";
+import { Spinner, Image } from "@chakra-ui/react";
 
 import {
   Input,
@@ -85,6 +85,7 @@ function Signup() {
             <Text>Create Password*</Text>
             <Text>Confirm Password*</Text>
           </HStack>
+
           <HStack mt="3%">
             <Input
               type="password"
@@ -105,6 +106,15 @@ function Signup() {
               placeholder="Confirm Password"
             />
           </HStack>
+          <Box mt="23" bg="#f9fafc" h="10" w="322px">
+            <Text fontSize="sm">
+              <Checkbox size="sm" mt="1.5" defaultChecked mr="2"></Checkbox>
+              Sign up today for <span font-weight="bold">
+                exclusive offers
+              </span>{" "}
+              from Overstock.com delivered right to your inbox**
+            </Text>
+          </Box>
         </Box>
         <Button onClick={handleSubmit} width="322px" mt="3%" colorScheme="blue">
           Create Account
@@ -121,6 +131,25 @@ function Signup() {
 
         <Text mt="3%">Terms & Conditions | Privacy Policy.</Text>
         <Text>**You can unsubscribe at any time</Text>
+        <Box mt="76" ml="-50" height="229" width="300px" display="block">
+          <Box textAlign="left">
+            <Link>Return Policy</Link>
+            <br></br>
+            <Link>Contact Customer Care</Link>
+            <br></br>
+            <Link>FAQ</Link>
+            <br></br>
+            <Link>Privacy Policy</Link>
+            <br></br>
+            <Link>Site User Terms & Conditions*</Link>
+            <br></br>
+            <Text>
+              © 2022 Overstock.com All Rights Reserved We self-certify
+              compliance with:
+            </Text>
+            <Image src="https://ak1.ostkcdn.com/img/mxc/20200630-intl-privacy_shield.png" />
+          </Box>
+        </Box>
       </Box>
       <Stack direction="row" h="600px" p={4}>
         <Divider orientation="vertical" />
