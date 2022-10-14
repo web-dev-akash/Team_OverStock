@@ -9,7 +9,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (inp) => {
- let { name, value } = inp.target;
+    let { name, value } = inp.target;
     setInputValues({ ...inputValues, [name]: value });
     console.log(inputValues);
   };
@@ -53,7 +53,7 @@ const Login = () => {
           Email Address*
         </Text>
         <Input
-        name="email"
+          name="email"
           type="text"
           autoComplete="off"
           mt="3%"
@@ -66,7 +66,7 @@ const Login = () => {
           Password*
         </Text>
         <Input
-        name="password"
+          name="password"
           type="password"
           autoComplete="off"
           mt="3%"
@@ -80,7 +80,7 @@ const Login = () => {
           Sign In
         </Button>
         <br></br>
-        <Link mt="8%" color="blue">
+        <Link mt="3%" color="blue">
           Forgot your password?
         </Link>
       </Box>
