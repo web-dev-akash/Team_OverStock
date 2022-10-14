@@ -33,3 +33,15 @@ export const getFurnitureDataWithParams = ({ _sort, _order }) => {
     },
   });
 };
+
+export const getFurnitureDataFilter = (category,brands,_sort,_order) => {
+  return axios.get(`https://overstock-clone-akash.herokuapp.com/products`, {
+    params: {
+      category,
+      brands,
+      _sort,
+      _order,
+    },
+  });
+};
+
