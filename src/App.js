@@ -7,9 +7,7 @@ import Cartpage from "./Pages/CartPage"
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <AllRoutes />
-      <Body />
+      
       <Cartpage/>
     </div>
   );

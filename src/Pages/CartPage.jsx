@@ -74,25 +74,25 @@ function Cartpage(){
       <button aria-label="View previous products" class="bq"><svg class="cl-icon" fill="#2f3337" height="24" stroke="#2f3337" viewBox="0 0 24 24" width="24"><title>Previous</title><path d="M17 2L7 12l10 10" stroke="inherit" fill="none" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
       <div className="parent2">
         <div>
-        <img src="../src/Furniture-of-America-Diz-Modern-47-inch-Wine-Bar-Dining-Server.webp"/>
+        <img src="./src/Furniture-of-America-Diz-Modern-47-inch-Wine-Bar-Dining-Server.webp"/>
           <button>Add to Cart</button>
           <h3> Sale $373.49</h3>
           <p>Furniture of America Rustic Espresso Dining Buffet with Wine</p>
         </div>
         <div>
-        <img src="../src/Furniture-of-America-Diz-Modern-47-inch-Wine-Bar-Dining-Server.webp"/>
+        <img src="./src/Furniture-of-America-Diz-Modern-47-inch-Wine-Bar-Dining-Server.webp"/>
           <button>Add to Cart</button>
           <h3> Sale $373.49</h3>
           <p>Furniture of America Rustic Espresso Dining Buffet with Wine</p>
         </div>
         <div>
-        <img src="../src/Furniture-of-America-Diz-Modern-47-inch-Wine-Bar-Dining-Server.webp"/>
+        <img src="./src/Furniture-of-America-Diz-Modern-47-inch-Wine-Bar-Dining-Server.webp"/>
           <button>Add to Cart</button>
           <h3> Sale $373.49</h3>
           <p>Furniture of America Rustic Espresso Dining Buffet with Wine</p>
         </div>
         <div>
-        <img src="../src/Furniture-of-America-Diz-Modern-47-inch-Wine-Bar-Dining-Server.webp"/>
+        <img src="./src/Furniture-of-America-Diz-Modern-47-inch-Wine-Bar-Dining-Server.webp"/>
           <button>Add to Cart</button>
           <h3> Sale $373.49</h3>
           <p>Furniture of America Rustic Espresso Dining Buffet with Wine</p>
