@@ -102,20 +102,17 @@ export const Products = () => {
   }, []);
   if (loading) {
     return (
-      //   <Spinner
-      //     thickness="4px"
-      //     speed="0.65s"
-      //     emptyColor="gray.200"
-      //     color="red.500"
-      //     size="xl"
-      //   />
-      <Skeleton>
-        {/* <Grid templateColumns="repeat(3, 1fr)" gap={6}>
-          {furnitures.map((elm) => (
-            <AirbnbCard key={elm.position} elements={elm} />
-          ))}
-        </Grid> */}
-      </Skeleton>
+        
+        <Grid templateColumns='repeat(3, 1fr)' gap={6} ml={3}>
+          <Skeleton width="360px" height="500px">
+          </Skeleton>
+          <Skeleton width="360px" height="500px">
+          </Skeleton>
+          <Skeleton width="360px" height="500px">
+          </Skeleton>
+        </Grid>
+      // <Skeleton > 
+      // </Skeleton>
     );
   }
   if (error) {
