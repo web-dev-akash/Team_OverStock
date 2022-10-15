@@ -5,6 +5,7 @@ import { Homepage } from "../Pages/Body/Homepage";
 import DetailsPage from "../Pages/details-page/DetailsPage";
 import { LoginSignup } from "../Pages/LoginSignup/LoginSignup";
 import Product_page_new from "../Pages/Product_page/product_index";
+import PrivateRoute from "./PrivateRouter";
 
 export const AllRoutes = () => {
   return (
@@ -20,7 +21,7 @@ export const AllRoutes = () => {
       <Route path="/lighting" element={<Product_page_new />}></Route>
       <Route path="/kids_baby" element={<Product_page_new />}></Route>
       <Route path="/more" element={<Product_page_new />}></Route>
-      <Route path="/product/:id" element={<DetailsPage />}></Route>
+      <Route path="/product/:id" element={<PrivateRoute><DetailsPage /></PrivateRoute>}></Route>
       <Route path="/signup" element={<LoginSignup />}></Route>
     </Routes>
   );

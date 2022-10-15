@@ -3,10 +3,7 @@ import { Input } from "@chakra-ui/react";
 import { Box, Button, Link } from "@chakra-ui/react";
 import { useState } from "react";
 import { Spinner } from "@chakra-ui/react";
-import AuthContextProvider, {
-  AuthContext,
-} from "../../Components/Authentication/Context/AuthContext";
-import { useContext } from "react";
+
 
 import {
   Alert,
@@ -15,8 +12,12 @@ import {
   AlertDescription,
   CloseButton,
 } from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
+import { loginSignupSuccess } from "../../redux/action";
+import { Navigate, useNavigate } from "react-router-dom";
 const Login = () => {
-  // const { isAuth, handleIsAuth } = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const initialvalues = { email: "", password: "" };
   const [inputValues, setInputValues] = useState(initialvalues);
   const [loading, setLoading] = useState(false);
@@ -37,8 +38,11 @@ const Login = () => {
             elm.password === inputValues.password
           );
         });
-        // handleIsAuth(true);
         if (filterData.length == 0) throw Error;
+        else {
+          dispatch(loginSignupSuccess())
+          navigate("/furniture");
+        }
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
@@ -57,24 +61,6 @@ const Login = () => {
     );
   }
 
-  // if (isAuth) {
-  //   return (
-  //     <Alert status="success">
-  //       <AlertIcon />
-  //       <Box h="70%" w="60px">
-  //         <AlertTitle>Success!</AlertTitle>
-  //         <AlertDescription>Logged in</AlertDescription>
-  //       </Box>
-  //       <CloseButton
-  //         alignSelf="flex-start"
-  //         position="relative"
-  //         right={-1}
-  //         top={-1}
-  //         // onClick={onClose}
-  //       />
-  //     </Alert>
-  //   );
-  // }
   return (
     <>
       <Box>
