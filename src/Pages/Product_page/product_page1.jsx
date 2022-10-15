@@ -15,6 +15,7 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFurnitureData } from "../../redux/action";
+import { Link } from "react-router-dom";
 
 function AirbnbCard({ elements }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -27,69 +28,72 @@ function AirbnbCard({ elements }) {
     reviewCount: elements.reviews,
     rating: elements.rating,
     delivery: elements.delivery.free,
+    id: elements.position,
   };
 
   return (
-    <Box
-      maxW="sm"
-      borderWidth="1px"
-      overflow="hidden"
-      onMouseEnter={() => {
-        setIsHovered(true);
-      }}
-      onMouseLeave={() => {
-        setIsHovered(false);
-      }}
-    >
-      <Image src={property.imageUrl} alt={property.imageAlt} />
+    <Link to={`/product/${property.id}`}>
+      <Box
+        maxW="sm"
+        borderWidth="1px"
+        overflow="hidden"
+        onMouseEnter={() => {
+          setIsHovered(true);
+        }}
+        onMouseLeave={() => {
+          setIsHovered(false);
+        }}
+      >
+        <Image src={property.imageUrl} alt={property.imageAlt} />
 
-      <Box p="6" pl={1}>
-        <Box
-          fontWeight="bold"
-          as="h1"
-          lineHeight="tight"
-          noOfLines={1}
-          textAlign="left"
-          color="red.600"
-          fontSize="19px"
-        >
-          Sales Starts at USD {property.formattedPrice}
-        </Box>
+        <Box p="6" pl={1}>
+          <Box
+            fontWeight="bold"
+            as="h1"
+            lineHeight="tight"
+            noOfLines={1}
+            textAlign="left"
+            color="red.600"
+            fontSize="19px"
+          >
+            Sales Starts at USD {property.formattedPrice}
+          </Box>
 
-        <Box
-          display="flex"
-          mt="2"
-          alignItems="center"
-          style={{ display: isHovered ? "none" : "flex" }}
-        >
-          {Array(5)
-            .fill("")
-            .map((_, i) => (
-              <StarIcon
-                key={i}
-                color={i < property.rating ? "yellow.500" : "gray.300"}
-              />
-            ))}
-          <Box as="span" ml="2" color="gray.600" fontSize="sm">
-            {property.reviewCount}
+          <Box
+            display="flex"
+            mt="2"
+            alignItems="center"
+            style={{ display: isHovered ? "none" : "flex" }}
+          >
+            {Array(5)
+              .fill("")
+              .map((_, i) => (
+                <StarIcon
+                  key={i}
+                  color={i < property.rating ? "yellow.500" : "gray.300"}
+                />
+              ))}
+            <Box as="span" ml="2" color="gray.600" fontSize="sm">
+              {property.reviewCount}
+            </Box>
           </Box>
-        </Box>
-        <Box
-          fontWeight="semibold"
-          as="h3"
-          lineHeight="tight"
-          noOfLines={1}
-          textAlign="left"
-        >
-          {property.title}
-        </Box>
-        {property.delivery && (
-          <Box textAlign="left" mt={2}>
-            <Badge colorScheme="green">Free Delivery</Badge>
+          <Box
+            fontWeight="semibold"
+            as="h3"
+            lineHeight="tight"
+            noOfLines={1}
+            textAlign="left"
+          >
+            {property.title}
           </Box>
-        )}
+          {property.delivery && (
+            <Box textAlign="left" mt={2}>
+              <Badge colorScheme="green">Free Delivery</Badge>
+            </Box>
+          )}
+        </Box>
       </Box>
-    </Box>
+    </Link>
   );
 }
 const t = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];

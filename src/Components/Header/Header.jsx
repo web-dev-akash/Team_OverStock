@@ -19,9 +19,22 @@ import {
   AiOutlineHeart,
   AiOutlineLock,
   AiOutlineSearch,
+  AiOutlineLeft,
+  AiOutlineRight,
 } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { addToCart } from "../../redux/action";
+import { getToCartItem } from "../../Pages/details-page/detailsPageHelper";
 
 export const Header = () => {
+  const {cart} = useSelector(state=> state);
+  const dispatch = useDispatch();
+  useEffect(()=> {
+    getToCartItem().then((res)=> {
+      dispatch(addToCart(res.data));
+    })
+  },[cart])
   return (
     <Container id="header-container" maxW={"2xl"}>
       <Box id="navbar">
@@ -89,13 +102,31 @@ export const Header = () => {
             </Button>
           </Flex>
           <Flex gap={5} align={"center"} justify={"space-between"} pr={"20px"}>
-            <Box>
-              <Flex direction={"column"} align={"center"}>
-                <AiOutlineUser fontSize={"30px"} />
-                <Text fontSize={"13px"} color={"blackAlpha.800"}>
-                  Account
-                </Text>
-              </Flex>
+            <Box id="accountDiv">
+              <Link to={"/signup"}>
+                <Flex direction={"column"} align={"center"}>
+                  <AiOutlineUser fontSize={"30px"} />
+                  <Text fontSize={"13px"} color={"blackAlpha.800"}>
+                    Account
+                  </Text>
+                </Flex>
+              </Link>
+              <Box id="account-hover">
+                <Link to={"/signin"}>
+                  <Flex align={"center"} justify={"space-between"} mb={2}>
+                    Sign in <AiOutlineRight />
+                  </Flex>
+                </Link>
+                <Link to={"/signin"}>
+                  <Flex align={"center"} justify={"space-between"} mb={2}>
+                    Create an Account <AiOutlineRight />
+                  </Flex>
+                </Link>
+                <Text mb={2}>My Account</Text>
+                <Text mb={2}>My Reviews</Text>
+                <Text mb={2}>My Orders</Text>
+                <Text>My Help</Text>
+              </Box>
             </Box>
             <Box>
               <Flex direction={"column"} align={"center"}>
@@ -126,7 +157,7 @@ export const Header = () => {
                     color={"red"}
                     fontWeight="800"
                   >
-                    0
+                    {cart.length}
                   </Text>
                   <Text fontSize={"13px"} color={"blackAlpha.800"}>
                     Cart

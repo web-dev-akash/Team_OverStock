@@ -1,5 +1,4 @@
 import { Box, Grid, Heading, Spinner } from "@chakra-ui/react";
-import { useEffect } from "react";
 import { useState } from "react";
 import {SortContext}  from "../../Components/Cotext";
 import LeftBars from "./leftSidebar";

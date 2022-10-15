@@ -4,6 +4,7 @@ import {
   GET_LOADING,
   ADD_TO_CART,
   REMOVE_FROM_CART,
+  LOGIN_SIGNUP_SUCCESS,
 } from "./actionTypes";
 
 const initState = {
@@ -11,19 +12,19 @@ const initState = {
   error: false,
   furnitures: [],
   cart: [],
+  isAuth: false
 };
 export const reducer = (state = initState, { type, payload }) => {
   switch (type) {
     case GET_LOADING: {
       return {
-        loading: true,
-        error: false,
-        furnitures: [],
-        cart: [],
+        ...state,
+        loading: true
       };
     }
     case GET_FURNITURE: {
       return {
+        ...state,
         loading: false,
         error: false,
         furnitures: payload,
@@ -32,6 +33,7 @@ export const reducer = (state = initState, { type, payload }) => {
     }
     case GET_ERROR: {
       return {
+        ...state,
         loading: false,
         error: true,
         furnitures: [],
@@ -40,6 +42,7 @@ export const reducer = (state = initState, { type, payload }) => {
     }
     case ADD_TO_CART: {
       return {
+        ...state,
         loading: false,
         error: false,
         furnitures: state.furnitures,
@@ -48,11 +51,18 @@ export const reducer = (state = initState, { type, payload }) => {
     }
     case REMOVE_FROM_CART: {
       return {
+        ...state,
         loading: false,
         error: false,
         furnitures: state.furnitures,
         cart: payload,
       };
+    }
+    case LOGIN_SIGNUP_SUCCESS: {
+      return {
+        ...state,
+        isAuth: true
+      }
     }
     default: {
       return state;

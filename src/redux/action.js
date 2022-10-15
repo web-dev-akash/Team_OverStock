@@ -4,6 +4,7 @@ import {
   GET_ERROR,
   ADD_TO_CART,
   REMOVE_FROM_CART,
+  LOGIN_SIGNUP_SUCCESS,
 } from "./actionTypes";
 import axios from "axios";
 export const getFurniture = (data) => ({
@@ -63,3 +64,8 @@ export const removeFromCart = (payload) => {
     payload,
   };
 };
+
+export const loginSignupSuccess = (payload) =>({
+  type: LOGIN_SIGNUP_SUCCESS,
+  payload
+})
