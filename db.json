@@ -1,8 +1,24 @@
 {
-  "products": [
+  "User": [
     {
-      "id": 1,
-      "name": "Bed"
+      "email": "gdh",
+      "password": "254",
+      "id": 1
+    },
+    {
+      "email": "aman@gmail.com",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "email": "mayukh@test.com",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "email": "raj@test.com",
+      "password": "123",
+      "id": 4
     }
   ]
 }
