@@ -6,17 +6,19 @@ import { useSearchParams } from "react-router-dom";
 import {
   getFurniture,
   getFurnitureData,
+  getFurnitureDataFilter,
   getFurnitureDataWithParams,
   getLoading,
 } from "../../redux/action";
 
-let order_new;
 
 export default function SortDropdown({order_set,changeOrder}) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [order, setOrder] = useState("");
   const dispatch = useDispatch();
   const [sort, setSort] = useState(searchParams.get("sort") || "");
+  const [category, setCategory] = useState(searchParams.getAll("category") || []);
+  const [brands, setBrands] = useState(searchParams.getAll("brands") || []);
 
   useEffect(() => {
     if (order !="") {
@@ -33,11 +35,44 @@ export default function SortDropdown({order_set,changeOrder}) {
     }
   }, [order]);
 
+  useEffect(()=>{
+    dispatch(getLoading())
+    if(brands.length && category.length){
+        if(order_set !="") {
+            getFurnitureDataFilter(category,brands,"price",order_set).then((res)=> dispatch(getFurniture(res.data))) 
+        }else {
+            getFurnitureDataFilter(category,brands,undefined,undefined).then((res)=> dispatch(getFurniture(res.data)))
+        }
+    }
+    else if(brands.length==0)
+        if(order_set !="") {
+            getFurnitureDataFilter(category,undefined,"price",order_set).then((res)=> dispatch(getFurniture(res.data))) 
+        }else {
+            getFurnitureDataFilter(category,undefined,undefined,undefined).then((res)=> dispatch(getFurniture(res.data)))
+        }
+    else if(category.length==0) {
+        if(order_set !="") {
+            getFurnitureDataFilter(undefined,brands,"price",order_set).then((res)=> dispatch(getFurniture(res.data))) 
+        }else {
+            getFurnitureDataFilter(undefined,brands,undefined,undefined).then((res)=> dispatch(getFurniture(res.data)))
+        }
+    }else {
+      dispatch(getFurnitureData());
+    }
+},[category,brands])
+
   useEffect(() =>{
     setSort("price");
+    console.log(category,brands);
     const obj = {
       sort,
       order
+    }
+    if(brands.length > 0) {
+      obj.brands = brands;
+    }
+    if(category.length > 0) {
+      obj.category = category;
     }
     if(order !="")  setSearchParams(obj)
     else setSearchParams("");
