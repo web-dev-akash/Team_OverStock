@@ -1,32 +1,68 @@
-import { GET_TODO, GET_TODO_ERROR, GET_TODO_LOADING } from "./actionTypes";
+import {
+  GET_FURNITURE,
+  GET_ERROR,
+  GET_LOADING,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  LOGIN_SIGNUP_SUCCESS,
+} from "./actionTypes";
 
 const initState = {
   loading: false,
   error: false,
-  todos: [],
+  furnitures: [],
+  cart: [],
+  isAuth: false
 };
 export const reducer = (state = initState, { type, payload }) => {
   switch (type) {
-    case GET_TODO_LOADING: {
+    case GET_LOADING: {
       return {
-        loading: true,
-        error: false,
-        todos: [],
+        ...state,
+        loading: true
       };
     }
-    case GET_TODO: {
+    case GET_FURNITURE: {
       return {
+        ...state,
         loading: false,
         error: false,
-        todos: payload,
+        furnitures: payload,
+        cart: state.cart,
       };
     }
-    case GET_TODO_ERROR: {
+    case GET_ERROR: {
       return {
+        ...state,
         loading: false,
         error: true,
-        todos: [],
+        furnitures: [],
+        cart: [],
       };
+    }
+    case ADD_TO_CART: {
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        furnitures: state.furnitures,
+        cart: payload,
+      };
+    }
+    case REMOVE_FROM_CART: {
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        furnitures: state.furnitures,
+        cart: payload,
+      };
+    }
+    case LOGIN_SIGNUP_SUCCESS: {
+      return {
+        ...state,
+        isAuth: true
+      }
     }
     default: {
       return state;
