@@ -3,7 +3,18 @@ import { Input } from "@chakra-ui/react";
 import { Box, Button, Link } from "@chakra-ui/react";
 import { useState } from "react";
 import { Spinner } from "@chakra-ui/react";
+import AuthContextProvider, { AuthContext } from "./Context/AuthContext"
+import { useContext } from "react";
+
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  CloseButton
+} from '@chakra-ui/react'
 const Login = () => {
+  const {isAuth,handleIsAuth} = useContext(AuthContext)
   const initialvalues = { email: "", password: "" };
   const [inputValues, setInputValues] = useState(initialvalues);
   const [loading, setLoading] = useState(false);
@@ -15,7 +26,7 @@ const Login = () => {
   };
   const handleLogin = () => {
     setLoading(true);
-    fetch(`http://localhost:3000/User`)
+    fetch(`https://overstock-signup.herokuapp.com/User`)
       .then((res) => res.json())
       .then((data) => {
         let filterData = data.filter((elm) => {
@@ -24,9 +35,10 @@ const Login = () => {
             elm.password === inputValues.password
           );
         });
+        handleIsAuth(true);
         if (filterData.length == 0) throw Error;
       })
-      .catch(() => alert("Duplicate username"))
+      .catch(() =>handleIsAuth(false) )
       .finally(() => setLoading(false));
   };
   if (loading) {
@@ -43,6 +55,38 @@ const Login = () => {
     );
   }
 
+if(isAuth){
+  
+
+return(
+  
+    
+      <Alert status='success'>
+        <AlertIcon />
+        <Box h="70%" w="60px">
+          <AlertTitle>Success!</AlertTitle>
+          <AlertDescription>
+            Logged in 
+          </AlertDescription>
+       </Box>
+       <CloseButton
+          alignSelf='flex-start'
+          position='relative'
+          right={-1}
+          top={-1}
+          onClick={onClose}
+        />
+      </Alert>
+     
+ )
+}
+else{
+  <Alert status='error'>
+  <AlertIcon />
+  <AlertTitle>Wrong Credentials</AlertTitle>
+  <AlertDescription>Your Chakra experience may be degraded.</AlertDescription>
+</Alert>
+}
   return (
     <>
       <Box width="40%">

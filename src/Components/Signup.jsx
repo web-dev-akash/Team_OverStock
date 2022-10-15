@@ -25,7 +25,7 @@ function Signup() {
   };
   const handleSignup = (body) => {
     setLoading(true);
-    fetch(`http://localhost:3000/User`, {
+    fetch(`https://overstock-signup.herokuapp.com/User`, {
       method: "POST",
       body: JSON.stringify(body),
       headers: {
@@ -77,6 +77,7 @@ function Signup() {
             placeholder="Email"
             onChange={handleChange}
             value={inputValues.email}
+            required
           />
         </Box>
 
