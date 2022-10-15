@@ -1,4 +1,10 @@
-import { GET_FURNITURE, GET_LOADING, GET_ERROR } from "./actionTypes";
+import {
+  GET_FURNITURE,
+  GET_LOADING,
+  GET_ERROR,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+} from "./actionTypes";
 import axios from "axios";
 export const getFurniture = (data) => ({
   type: GET_FURNITURE,
@@ -34,7 +40,7 @@ export const getFurnitureDataWithParams = ({ _sort, _order }) => {
   });
 };
 
-export const getFurnitureDataFilter = (category,brands,_sort,_order) => {
+export const getFurnitureDataFilter = (category, brands, _sort, _order) => {
   return axios.get(`https://overstock-clone-akash.herokuapp.com/products`, {
     params: {
       category,
@@ -45,3 +51,15 @@ export const getFurnitureDataFilter = (category,brands,_sort,_order) => {
   });
 };
 
+export const addToCart = (payload) => {
+  return {
+    type: ADD_TO_CART,
+    payload,
+  };
+};
+export const removeFromCart = (payload) => {
+  return {
+    type: REMOVE_FROM_CART,
+    payload,
+  };
+};
