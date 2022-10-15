@@ -19,6 +19,8 @@ import {
   AiOutlineHeart,
   AiOutlineLock,
   AiOutlineSearch,
+  AiOutlineLeft,
+  AiOutlineRight,
 } from "react-icons/ai";
 
 export const Header = () => {
@@ -89,13 +91,31 @@ export const Header = () => {
             </Button>
           </Flex>
           <Flex gap={5} align={"center"} justify={"space-between"} pr={"20px"}>
-            <Box>
-              <Flex direction={"column"} align={"center"}>
-                <AiOutlineUser fontSize={"30px"} />
-                <Text fontSize={"13px"} color={"blackAlpha.800"}>
-                  Account
-                </Text>
-              </Flex>
+            <Box id="accountDiv">
+              <Link to={"/signup"}>
+                <Flex direction={"column"} align={"center"}>
+                  <AiOutlineUser fontSize={"30px"} />
+                  <Text fontSize={"13px"} color={"blackAlpha.800"}>
+                    Account
+                  </Text>
+                </Flex>
+              </Link>
+              <Box id="account-hover">
+                <Link to={"/signin"}>
+                  <Flex align={"center"} justify={"space-between"} mb={2}>
+                    Sign in <AiOutlineRight />
+                  </Flex>
+                </Link>
+                <Link to={"/signin"}>
+                  <Flex align={"center"} justify={"space-between"} mb={2}>
+                    Create an Account <AiOutlineRight />
+                  </Flex>
+                </Link>
+                <Text mb={2}>My Account</Text>
+                <Text mb={2}>My Reviews</Text>
+                <Text mb={2}>My Orders</Text>
+                <Text>My Help</Text>
+              </Box>
             </Box>
             <Box>
               <Flex direction={"column"} align={"center"}>

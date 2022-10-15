@@ -330,3 +330,21 @@ body {
   color: black;
   font-weight: 500;
 }
+
+#account-hover {
+  visibility: hidden;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(66, 66, 66);
+  position: absolute;
+  top: 95px;
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 20px 50px 5px;
+  z-index: 2;
+  padding: 15px;
+  width: 200px;
+  background-color: white;
+}
+
+#accountDiv:hover #account-hover {
+  visibility: visible;
+}

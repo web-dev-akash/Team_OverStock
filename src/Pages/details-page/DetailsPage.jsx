@@ -1,21 +1,30 @@
 import React, { useEffect, useState } from "react";
 import ImageSlider from "./ImageSlider";
-import "../main.css";
-const getData = () => {
-  return fetch(`https://overstock-clone-akash.herokuapp.com/products`).then(
-    (res) => res.json()
-  );
+import "./details.css";
+import { useParams } from "react-router-dom";
+import { Box, position } from "@chakra-ui/react";
+const getData = (id) => {
+  return fetch(
+    `https://overstock-clone-akash.herokuapp.com/products?position=${id}`
+  ).then((res) => res.json());
 };
 function DetailsPage() {
-  const [slides, setSlide] = useState([]);
-  const [data, setData] = useState({});
+  const { id } = useParams();
+  const [slides, setSlides] = useState([]);
+  const [data, setData] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    getData().then((res) => {
+    getData(id).then((res) => {
       setData(res[0]);
-      setSlide(res[0].thumbnails[0]);
-      console.log(res);
+      setSlides(res[0].slides);
+      console.log(res[0], "res data");
+      console.log(data.thumbnails[0][6], " data");
     });
+    setIsLoaded(true);
   }, []);
+
+  useEffect(() => {}, [isLoaded]);
+
   const style_main = {
     display: "flex",
     width: "70%",
@@ -69,16 +78,17 @@ function DetailsPage() {
   const details = {
     width: "48%",
   };
-
+  // if (isLoaded) {
   return (
-    <>
+    <Box mt={"180px"}>
       <div style={style_main}>
         <div style={cont1}>
           <ImageSlider slides={slides} />
         </div>
-        {console.log(data)}
+        {/* {console.log(data)} */}
+
         <div style={cont2}>
-          <p style={name}>{data?.title}</p>
+          <p style={name}>{data.title}</p>
           <p style={name}>{Number(data.rating).toFixed(1)} / 5⭐</p>
           <p style={name}>
             Starting at <sup style={upper}>INR</sup> {data.price}
@@ -110,8 +120,9 @@ function DetailsPage() {
           chose Fasade, even years down the road!
         </div>
       </div>
-    </>
+    </Box>
   );
+  // }
 }
 
 export default DetailsPage;
