@@ -3,7 +3,9 @@ import { Input } from "@chakra-ui/react";
 import { Box, Button, Link } from "@chakra-ui/react";
 import { useState } from "react";
 import { Spinner } from "@chakra-ui/react";
-import AuthContextProvider, { AuthContext } from "./Context/AuthContext"
+import AuthContextProvider, {
+  AuthContext,
+} from "../../Components/Authentication/Context/AuthContext";
 import { useContext } from "react";
 
 import {
@@ -11,10 +13,10 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
-  CloseButton
-} from '@chakra-ui/react'
+  CloseButton,
+} from "@chakra-ui/react";
 const Login = () => {
-  const {isAuth,handleIsAuth} = useContext(AuthContext)
+  // const { isAuth, handleIsAuth } = useContext(AuthContext);
   const initialvalues = { email: "", password: "" };
   const [inputValues, setInputValues] = useState(initialvalues);
   const [loading, setLoading] = useState(false);
@@ -35,10 +37,10 @@ const Login = () => {
             elm.password === inputValues.password
           );
         });
-        handleIsAuth(true);
+        // handleIsAuth(true);
         if (filterData.length == 0) throw Error;
       })
-      .catch(() =>handleIsAuth(false) )
+      .catch((error) => console.log(error))
       .finally(() => setLoading(false));
   };
   if (loading) {
@@ -55,45 +57,31 @@ const Login = () => {
     );
   }
 
-if(isAuth){
-  
-
-return(
-  
-    
-      <Alert status='success'>
-        <AlertIcon />
-        <Box h="70%" w="60px">
-          <AlertTitle>Success!</AlertTitle>
-          <AlertDescription>
-            Logged in 
-          </AlertDescription>
-       </Box>
-       <CloseButton
-          alignSelf='flex-start'
-          position='relative'
-          right={-1}
-          top={-1}
-          onClick={onClose}
-        />
-      </Alert>
-     
- )
-}
-else{
-  <Alert status='error'>
-  <AlertIcon />
-  <AlertTitle>Wrong Credentials</AlertTitle>
-  <AlertDescription>Your Chakra experience may be degraded.</AlertDescription>
-</Alert>
-}
+  // if (isAuth) {
+  //   return (
+  //     <Alert status="success">
+  //       <AlertIcon />
+  //       <Box h="70%" w="60px">
+  //         <AlertTitle>Success!</AlertTitle>
+  //         <AlertDescription>Logged in</AlertDescription>
+  //       </Box>
+  //       <CloseButton
+  //         alignSelf="flex-start"
+  //         position="relative"
+  //         right={-1}
+  //         top={-1}
+  //         // onClick={onClose}
+  //       />
+  //     </Alert>
+  //   );
+  // }
   return (
     <>
-      <Box width="40%">
-        <Heading fontSize="xl" mt="12%" ml="-30%">
+      <Box>
+        <Heading fontSize="xl" mt="12%" textAlign={"left"}>
           Sign In
         </Heading>
-        <Text mt="12%" ml="-39%">
+        <Text mt="12%" textAlign={"left"}>
           Email Address*
         </Text>
         <Input
@@ -101,12 +89,12 @@ else{
           type="text"
           autoComplete="off"
           mt="3%"
-          width="322px"
+          width="100%"
           placeholder="Email"
           onChange={handleChange}
           value={inputValues.email}
         />
-        <Text mt="3%" ml="-45%">
+        <Text mt="3%" textAlign={"left"}>
           Password*
         </Text>
         <Input

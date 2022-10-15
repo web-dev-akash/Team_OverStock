@@ -28,13 +28,13 @@ import { addToCart } from "../../redux/action";
 import { getToCartItem } from "../../Pages/details-page/detailsPageHelper";
 
 export const Header = () => {
-  const {cart} = useSelector(state=> state);
+  const { cart } = useSelector((state) => state);
   const dispatch = useDispatch();
-  useEffect(()=> {
-    getToCartItem().then((res)=> {
+  useEffect(() => {
+    getToCartItem().then((res) => {
       dispatch(addToCart(res.data));
-    })
-  },[cart])
+    });
+  }, [cart]);
   return (
     <Container id="header-container" maxW={"2xl"}>
       <Box id="navbar">
@@ -112,12 +112,12 @@ export const Header = () => {
                 </Flex>
               </Link>
               <Box id="account-hover">
-                <Link to={"/signin"}>
+                <Link to={"/signup"}>
                   <Flex align={"center"} justify={"space-between"} mb={2}>
                     Sign in <AiOutlineRight />
                   </Flex>
                 </Link>
-                <Link to={"/signin"}>
+                <Link to={"/signup"}>
                   <Flex align={"center"} justify={"space-between"} mb={2}>
                     Create an Account <AiOutlineRight />
                   </Flex>

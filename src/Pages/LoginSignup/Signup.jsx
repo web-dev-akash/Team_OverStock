@@ -59,12 +59,12 @@ function Signup() {
 
   return (
     <>
-      <Box width="40%" ml="10%">
+      <Box w={"75%"}>
         <Box>
-          <Heading fontSize="xl" mt="12%" ml="-30%">
+          <Heading fontSize="xl" mt="12%" textAlign={"left"}>
             Create Account
           </Heading>
-          <Text mt="12%" ml="-39%">
+          <Text mt="12%" textAlign={"left"}>
             Email Address*
           </Text>
           <Input
@@ -72,7 +72,7 @@ function Signup() {
             autoComplete="off"
             name="email"
             id="email"
-            width="322px"
+            width="100%"
             mt="3%"
             placeholder="Email"
             onChange={handleChange}
@@ -80,8 +80,7 @@ function Signup() {
             required
           />
         </Box>
-
-        <Box ml="20%">
+        <Box>
           <HStack mt="3%" spacing={14}>
             <Text>Create Password*</Text>
             <Text>Confirm Password*</Text>
@@ -93,7 +92,7 @@ function Signup() {
               autoComplete="off"
               name="password"
               id="password"
-              width="160px"
+              width="50%"
               placeholder="Paasword"
               onChange={handleChange}
               value={inputValues.password}
@@ -103,7 +102,7 @@ function Signup() {
               autoComplete="off"
               name="password2"
               id="password2"
-              width="160px"
+              width="50%"
               placeholder="Confirm Password"
             />
           </HStack>
@@ -117,7 +116,12 @@ function Signup() {
             </Text>
           </Box>
         </Box>
-        <Button onClick={handleSubmit} width="322px" mt="3%" colorScheme="blue">
+        <Button
+          onClick={handleSubmit}
+          width="322px"
+          mt="25px"
+          colorScheme="blue"
+        >
           Create Account
         </Button>
         <hr width="23px"></hr>
@@ -125,32 +129,17 @@ function Signup() {
           Continue as Guest
         </Button>
 
-        <Text mt="4%">
+        <Text fontSize={"13px"} mt="4%">
           By creating an account or continuing as a Guest, you
         </Text>
-        <Text>agree to our Terms & Conditions and Privacy Policy.</Text>
+        <Text fontSize={"13px"}>
+          agree to our Terms & Conditions and Privacy Policy.
+        </Text>
 
-        <Text mt="3%">Terms & Conditions | Privacy Policy.</Text>
-        <Text>**You can unsubscribe at any time</Text>
-        <Box mt="76" ml="-50" height="229" width="300px" display="block">
-          <Box textAlign="left">
-            <Link>Return Policy</Link>
-            <br></br>
-            <Link>Contact Customer Care</Link>
-            <br></br>
-            <Link>FAQ</Link>
-            <br></br>
-            <Link>Privacy Policy</Link>
-            <br></br>
-            <Link>Site User Terms & Conditions*</Link>
-            <br></br>
-            <Text>
-              © 2022 Overstock.com All Rights Reserved We self-certify
-              compliance with:
-            </Text>
-            <Image src="https://ak1.ostkcdn.com/img/mxc/20200630-intl-privacy_shield.png" />
-          </Box>
-        </Box>
+        <Text fontSize={"13px"} mt="3%">
+          Terms & Conditions | Privacy Policy.
+        </Text>
+        <Text fontSize={"13px"}>**You can unsubscribe at any time</Text>
       </Box>
       <Stack direction="row" h="600px" p={4}>
         <Divider orientation="vertical" />
