@@ -5,6 +5,7 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   LOGIN_SIGNUP_SUCCESS,
+  SIGNOUT_SUCCESS
 } from "./actionTypes";
 import axios from "axios";
 export const getFurniture = (data) => ({
@@ -18,6 +19,10 @@ export const getLoading = () => ({
 
 export const getError = () => ({
   type: GET_ERROR,
+});
+
+export const signoutPerformed = () => ({
+  type: SIGNOUT_SUCCESS
 });
 
 export const getFurnitureData = () => async (dispatch) => {

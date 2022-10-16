@@ -5,6 +5,7 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   LOGIN_SIGNUP_SUCCESS,
+  SIGNOUT_SUCCESS,
 } from "./actionTypes";
 
 const initState = {
@@ -62,6 +63,12 @@ export const reducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         isAuth: true
+      }
+    }
+    case SIGNOUT_SUCCESS: {
+      return {
+        ...state,
+        isAuth: false
       }
     }
     default: {

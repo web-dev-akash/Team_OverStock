@@ -10,7 +10,7 @@ import {
   Spacer,
   Text,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import "./Header.css";
 import { CgShoppingCart } from "react-icons/cg";
@@ -24,17 +24,25 @@ import {
 } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { addToCart } from "../../redux/action";
+import { addToCart, signoutPerformed } from "../../redux/action";
 import { getToCartItem } from "../../Pages/details-page/detailsPageHelper";
 
 export const Header = () => {
-  const { cart } = useSelector((state) => state);
+  const { cart, isAuth } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     getToCartItem().then((res) => {
       dispatch(addToCart(res.data));
     });
-  }, [cart]);
+    console.log(cart);
+  }, []);
+
+  const handleSignout = () => {
+      dispatch(signoutPerformed());
+      navigate("/")
+  }
+
   return (
     <Container id="header-container" maxW={"2xl"}>
       <Box id="navbar">
@@ -112,20 +120,37 @@ export const Header = () => {
                 </Flex>
               </Link>
               <Box id="account-hover">
-                <Link to={"/signup"}>
-                  <Flex align={"center"} justify={"space-between"} mb={2}>
-                    Sign in <AiOutlineRight />
-                  </Flex>
-                </Link>
-                <Link to={"/signup"}>
-                  <Flex align={"center"} justify={"space-between"} mb={2}>
-                    Create an Account <AiOutlineRight />
-                  </Flex>
-                </Link>
+                {
+                  !isAuth ? <>
+                    <Link to={"/signup"}>
+                      <Flex align={"center"} justify={"space-between"} mb={2}>
+                        Sign in <AiOutlineRight />
+                      </Flex>
+                    </Link>
+                    <Link to={"/signup"}>
+                      <Flex align={"center"} justify={"space-between"} mb={2}>
+                        Create an Account <AiOutlineRight />
+                      </Flex>
+                    </Link>
+                  </> : null
+                }
+
                 <Text mb={2}>My Account</Text>
                 <Text mb={2}>My Reviews</Text>
                 <Text mb={2}>My Orders</Text>
                 <Text>My Help</Text>
+                {
+                  isAuth ?
+                    <>
+                      <br />
+                      <Link to={"/"}>
+                        <Flex align={"center"} justify={"space-between"} mb={2} onClick={handleSignout}>
+                          Sign out <AiOutlineRight />
+                        </Flex>
+                      </Link>
+                    </>
+                    : null
+                }
               </Box>
             </Box>
             <Box>
@@ -138,7 +163,7 @@ export const Header = () => {
             </Box>
             <Box>
               <Link
-                to={"/cart"}
+                to={isAuth ?  "/cart" : "/signup"}
                 _hover={{
                   textDecoration: "none",
                 }}
@@ -146,7 +171,7 @@ export const Header = () => {
               >
                 <Flex direction={"column"} align={"center"}>
                   <CgShoppingCart fontSize={"30px"} />
-                  <Text
+                  {isAuth ? <Text
                     background={"white"}
                     p={"0 2px"}
                     pos={"absolute"}
@@ -158,7 +183,8 @@ export const Header = () => {
                     fontWeight="800"
                   >
                     {cart.length}
-                  </Text>
+                  </Text> : null}
+
                   <Text fontSize={"13px"} color={"blackAlpha.800"}>
                     Cart
                   </Text>
@@ -166,18 +192,20 @@ export const Header = () => {
               </Link>
             </Box>
             <Box>
-              <Button
-                bg={"#2f3337"}
-                color={"white"}
-                fontSize={"15px"}
-                fontWeight={"400"}
-                p={"0px 10px"}
-                _hover={{
-                  background: "blackAlpha.700",
-                }}
-              >
-                <AiOutlineLock /> Check Out
-              </Button>
+              {isAuth ?
+                <Button
+                  bg={"#2f3337"}
+                  color={"white"}
+                  fontSize={"15px"}
+                  fontWeight={"400"}
+                  p={"0px 10px"}
+                  _hover={{
+                    background: "blackAlpha.700",
+                  }}
+                >
+                  <AiOutlineLock /> Check Out
+                </Button>
+                : null}
             </Box>
           </Flex>
         </Flex>

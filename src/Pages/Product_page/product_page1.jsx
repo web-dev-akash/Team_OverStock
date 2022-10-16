@@ -96,7 +96,6 @@ function AirbnbCard({ elements }) {
     </Link>
   );
 }
-const t = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 export const Products = () => {
   const state = useSelector((state) => state);
   const { loading, error, furnitures } = state;

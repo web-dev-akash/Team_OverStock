@@ -5,7 +5,6 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Box, position } from "@chakra-ui/react";
 import { getToCartItem, postToCartItem } from "./detailsPageHelper";
 import { useDispatch } from "react-redux";
-import { m } from "framer-motion";
 import { addToCart } from "../../redux/action";
 const getData = (id) => {
   return fetch(
