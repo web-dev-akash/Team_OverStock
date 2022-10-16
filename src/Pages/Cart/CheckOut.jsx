@@ -1,4 +1,5 @@
 import { Checkbox, CheckboxGroup,Stack } from '@chakra-ui/react'
+import "./chckout.css"
 import {
     Table,
     Thead,
@@ -15,7 +16,7 @@ import {
 
 
     
-    <div >
+    <div className="parent" >
       
        <div className="navbar">
       <div className="overstocklogo">

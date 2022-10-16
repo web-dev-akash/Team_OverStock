@@ -1,3 +1,4 @@
+import "./checkout.css"
 function Cartpage(){
     return (
       <div>
