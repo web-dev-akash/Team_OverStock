@@ -1,7 +1,7 @@
 import "./checkout.css"
 function Cartpage(){
     return (
-      <div>
+      <div className="marginTop"> 
        <h1 className="heading">Shopping Cart</h1>
   
       <div className="parent">
@@ -45,7 +45,25 @@ function Cartpage(){
           <div>
             <h1>Add a Promo Code</h1>
           </div>
-          <div></div>
+          <div className="box2_main2">
+              <div>
+                <h5>(1) item:</h5>
+                <h5>INR 44,072.35</h5>
+              </div>
+              <div>
+                  <p> Savings:</p>
+                <p className="paragraph"> 6,269.16</p>
+              </div>
+              <div>
+                <h5>Subtotal:</h5>
+                <h5> INR 37,803.19</h5>
+              </div>
+              <div>
+                <h3>Your Total:</h3>
+                <h3>37,803.19</h3>
+              </div>
+              <button>Check Out</button>
+          </div>
         </div>
       </div>
       <h3> Things We Know You'll Love</h3>

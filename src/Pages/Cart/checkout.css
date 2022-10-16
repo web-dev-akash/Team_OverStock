@@ -6,6 +6,7 @@
     font-size: 24px;
     font-weight: 400;
     margin: 30px;
+    text-align: left;
   }
   .box2 h1 {
     font-size: 24px;
@@ -71,14 +72,16 @@
   .parent2 div p {
     margin-top: -12px;
   }
-  .innerBox u button {
+  .innerBox :first-child button {
     border: none;
     background-color: white;
-    margin-top: 10px;
+    margin-left: -70%;
+    margin-right: 10px;
   }
   .innerBox select {
     padding: 10px;
     width: 60px;
+    margin-left: -100%;
   }
   .box2_main2 div {
     display: flex;
@@ -135,9 +138,9 @@
   .parent h5 + h5 {
     margin-left: 40px;
   }
-  .parent p + p {
+  /* .parent p + p {
     margin-left: 40px;
-  }
+  } */
   .navbar .overstocklogo svg {
     margin: 20px 60px 60px 90px;
     height: 35px;
@@ -220,14 +223,18 @@
   th {
     margin: 30px;
   }
-  
+  .marginTop {
+    margin-top: 150px;
+    margin-left: 20px;
+  }
+  .box1 p {
+    text-align: left;
+  }
   .box2_main1 {
     border: 1px solid black;
     padding: 10px;
     padding-left: 30px;
     padding-right: 30px;
-  }
-  .nabar div svg {
   }
   
   .main2 {
