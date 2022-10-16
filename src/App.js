@@ -8,11 +8,13 @@ import { Products } from "./Pages/Product_page/product_page1";
 import SortDropdown from "./Pages/Product_page/sortDropdown";
 import { AllRoutes } from "./Routes/AllRoutes";
 
+
 function App() {
   return (
     <div className="App">
       <Navbar /> 
       <AllRoutes />
+
     </div>
   )
 }
