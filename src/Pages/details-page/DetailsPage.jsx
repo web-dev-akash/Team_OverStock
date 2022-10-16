@@ -90,7 +90,7 @@ function DetailsPage() {
   const quantyCollector = (e)=> {
     let countItem = +e.target.value;
     setCount(countItem);
-    setData({...data,[e.target.name]:countItem})
+    setData({...data,[e.target.name]:countItem,id:data.position})
   }
 
   return (

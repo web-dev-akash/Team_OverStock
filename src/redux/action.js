@@ -66,13 +66,26 @@ export const addToCart = (payload) => {
 export const removeFromCart = (id) => async (dispatch) => {
   dispatch(getLoading());
   return axios
-    .delete(`https://over-stock.herokuapp.com/AddToCartItems?position=${id}`)
+    .delete(`https://over-stock.herokuapp.com/AddToCartItems/${id}`)
     .then((response) => {
-      dispatch(getFurniture(response.data));
+      dispatch(getCartData());
     })
     .catch((err) => {
       // dispatch(getError());
       console.log(err);
+    });
+};
+
+export const getCartData = () => async (dispatch) => {
+  dispatch(getLoading());
+  return axios
+    .get(`https://over-stock.herokuapp.com/AddToCartItems`)
+    .then((response) => {
+      dispatch(addToCart(response.data));
+    })
+    .catch((err) => {
+      dispatch(getError());
+      // console.log(err);
     });
 };
 
