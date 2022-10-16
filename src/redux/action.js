@@ -65,7 +65,7 @@ export const removeFromCart = (payload) => {
   };
 };
 
-export const loginSignupSuccess = (payload) =>({
+export const loginSignupSuccess = (payload) => ({
   type: LOGIN_SIGNUP_SUCCESS,
-  payload
-})
+  payload,
+});

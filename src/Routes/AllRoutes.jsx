@@ -2,6 +2,7 @@ import { Heading } from "@chakra-ui/react";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Homepage } from "../Pages/Body/Homepage";
+import Cartpage from "../Pages/Cart/CartPage";
 import DetailsPage from "../Pages/details-page/DetailsPage";
 import { LoginSignup } from "../Pages/LoginSignup/LoginSignup";
 import Product_page_new from "../Pages/Product_page/product_index";
@@ -21,8 +22,16 @@ export const AllRoutes = () => {
       <Route path="/lighting" element={<Product_page_new />}></Route>
       <Route path="/kids_baby" element={<Product_page_new />}></Route>
       <Route path="/more" element={<Product_page_new />}></Route>
-      <Route path="/product/:id" element={<PrivateRoute><DetailsPage /></PrivateRoute>}></Route>
+      <Route
+        path="/product/:id"
+        element={
+          <PrivateRoute>
+            <DetailsPage />
+          </PrivateRoute>
+        }
+      ></Route>
       <Route path="/signup" element={<LoginSignup />}></Route>
+      <Route path="/cart" element={<Cartpage />}></Route>
     </Routes>
   );
 };
