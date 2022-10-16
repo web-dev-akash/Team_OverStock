@@ -63,11 +63,17 @@ export const addToCart = (payload) => {
     payload,
   };
 };
-export const removeFromCart = (payload) => {
-  return {
-    type: REMOVE_FROM_CART,
-    payload,
-  };
+export const removeFromCart = (id) => async (dispatch) => {
+  dispatch(getLoading());
+  return axios
+    .delete(`https://over-stock.herokuapp.com/AddToCartItems?position=${id}`)
+    .then((response) => {
+      dispatch(getFurniture(response.data));
+    })
+    .catch((err) => {
+      // dispatch(getError());
+      console.log(err);
+    });
 };
 
 export const loginSignupSuccess = (payload) => ({

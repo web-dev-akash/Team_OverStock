@@ -1,45 +1,58 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
+import { removeFromCart } from "../../redux/action";
 import "./checkout.css"
 function Cartpage(){
+  const dispatch = useDispatch();
+  const {cart} = useSelector(state=>state);
+
+  const removeHandler = (id) => {
+    dispatch(removeFromCart(id))
+  }
+  useEffect(()=>{
+
+  },[cart])
     return (
       <div className="marginTop"> 
        <h1 className="heading">Shopping Cart</h1>
   
       <div className="parent">
-        <div className="box1">
-          <div>
-            <img src="https://ak1.ostkcdn.com/images/products/is/images/direct/8c574877417df3e284db73ec68f559550dcd7df1/Furniture-of-America-Diz-Modern-47-inch-Wine-Bar-Dining-Server.jpg?impolicy=mediumlow" />
-          </div>
-          <div>
-            <p>
-              Furniture of America Diz Modern 47-inch Wine Bar Dining Server
-            </p>
-  
-            <p className="">Cappuccino</p>
-            <p>INR 44,072.35</p>
-            <p className="red">Sale INR 37,803.19</p>
-            <p>Ends in 1 day 18 hrs 52 min</p>
-            <p className="selected">high selected items</p>
-            <div>
-              <div className="innerBox">
-                <select>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                </select>
+        <div>
+          {
+            cart.map((elm)=>{
+              return <div className="box1">
+              <div>
+                <img src={elm.thumbnails[0][6]} />
               </div>
-              <div className="innerBox">
-                <u>
-                  {" "}
-                  <button>Remove</button>{" "}
-                </u>
-                <u>
-                  {" "}
-                  <button>Save for later</button>
-                </u>
+              <div>
+                <p>
+                  {elm.title}
+                </p>
+      
+                <p className="">{elm.category}</p>
+                <p>INR {elm.price}</p>
+                <p className="red">Sale INR 37,803.19</p>
+                <p>Ends in 1 day 18 hrs 52 min</p>
+                <p className="selected">high selected items</p>
+                <div>
+                  <div className="innerBox">
+                    <h2>Quatity : {elm.quantity}</h2> 
+                  </div>
+                  <div className="innerBox">
+                    <u>
+                      {" "}
+                      <button onClick={()=>removeHandler(elm.position)}>Remove</button>{" "}
+                    </u>
+                    <u>
+                      {" "}
+                      <button>Save for later</button>
+                    </u>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+            })
+          }
         </div>
         <div className="box2">
           <div>
