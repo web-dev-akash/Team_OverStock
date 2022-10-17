@@ -1,9 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 //bootstrap
 import "./checkout.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useDispatch, useSelector } from "react-redux";
+import TransitionExample from "../../Components/AlertBar/AlertComponents";
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+  Button,
+  useDisclosure,
+  AlertDialogCloseButton,
+} from '@chakra-ui/react'
+import { useRef } from 'react';
+import { clearCartData, getCartData, orderDone } from "../../redux/action";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutPage() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const cancelRef = useRef()
+  const [demo,setDemo] = useState("");
+  const { cart } = useSelector((state) => state);
+
+  useEffect(() => {
+  },[demo]);
+
+
+  const getTotalPrice = () => {
+    let totalPrice = cart.reduce(
+      (acc, elm) => acc + Number(elm.price) * Number(elm.quantity),
+      0
+    );
+    return totalPrice.toFixed(2);
+  };
+
+  const paymentSuccessFul= () => {
+    cart.map((elm)=> {
+      dispatch(clearCartData(elm.id));
+      dispatch(orderDone());
+    })
+    onClose();
+  }
+
+
   return (
     <div className="maincontainer" style={{ marginTop: "150px" }}>
       <div class="container">
@@ -43,7 +87,7 @@ export default function CheckoutPage() {
               aria-label="pay pal button link"
               type="button"
               data-cl-tracking="button_4.6.0"
-              className="yellow"
+              className="yellow btn-flex"
             >
               <svg
                 cla="express-button-content1"
@@ -109,7 +153,7 @@ export default function CheckoutPage() {
               aria-label="pay pal button link"
               type="button"
               data-cl-tracking="button_4.6.0"
-              className="blue"
+              className="blue btn-flex"
             >
               <svg
                 class="express-button-content2"
@@ -218,53 +262,64 @@ export default function CheckoutPage() {
               <span class="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul class="list-group mb-3">
-              <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 class="my-0">Product name</h6>
-                  <small class="text-muted">Brief description</small>
-                </div>
-                <span class="text-muted">$12</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 class="my-0">Second product</h6>
-                  <small class="text-muted">Brief description</small>
-                </div>
-                <span class="text-muted">$8</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 class="my-0">Third item</h6>
-                  <small class="text-muted">Brief description</small>
-                </div>
-                <span class="text-muted">$5</span>
-              </li>
+              {cart.map((elm) => {
+                return (
+                  <li class="list-group-item d-flex justify-content-between lh-condensed" key={Math.random()}>
+                    <div style={{ textAlign: "initial" }}>
+                      <h6 class="my-0">{elm.title}</h6>
+                      <small class="text-muted">{elm.category}</small>
+                    </div>
+                    <span class="text-muted">${elm.price}</span>
+                  </li>
+                )
+              })}
+
               <li class="list-group-item d-flex justify-content-between bg-light">
-                <div class="text-success">
-                  <h6 class="my-0">Promo code</h6>
-                  <small>EXAMPLECODE</small>
+                <div class="text-success" style={{ textAlign: "initial" }}>
+                  <h6 class="my-0">Special discount</h6>
+                  <small>Only for you</small>
                 </div>
-                <span class="text-success">-$5</span>
+                <span class="text-success">-${(getTotalPrice() * 0.07).toFixed(2)}</span>
               </li>
               <li class="list-group-item d-flex justify-content-between">
                 <span>Total (USD)</span>
-                <strong>$20</strong>
+                <strong>${(getTotalPrice() * 0.93).toFixed(2)}</strong>
               </li>
             </ul>
 
             <form class="card p-2">
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Promo code"
-                />
-                <div class="input-group-append">
-                  <button type="button" class="btn btn-secondary">
-                    Redeem
-                  </button>
-                </div>
-              </div>
+              <>
+                <button class="btn btn-primary btn-lg btn-block" type="button" onClick={onOpen} disabled={cart.length>0 ? false : true}>
+                  Place Orderrr
+                </button>
+                <AlertDialog
+                  isOpen={isOpen}
+                  leastDestructiveRef={cancelRef}
+                  onClose={onClose}
+                >
+                  <AlertDialogOverlay>
+                    <AlertDialogContent>
+                      <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                        Status
+                      </AlertDialogHeader>
+
+                      <AlertDialogBody>
+                        Order Successful ! Thnak you for your order.
+                      </AlertDialogBody>
+
+                      <AlertDialogFooter>
+                        <Button ref={cancelRef} onClick={onClose}>
+                          Cancel
+                        </Button>
+                        <Button colorScheme='red' onClick={paymentSuccessFul} ml={3}>
+                          Done
+                        </Button>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialogOverlay>
+                </AlertDialog>
+
+              </>
             </form>
           </div>
           <div class="col-md-8 order-md-1">
@@ -492,9 +547,37 @@ export default function CheckoutPage() {
                 </div>
               </div>
               <hr class="mb-4" />
-              <button class="btn btn-primary btn-lg btn-block" type="button">
-                Place Order
-              </button>
+              <>
+                <button class="btn btn-primary btn-lg btn-block" type="button" onClick={onOpen} disabled={cart.length>0 ? false : true}>
+                  Place Order
+                </button>
+                <AlertDialog
+                  isOpen={isOpen}
+                  leastDestructiveRef={cancelRef}
+                  onClose={onClose}
+                >
+                  <AlertDialogOverlay>
+                    <AlertDialogContent>
+                      <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                        Status
+                      </AlertDialogHeader>
+
+                      <AlertDialogBody>
+                        Order Successful ! Thnak you for your order.
+                      </AlertDialogBody>
+
+                      <AlertDialogFooter>
+                        <Button ref={cancelRef} onClick={onClose}>
+                          Cancel
+                        </Button>
+                        <Button colorScheme='red' onClick={paymentSuccessFul} ml={3}>
+                          Done
+                        </Button>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialogOverlay>
+                </AlertDialog>
+              </>
             </form>
           </div>
         </div>

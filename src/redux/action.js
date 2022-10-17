@@ -5,7 +5,8 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   LOGIN_SIGNUP_SUCCESS,
-  SIGNOUT_SUCCESS
+  SIGNOUT_SUCCESS,
+  ORDER_DONE
 } from "./actionTypes";
 import axios from "axios";
 export const getFurniture = (data) => ({
@@ -25,10 +26,15 @@ export const signoutPerformed = () => ({
   type: SIGNOUT_SUCCESS
 });
 
-export const getFurnitureData = () => async (dispatch) => {
+export const getFurnitureData = (pageNo) => async (dispatch) => {
   dispatch(getLoading());
   return axios
-    .get("https://overstock-clone-akash.herokuapp.com/products")
+    .get("https://overstock-clone-akash.herokuapp.com/products",{
+      params: {
+        "_limit": 9,
+        "_page": pageNo
+      }
+    })
     .then((response) => {
       dispatch(getFurniture(response.data));
     })
@@ -37,20 +43,24 @@ export const getFurnitureData = () => async (dispatch) => {
     });
 };
 
-export const getFurnitureDataWithParams = ({ _sort, _order }) => {
+export const getFurnitureDataWithParams = ({ _sort, _order },pageNo) => {
   return axios.get(`https://overstock-clone-akash.herokuapp.com/products`, {
     params: {
+      "_limit": 9,
+      "_page": pageNo,
       _sort,
       _order,
     },
   });
 };
 
-export const getFurnitureDataFilter = (category, brands, _sort, _order) => {
+export const getFurnitureDataFilter = (category, brands, _sort, _order,pageNo) => {
   return axios.get(`https://overstock-clone-akash.herokuapp.com/products`, {
     params: {
+      "_limit": 9,
+      "_page": pageNo,
       category,
-      brands,
+      brand:brands,
       _sort,
       _order,
     },
@@ -63,6 +73,11 @@ export const addToCart = (payload) => {
     payload,
   };
 };
+export const orderDone = () => {
+  return {
+    type: ORDER_DONE,
+  }
+}
 export const removeFromCart = (id) => async (dispatch) => {
   dispatch(getLoading());
   return axios
@@ -93,3 +108,14 @@ export const loginSignupSuccess = (payload) => ({
   type: LOGIN_SIGNUP_SUCCESS,
   payload,
 });
+
+export const clearCartData = (id) => async (dispatch) => {
+  dispatch(getLoading());
+  return fetch(`https://over-stock.herokuapp.com/AddToCartItems/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+};
+

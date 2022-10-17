@@ -17,12 +17,10 @@ import { getFurniture, getFurnitureDataFilter, getFurnitureDataWithParams, getLo
 
 
 
-export const LeftBars = ({order_set,changeOrder}) => {
+export const LeftBars = ({sort,page,filterDataCat,setfilterDataCat,filterDataBrand,setfilterDataBrand}) => {
     const { order_new} = useContext(SortContext);
     const [searchParams, setSearchParams] = useSearchParams();
     const dispatch = useDispatch();
-    const [filterDataCat, setfilterDataCat] = useState(searchParams.getAll("category") || []);
-    const [filterDataBrand, setfilterDataBrand] = useState(searchParams.getAll("brands") || []);
 
     const filterCat = (e) => {
         let isChecked = e.target.checked;
@@ -44,78 +42,78 @@ export const LeftBars = ({order_set,changeOrder}) => {
         }
     }
     useEffect(()=>{
-        const obj = {};
+        const obj = {page};
         if(filterDataBrand.length && filterDataCat.length) {
-            if(order_set !=""){
-                obj.order = order_set;
+            if(sort !=""){
+                obj.order = sort;
                 obj.sort = "price"
             }
             obj.category = filterDataCat;
             obj.brands= filterDataBrand
         }
         else if(filterDataBrand.length==0){
-            if(order_set !=""){
-                obj.order = order_set;
+            if(sort !=""){
+                obj.order = sort;
                 obj.sort = "price"
             }
             obj.category = filterDataCat;
         }
         else if(filterDataCat.length==0){
-            if(order_set !=""){
-                obj.order = order_set;
+            if(sort !=""){
+                obj.order = sort;
                 obj.sort = "price"
             }
             obj.brands= filterDataBrand
         }   
 
         setSearchParams(obj);
-    },[filterDataCat,filterDataBrand])
+    },[filterDataCat,filterDataBrand,page,sort])
 
 
     useEffect(()=>{
         dispatch(getLoading())
         if(filterDataBrand.length && filterDataCat.length){
-            if(order_set !="") {
-                getFurnitureDataFilter(filterDataCat,filterDataBrand,"price",order_set).then((res)=> dispatch(getFurniture(res.data))) 
+            if(sort !="") {
+                getFurnitureDataFilter(filterDataCat,filterDataBrand,"price",sort,page).then((res)=> dispatch(getFurniture(res.data))) 
             }else {
-                getFurnitureDataFilter(filterDataCat,filterDataBrand,undefined,undefined).then((res)=> dispatch(getFurniture(res.data)))
+                getFurnitureDataFilter(filterDataCat,filterDataBrand,undefined,undefined,page).then((res)=> dispatch(getFurniture(res.data)))
             }
         }
         else if(filterDataBrand.length==0)
-            if(order_set !="") {
-                getFurnitureDataFilter(filterDataCat,undefined,"price",order_set).then((res)=> dispatch(getFurniture(res.data))) 
+            if(sort !="") {
+                getFurnitureDataFilter(filterDataCat,undefined,"price",sort,page).then((res)=> dispatch(getFurniture(res.data))) 
             }else {
-                getFurnitureDataFilter(filterDataCat,undefined,undefined,undefined).then((res)=> dispatch(getFurniture(res.data)))
+                getFurnitureDataFilter(filterDataCat,undefined,undefined,undefined,page).then((res)=> dispatch(getFurniture(res.data)))
             }
         else if(filterDataCat.length==0) {
-            if(order_set !="") {
-                getFurnitureDataFilter(undefined,filterDataBrand,"price",order_set).then((res)=> dispatch(getFurniture(res.data))) 
+            if(sort !="") {
+                getFurnitureDataFilter(undefined,filterDataBrand,"price",sort,page).then((res)=> dispatch(getFurniture(res.data))) 
             }else {
-                getFurnitureDataFilter(undefined,filterDataBrand,undefined,undefined).then((res)=> dispatch(getFurniture(res.data)))
+                getFurnitureDataFilter(undefined,filterDataBrand,undefined,undefined,page).then((res)=> dispatch(getFurniture(res.data)))
             }
         }
-    },[filterDataCat,filterDataBrand])
+    },[filterDataCat,filterDataBrand,page,sort])
 
     useEffect(()=>{
         dispatch(getLoading())
         if(filterDataBrand.length && filterDataCat.length){
-            if(order_set !="") {
-                getFurnitureDataFilter(filterDataCat,filterDataBrand,"price",order_set).then((res)=> dispatch(getFurniture(res.data))) 
+            if(sort !="") {
+                getFurnitureDataFilter(filterDataCat,filterDataBrand,"price",sort,page).then((res)=> dispatch(getFurniture(res.data))) 
             }else {
-                getFurnitureDataFilter(filterDataCat,filterDataBrand,undefined,undefined).then((res)=> dispatch(getFurniture(res.data)))
+                getFurnitureDataFilter(filterDataCat,filterDataBrand,undefined,undefined,page).then((res)=> dispatch(getFurniture(res.data)))
             }
         }
         else if(filterDataBrand.length==0)
-            if(order_set !="") {
-                getFurnitureDataFilter(filterDataCat,undefined,"price",order_set).then((res)=> dispatch(getFurniture(res.data))) 
+            if(sort !="") {
+                getFurnitureDataFilter(filterDataCat,undefined,"price",sort,page).then((res)=> dispatch(getFurniture(res.data))) 
             }else {
-                getFurnitureDataFilter(filterDataCat,undefined,undefined,undefined).then((res)=> dispatch(getFurniture(res.data)))
+                getFurnitureDataFilter(filterDataCat,undefined,undefined,undefined,page).then((res)=> dispatch(getFurniture(res.data)))
             }
         else if(filterDataCat.length==0) {
-            if(order_set !="") {
-                getFurnitureDataFilter(undefined,filterDataBrand,"price",order_set).then((res)=> dispatch(getFurniture(res.data))) 
+            if(sort !="") {
+                getFurnitureDataFilter(undefined,filterDataBrand,"price",sort,page).then((res)=> dispatch(getFurniture(res.data))) 
             }else {
-                getFurnitureDataFilter(undefined,filterDataBrand,undefined,undefined).then((res)=> dispatch(getFurniture(res.data)))
+                getFurnitureDataFilter(undefined,filterDataBrand,undefined,undefined,page).then((res)=> dispatch(getFurniture(res.data)))
             }
         }
     },[])
@@ -132,6 +130,26 @@ export const LeftBars = ({order_set,changeOrder}) => {
     //         }})
     // }
 
+    // const isCheckedCat = (e) => {
+    //     let flag = false;
+    //     filterDataCat.map((elm)=> {
+    //         if(elm==e.target.value) flag = true;
+    //     })
+    //     return flag;
+    // }
+    // const isCheckedBrands = (val) => {
+    //     // return filterDataBrand.find((elm)=> elm==e.target.value)
+    //     // let flag = false;
+    //     // filterDataBrand.map((elm)=> {
+    //     //     if(elm==e.target.value) flag = true;
+    //     // })
+    //     alert("sdfs")
+    //     for(let i=0;i<filterDataBrand.length;i++) {
+    //         // console.log(e.target.value);
+    //         if(filterDataBrand[i]===val) return true;
+    //     }
+    //     return false;
+    // }
     return (
         <Box>
             <Accordion allowToggle>
@@ -145,16 +163,16 @@ export const LeftBars = ({order_set,changeOrder}) => {
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4} textAlign="left">
-                        <Checkbox colorScheme='red' value="furniture" onChange={filterCat}>
+                        <Checkbox colorScheme='red' value="furniture" onChange={filterCat} >
                             Furniture
                         </Checkbox>
                         <br />
                         <br />
-                        <Checkbox colorScheme='red' value="rugs" onChange={filterCat}>
+                        <Checkbox colorScheme='red' value="rugs" onChange={filterCat} >
                             Rugs
                         </Checkbox>
                         <br /><br />
-                        <Checkbox colorScheme='red' value="bedding" onChange={filterCat}>
+                        <Checkbox colorScheme='red' value="bedding" onChange={filterCat} >
                             Beds
                         </Checkbox>
                         <br /><br />
@@ -177,27 +195,27 @@ export const LeftBars = ({order_set,changeOrder}) => {
                         </Checkbox>
                         <br />
                         <br />
-                        <Checkbox colorScheme='red'value="Home Decorators Collection" onChange={filterBrand}>
+                        <Checkbox colorScheme='red'value="Home Decorators Collection" onChange={filterBrand} >
                         Home Decorators Collection
                         </Checkbox>
                         <br /><br />
-                        <Checkbox colorScheme='red' value="Artistic Weavers" onChange={filterBrand}>
+                        <Checkbox colorScheme='red' value="Artistic Weavers" onChange={filterBrand} >
                         Artistic Weavers
                         </Checkbox>
                         <br /><br />
-                        <Checkbox colorScheme='red'value="Foss" onChange={filterBrand}>
+                        <Checkbox colorScheme='red'value="Foss" onChange={filterBrand} >
                         Foss
                         </Checkbox>
                         <br /><br />
-                        <Checkbox colorScheme='red' value="nuLOOM" onChange={filterBrand}>
+                        <Checkbox colorScheme='red' value="nuLOOM" onChange={filterBrand} >
                         nuLOOM
                         </Checkbox>
                         <br /><br />
-                        <Checkbox colorScheme='red' value="3M" onChange={filterBrand}>
+                        <Checkbox colorScheme='red' value="3M" onChange={filterBrand} >
                         3M
                         </Checkbox>
                         <br /><br />
-                        <Checkbox colorScheme='red' value="TrafficMaster" onChange={filterBrand}>
+                        <Checkbox colorScheme='red' value="TrafficMaster" onChange={filterBrand} >
                         TrafficMaster
                         </Checkbox>
                     </AccordionPanel>
@@ -208,27 +226,19 @@ export const LeftBars = ({order_set,changeOrder}) => {
                     <h2>
                         <AccordionButton>
                             <Box flex='1' textAlign='left' p={2}>
-                            Brands
+                            Ratings
                             </Box>
                             <AccordionIcon />
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4} textAlign="left">
                         <Checkbox colorScheme='red' >
-                            Checkbox
+                            More than 3
                         </Checkbox>
                         <br />
                         <br />
                         <Checkbox colorScheme='red'>
-                            Checkbox
-                        </Checkbox>
-                        <br /><br />
-                        <Checkbox colorScheme='red' >
-                            Checkbox
-                        </Checkbox>
-                        <br /><br />
-                        <Checkbox colorScheme='red'>
-                            Checkbox
+                            Less than 3
                         </Checkbox>
                     </AccordionPanel>
                 </AccordionItem>
@@ -238,28 +248,21 @@ export const LeftBars = ({order_set,changeOrder}) => {
                     <h2>
                         <AccordionButton>
                             <Box flex='1' textAlign='left' p={2}>
-                            Customer Ratings
+                            Price
                             </Box>
                             <AccordionIcon />
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4} textAlign="left">
                         <Checkbox colorScheme='red' >
-                            Checkbox
+                            Less than 1000
                         </Checkbox>
                         <br />
                         <br />
                         <Checkbox colorScheme='red'>
-                            Checkbox
+                            Greater than 1000 and less than 2000
                         </Checkbox>
                         <br /><br />
-                        <Checkbox colorScheme='red' >
-                            Checkbox
-                        </Checkbox>
-                        <br /><br />
-                        <Checkbox colorScheme='red'>
-                            Checkbox
-                        </Checkbox>
                     </AccordionPanel>
                 </AccordionItem>
             </Accordion> 

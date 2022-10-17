@@ -126,7 +126,7 @@ function Cartpage() {
                 <h3>Your Total:</h3>
                 <h3>{(getTotalPrice() * 0.93).toFixed(2)}</h3>
               </div>
-              <button>Check Out</button>
+              <button onClick={()=> navigate("/checkout")}>Check Out</button>
             </div>
           </div>
         </div>

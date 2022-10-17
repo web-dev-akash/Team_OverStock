@@ -1,22 +1,29 @@
 import { Box, Grid, Heading, Spinner } from "@chakra-ui/react";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import {SortContext}  from "../../Components/Cotext";
 import LeftBars from "./leftSidebar";
 import { Products } from "./product_page1";
 import SortDropdown from "./sortDropdown";
 
-function Product_page_new({ order_new }) {
+function Product_page_new() {
   const [user, setUser] = useState("");
+  const [searchParams,setSearchParams] = useSearchParams();
+  const [page,setPage] = useState(searchParams.get("page") || 1);
+  const [sort, setSort] = useState(searchParams.get("sort") || "");
+  const [filterDataCat, setfilterDataCat] = useState(searchParams.getAll("category") || []);
+  const [filterDataBrand, setfilterDataBrand] = useState(searchParams.getAll("brands") || []);
+
   const changeOrder = (new_user) => {
     setUser(new_user);
   }
   return (
     <SortContext.Provider value={{user,changeOrder}}>
       <Box mt="150px">
-        <SortDropdown order_set={user}  changeOrder={changeOrder}/>
+        <SortDropdown page={page} sort={sort} setSort={setSort} filterDataCat={filterDataCat} filterDataBrand={filterDataBrand}/>
         <Grid templateColumns="0.3fr 1fr" spacing={20} gap={5}>
-          <LeftBars order_set={user}  changeOrder={changeOrder}/>
-          <Products />
+          <LeftBars sort={sort} page={page} filterDataCat={filterDataCat} setfilterDataCat={setfilterDataCat} filterDataBrand={filterDataBrand} setfilterDataBrand={setfilterDataBrand}/>
+          <Products page={page} setPage={setPage} sort={sort} filterDataCat={filterDataCat} filterDataBrand={filterDataBrand}/>
         </Grid>
       </Box>
     </SortContext.Provider>

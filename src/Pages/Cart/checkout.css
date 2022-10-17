@@ -407,7 +407,11 @@ th {
 .box1_Div2 * {
   margin: 10px 0;
 }
-
+.btn-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .innerBox2 {
   position: relative;
   right: 10px;

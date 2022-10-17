@@ -12,84 +12,182 @@ import {
 } from "../../redux/action";
 
 
-export default function SortDropdown({order_set,changeOrder}) {
+export default function SortDropdown({ page, sort, setSort, filterDataCat, filterDataBrand }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [order, setOrder] = useState("");
   const dispatch = useDispatch();
-  const [sort, setSort] = useState(searchParams.get("sort") || "");
   const [category, setCategory] = useState(searchParams.getAll("category") || []);
   const [brands, setBrands] = useState(searchParams.getAll("brands") || []);
 
+  // useEffect(() => {
+  //   if (sort !="") {
+  //     dispatch(getLoading());
+  //     getFurnitureDataWithParams({ _sort: "price", _order: sort },page).then(
+  //       (res) => {
+  //         dispatch(getFurniture(res.data));
+  //       }
+  //     );
+  //   }
+  //   else {
+  //     dispatch(getLoading());
+  //     dispatch(getFurnitureData());
+  //   }
+  // }, [sort,page,filterDataBrand,filterDataCat]);
+
   useEffect(() => {
-    if (order !="") {
-      dispatch(getLoading());
-      getFurnitureDataWithParams({ _sort: "price", _order: order }).then(
-        (res) => {
-          dispatch(getFurniture(res.data));
-        }
-      );
-    }
-    else {
-      dispatch(getLoading());
-      dispatch(getFurnitureData());
-    }
-  }, [order]);
-
-  useEffect(()=>{
     dispatch(getLoading())
-    if(brands.length && category.length){
-        if(order_set !="") {
-            getFurnitureDataFilter(category,brands,"price",order_set).then((res)=> dispatch(getFurniture(res.data))) 
-        }else {
-            getFurnitureDataFilter(category,brands,undefined,undefined).then((res)=> dispatch(getFurniture(res.data)))
-        }
+    if (filterDataBrand.length && filterDataCat.length) {
+      if (sort != "") {
+        getFurnitureDataFilter(filterDataCat, filterDataBrand, "price", sort, page).then((res) => dispatch(getFurniture(res.data)))
+      } else {
+        getFurnitureDataFilter(filterDataCat, filterDataBrand, undefined, undefined, page).then((res) => dispatch(getFurniture(res.data)))
+      }
     }
-    else if(brands.length==0)
-        if(order_set !="") {
-            getFurnitureDataFilter(category,undefined,"price",order_set).then((res)=> dispatch(getFurniture(res.data))) 
-        }else {
-            getFurnitureDataFilter(category,undefined,undefined,undefined).then((res)=> dispatch(getFurniture(res.data)))
-        }
-    else if(category.length==0) {
-        if(order_set !="") {
-            getFurnitureDataFilter(undefined,brands,"price",order_set).then((res)=> dispatch(getFurniture(res.data))) 
-        }else {
-            getFurnitureDataFilter(undefined,brands,undefined,undefined).then((res)=> dispatch(getFurniture(res.data)))
-        }
-    }else {
+    else if (filterDataBrand.length == 0)
+      if (sort != "") {
+        getFurnitureDataFilter(filterDataCat, undefined, "price", sort, page).then((res) => dispatch(getFurniture(res.data)))
+      } else {
+        getFurnitureDataFilter(filterDataCat, undefined, undefined, undefined, page).then((res) => dispatch(getFurniture(res.data)))
+      }
+    else if (filterDataCat.length == 0) {
+      if (sort != "") {
+        getFurnitureDataFilter(undefined, filterDataBrand, "price", sort, page).then((res) => dispatch(getFurniture(res.data)))
+      } else {
+        getFurnitureDataFilter(undefined, filterDataBrand, undefined, undefined, page).then((res) => dispatch(getFurniture(res.data)))
+      }
+    } else {
+      getFurnitureDataFilter(undefined, undefined, sort, page).then((res) => dispatch(getFurniture(res.data)))
+    }
+  }, [filterDataCat, filterDataBrand, page, sort])
+
+  useEffect(() => {
+    dispatch(getLoading())
+    if (filterDataBrand.length && filterDataCat.length) {
+      if (sort != "") {
+        getFurnitureDataFilter(filterDataCat, filterDataBrand, "price", sort, page).then((res) => dispatch(getFurniture(res.data)))
+      } else {
+        getFurnitureDataFilter(filterDataCat, filterDataBrand, undefined, undefined, page).then((res) => dispatch(getFurniture(res.data)))
+      }
+    }
+    else if (filterDataBrand.length == 0)
+      if (sort != "") {
+        getFurnitureDataFilter(filterDataCat, undefined, "price", sort, page).then((res) => dispatch(getFurniture(res.data)))
+      } else {
+        getFurnitureDataFilter(filterDataCat, undefined, undefined, undefined, page).then((res) => dispatch(getFurniture(res.data)))
+      }
+    else if (filterDataCat.length == 0) {
+      if (sort != "") {
+        getFurnitureDataFilter(undefined, filterDataBrand, "price", sort, page).then((res) => dispatch(getFurniture(res.data)))
+      } else {
+        getFurnitureDataFilter(undefined, filterDataBrand, undefined, undefined, page).then((res) => dispatch(getFurniture(res.data)))
+      }
+    } else {
+      getFurnitureDataFilter(undefined, undefined, sort, page).then((res) => dispatch(getFurniture(res.data)))
+    }
+  }, [])
+  useEffect(() => {
+    const obj = { page };
+    if (filterDataBrand.length && filterDataCat.length) {
+      if (sort != "") {
+        obj.order = sort;
+        obj.sort = "price"
+      }
+      obj.category = filterDataCat;
+      obj.brands = filterDataBrand
+    }
+    else if (filterDataBrand.length == 0) {
+      if (sort != "") {
+        obj.order = sort;
+        obj.sort = "price"
+      }
+      obj.category = filterDataCat;
+    }
+    else if (filterDataCat.length == 0) {
+      if (sort != "") {
+        obj.order = sort;
+        obj.sort = "price"
+      }
+      obj.brands = filterDataBrand
+    } else {
+      if (sort != "") {
+        obj.order = sort;
+        obj.sort = "price"
+      }
+    }
+
+    setSearchParams(obj);
+  }, [filterDataCat, filterDataBrand, page, sort])
+
+  // useEffect(() => {
+  //   if (sort !="") {
+  //     dispatch(getLoading());
+  //     getFurnitureDataWithParams({ _sort: "price", _order: sort },page).then(
+  //       (res) => {
+  //         dispatch(getFurniture(res.data));
+  //       }
+  //     );
+  //   }
+  //   else {
+  //     dispatch(getLoading());
+  //     dispatch(getFurnitureData());
+  //   }
+  // }, []);
+
+  // useEffect(()=> {
+  //   document.querySelector("selector").value = sort;
+  // },[])
+
+  useEffect(() => {
+    dispatch(getLoading())
+    if (brands.length && category.length) {
+      if (sort != "") {
+        getFurnitureDataFilter(category, brands, "price", sort).then((res) => dispatch(getFurniture(res.data)))
+      } else {
+        getFurnitureDataFilter(category, brands, undefined, undefined).then((res) => dispatch(getFurniture(res.data)))
+      }
+    }
+    else if (brands.length == 0)
+      if (sort != "") {
+        getFurnitureDataFilter(category, undefined, "price", sort).then((res) => dispatch(getFurniture(res.data)))
+      } else {
+        getFurnitureDataFilter(category, undefined, undefined, undefined).then((res) => dispatch(getFurniture(res.data)))
+      }
+    else if (category.length == 0) {
+      if (sort != "") {
+        getFurnitureDataFilter(undefined, brands, "price", sort).then((res) => dispatch(getFurniture(res.data)))
+      } else {
+        getFurnitureDataFilter(undefined, brands, undefined, undefined).then((res) => dispatch(getFurniture(res.data)))
+      }
+    } else {
       dispatch(getFurnitureData());
     }
-},[category,brands])
+  }, [category, brands])
 
-  useEffect(() =>{
-    setSort("price");
-    console.log(category,brands);
+  useEffect(() => {
     const obj = {
+      page,
       sort,
-      order
+      "_sort": "price"
     }
-    if(brands.length > 0) {
+    if (brands.length > 0) {
       obj.brands = brands;
     }
-    if(category.length > 0) {
+    if (category.length > 0) {
       obj.category = category;
     }
-    if(order !="")  setSearchParams(obj)
-    else setSearchParams("");
-    
-    changeOrder(order);
-  },[order])
+    if (sort != "") setSearchParams(obj)
+    else setSearchParams({ page });
+  }, [sort])
 
   const handleSort = (e) => {
-    console.log(e.target.value);
-    setOrder(e.target.value);
+    setSort(e.target.value);
   };
   return (
     <HStack justifyContent="flex-end" m={3}>
       <Heading fontSize={22} fontWeight="normal" marginRight={2}>
         Sort By:{" "}
       </Heading>
-      <Select w={200} onChange={handleSort}>
+      <Select w={200} onChange={handleSort} className="selector">
         <option value="">Select option</option>
         <option value="desc">Price : High to Low</option>
         <option value="asc">Price : Low to High</option>
