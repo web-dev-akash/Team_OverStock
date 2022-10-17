@@ -91,7 +91,7 @@ export const Header = () => {
                   base: "15px",
                   sm: "15px",
                   md: "15px",
-                  lg: "20px",
+                  lg: "0px",
                 }}
                 w={{
                   base: "30px",

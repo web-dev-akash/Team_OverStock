@@ -375,4 +375,8 @@ body {
   #menuDiv_hamburger {
     display: block;
   }
+  #sortDropdown_Div {
+    position: relative;
+    left: -120px;
+  }
 }

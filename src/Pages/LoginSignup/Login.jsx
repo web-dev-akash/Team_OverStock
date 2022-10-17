@@ -1,21 +1,16 @@
-import { Container, filter, Heading, Text } from "@chakra-ui/react";
+import { Container, filter, Heading, Text, useToast } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import { Box, Button, Link } from "@chakra-ui/react";
 import { useState } from "react";
 import { Spinner } from "@chakra-ui/react";
+import "./LoginSignup.css";
 
-
-import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-  CloseButton,
-} from "@chakra-ui/react";
+import { CloseButton } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { loginSignupSuccess } from "../../redux/action";
 import { Navigate, useNavigate } from "react-router-dom";
 const Login = () => {
+  const toast = useToast();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const initialvalues = { email: "", password: "" };
@@ -40,12 +35,40 @@ const Login = () => {
         });
         if (filterData.length == 0) throw Error;
         else {
-          dispatch(loginSignupSuccess())
+          succesFunction()();
+          dispatch(loginSignupSuccess());
           navigate("/furniture");
         }
       })
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
+      .catch((error) => {
+        errorFunction()();
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+  const { email, password } = inputValues;
+  const succesFunction = () => {
+    return () =>
+      toast({
+        title: "Login Successful",
+        description: "You are being redirected to Products",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+  };
+
+  const errorFunction = () => {
+    return () =>
+      toast({
+        title: "Wrong Credentials",
+        description: "Please provide a valid Email or Password",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
   };
   if (loading) {
     return (
@@ -63,8 +86,8 @@ const Login = () => {
 
   return (
     <>
-      <Box>
-        <Heading fontSize="xl" mt="12%" textAlign={"left"}>
+      <Box id="loginDiv">
+        <Heading id="Heading_SignIn" fontSize="xl" mt="12%" textAlign={"left"}>
           Sign In
         </Heading>
         <Text mt="12%" textAlign={"left"}>
@@ -94,9 +117,18 @@ const Login = () => {
           value={inputValues.password}
         />
         <hr width="23px"></hr>
-        <Button mt="7%" width="322px" colorScheme="green" onClick={handleLogin}>
-          Sign In
-        </Button>
+        <Box>
+          <Button
+            mt="7%"
+            width="322px"
+            colorScheme="green"
+            onClick={handleLogin}
+            disabled={email === "" || password === ""}
+          >
+            Sign In
+          </Button>
+        </Box>
+
         <br></br>
         <Link mt="3%" color="blue">
           Forgot your password?
