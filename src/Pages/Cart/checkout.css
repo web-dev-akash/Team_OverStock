@@ -25,13 +25,14 @@
   box-sizing: border-box;
   padding: 10px;
   display: flex;
-  justify-content: flex-start;
-  width: 70%;
+  /* justify-content: flex-start; */
+  /* width: 70%; */
+  gap: 20px;
   border: 1px solid #cecece;
 }
 
 .box2 {
-  width: 30%;
+  width: 40%;
 }
 .red {
   color: #c7202c !important;
@@ -85,11 +86,9 @@
   border: none;
   background-color: white;
 }
-.innerBox select {
-  padding: 5px 10px;
-  width: 60px;
-  border: 1px solid #cecece;
-  margin: 10px 0 30px -10px;
+.innerBox h2 {
+  /* padding: 5px 10px; */
+  margin: 15px 0 0px -10px;
 }
 .box2_main2 div {
   display: flex;
@@ -341,14 +340,12 @@ th {
   top: -8px;
 }
 .box1_Div2 * {
-  margin: 8px 0;
-}
-.box1_Div2 p:first-child {
-  margin: -10px 0 8px 0;
+  margin: 10px 0;
 }
 .innerBox2 {
   position: relative;
   right: 10px;
+  top: 25px;
   display: flex;
   gap: 20px;
   align-items: center;
@@ -356,4 +353,10 @@ th {
 .box2 {
   position: relative;
   top: -5px;
+}
+.box1_imageDiv {
+  width: 400px;
+}
+.box1_imageDiv img {
+  height: 280px;
 }

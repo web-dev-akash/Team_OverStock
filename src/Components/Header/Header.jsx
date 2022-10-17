@@ -39,9 +39,9 @@ export const Header = () => {
   }, []);
 
   const handleSignout = () => {
-      dispatch(signoutPerformed());
-      navigate("/")
-  }
+    dispatch(signoutPerformed());
+    navigate("/");
+  };
 
   return (
     <Container id="header-container" maxW={"2xl"}>
@@ -120,8 +120,8 @@ export const Header = () => {
                 </Flex>
               </Link>
               <Box id="account-hover">
-                {
-                  !isAuth ? <>
+                {!isAuth ? (
+                  <>
                     <Link to={"/signup"}>
                       <Flex align={"center"} justify={"space-between"} mb={2}>
                         Sign in <AiOutlineRight />
@@ -132,25 +132,28 @@ export const Header = () => {
                         Create an Account <AiOutlineRight />
                       </Flex>
                     </Link>
-                  </> : null
-                }
+                  </>
+                ) : null}
 
                 <Text mb={2}>My Account</Text>
                 <Text mb={2}>My Reviews</Text>
                 <Text mb={2}>My Orders</Text>
                 <Text>My Help</Text>
-                {
-                  isAuth ?
-                    <>
-                      <br />
-                      <Link to={"/"}>
-                        <Flex align={"center"} justify={"space-between"} mb={2} onClick={handleSignout}>
-                          Sign out <AiOutlineRight />
-                        </Flex>
-                      </Link>
-                    </>
-                    : null
-                }
+                {isAuth ? (
+                  <>
+                    <br />
+                    <Link to={"/"}>
+                      <Flex
+                        align={"center"}
+                        justify={"space-between"}
+                        mb={2}
+                        onClick={handleSignout}
+                      >
+                        Sign out <AiOutlineRight />
+                      </Flex>
+                    </Link>
+                  </>
+                ) : null}
               </Box>
             </Box>
             <Box>
@@ -163,7 +166,7 @@ export const Header = () => {
             </Box>
             <Box>
               <Link
-                to={isAuth ?  "/cart" : "/signup"}
+                to={isAuth ? "/cart" : "/signup"}
                 _hover={{
                   textDecoration: "none",
                 }}
@@ -171,19 +174,21 @@ export const Header = () => {
               >
                 <Flex direction={"column"} align={"center"}>
                   <CgShoppingCart fontSize={"30px"} />
-                  {isAuth ? <Text
-                    background={"white"}
-                    p={"0 2px"}
-                    pos={"absolute"}
-                    top={"42px"}
-                    right={"151px"}
-                    zIndex={10}
-                    fontSize="14px"
-                    color={"red"}
-                    fontWeight="800"
-                  >
-                    {cart.length}
-                  </Text> : null}
+                  {isAuth ? (
+                    <Text
+                      background={"white"}
+                      p={"0 2px"}
+                      pos={"absolute"}
+                      top={"42px"}
+                      right={"151px"}
+                      zIndex={10}
+                      fontSize="14px"
+                      color={"red"}
+                      fontWeight="800"
+                    >
+                      {cart.length}
+                    </Text>
+                  ) : null}
 
                   <Text fontSize={"13px"} color={"blackAlpha.800"}>
                     Cart
@@ -192,20 +197,22 @@ export const Header = () => {
               </Link>
             </Box>
             <Box>
-              {isAuth ?
-                <Button
-                  bg={"#2f3337"}
-                  color={"white"}
-                  fontSize={"15px"}
-                  fontWeight={"400"}
-                  p={"0px 10px"}
-                  _hover={{
-                    background: "blackAlpha.700",
-                  }}
-                >
-                  <AiOutlineLock /> Check Out
-                </Button>
-                : null}
+              <Link to={"/checkout"}>
+                {isAuth ? (
+                  <Button
+                    bg={"#2f3337"}
+                    color={"white"}
+                    fontSize={"15px"}
+                    fontWeight={"400"}
+                    p={"0px 10px"}
+                    _hover={{
+                      background: "blackAlpha.700",
+                    }}
+                  >
+                    <AiOutlineLock /> Check Out
+                  </Button>
+                ) : null}
+              </Link>
             </Box>
           </Flex>
         </Flex>

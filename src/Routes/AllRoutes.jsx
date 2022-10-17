@@ -3,6 +3,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Homepage } from "../Pages/Body/Homepage";
 import Cartpage from "../Pages/Cart/CartPage";
+import CheckoutPage from "../Pages/Cart/CheckOut";
 import DetailsPage from "../Pages/details-page/DetailsPage";
 import { LoginSignup } from "../Pages/LoginSignup/LoginSignup";
 import Product_page_new from "../Pages/Product_page/product_index";
@@ -31,7 +32,7 @@ export const AllRoutes = () => {
         }
       ></Route>
       <Route path="/signup" element={<LoginSignup />}></Route>
-      <Route path="/cart" element={<Cartpage />}></Route>
+      <Route path="/cart" element={<CheckoutPage />}></Route>
     </Routes>
   );
 };

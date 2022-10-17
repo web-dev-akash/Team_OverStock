@@ -8,69 +8,83 @@ import "./checkout.css";
 function Cartpage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {cart,isAuth} = useSelector(state=>state);
+  const { cart, isAuth } = useSelector((state) => state);
 
   const removeHandler = (id) => {
-    dispatch(removeFromCart(id))
-  }
-  const getTotalPrice  = ()=> {
-    let totalPrice = cart.reduce((acc,elm)=> acc + Number(elm.price)*Number(elm.quantity), 0 )
+    dispatch(removeFromCart(id));
+  };
+  const getTotalPrice = () => {
+    let totalPrice = cart.reduce(
+      (acc, elm) => acc + Number(elm.price) * Number(elm.quantity),
+      0
+    );
     return totalPrice.toFixed(2);
-  }
+  };
 
-  useEffect(()=>{
-    if(!isAuth){
-      navigate("/signup")
-    }
-    else {
+  useEffect(() => {
+    if (!isAuth) {
+      navigate("/signup");
+    } else {
       dispatch(getCartData());
     }
-  },[])
+  }, []);
   return (
     <Container maxW={"7xl"}>
       <div className="marginTop">
         <h1 className="heading">Shopping Cart</h1>
 
         <div className="parent">
-          <div>
-            {
-              cart.map((elm)=>{
-                return <div className="box1">
-                <div>
-                  <img src={elm.thumbnails[0][6]} />
-                </div>
-                <div>
-                  <div className="box1_Div2">
-                    <p>
-                      {elm.title}
-                    </p>
-    
-                    <p className="">{elm.category}</p>
-                    <p>INR {elm.price}</p>
-                    <p>Ends in 1 day 18 hrs 52 min</p>
-                    <p className="selected"> High Satisfaction Item</p>
+          <div className="parent-Div1">
+            {cart.map((elm) => {
+              return (
+                <div className="box1">
+                  <div className="box1_imageDiv">
+                    <img src={elm.thumbnails[0][6]} />
                   </div>
                   <div>
-                    <div className="innerBox">
-                      <h2>Quantity : {elm.quantity}</h2>
+                    <div className="box1_Div2">
+                      <p
+                        style={{
+                          margin: "0px 0 10px 0",
+                        }}
+                      >
+                        {elm.title}
+                      </p>
+                      <p
+                        className=""
+                        style={{
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        {elm.category}
+                      </p>
+                      <p>INR {elm.price}</p>
+                      <p>Ends in 1 day 18 hrs 52 min</p>
+                      <p className="selected"> High Satisfaction Item</p>
                     </div>
-                    <div className="innerBox2">
-                      <u>
-                        {" "}
-                        <button onClick={()=>removeHandler(elm.id)}>Remove</button>{" "}
-                      </u>
-                      <u>
-                        {" "}
-                        <button>Save for later</button>
-                      </u>
+                    <div>
+                      <div className="innerBox">
+                        <h2>Quantity : {elm.quantity}</h2>
+                      </div>
+                      <div className="innerBox2">
+                        <u>
+                          {" "}
+                          <button onClick={() => removeHandler(elm.id)}>
+                            Remove
+                          </button>{" "}
+                        </u>
+                        <u>
+                          {" "}
+                          <button>Save for later</button>
+                        </u>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              })
-            }
+              );
+            })}
           </div>
-          
+
           <div className="box2">
             <Box border={"1px solid #cecece"}>
               <Flex align={"center"} justifyContent={"center"} gap={5}>
@@ -87,7 +101,10 @@ function Cartpage() {
               </div>
               <div>
                 <p> Savings:</p>
-                <p className="paragraph"> {(getTotalPrice() * 0.07).toFixed(2)}</p>
+                <p className="paragraph">
+                  {" "}
+                  {(getTotalPrice() * 0.07).toFixed(2)}
+                </p>
               </div>
               <div>
                 <h5>Subtotal:</h5>
