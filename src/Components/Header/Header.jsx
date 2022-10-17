@@ -202,6 +202,7 @@ export const Header = () => {
                   _hover={{
                     background: "blackAlpha.700",
                   }}
+                  onClick={()=> navigate("/checkout")}
                 >
                   <AiOutlineLock /> Check Out
                 </Button>
