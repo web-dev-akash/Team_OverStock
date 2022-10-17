@@ -348,3 +348,31 @@ body {
 #accountDiv:hover #account-hover {
   visibility: visible;
 }
+#menuDiv_hamburger {
+  display: none;
+}
+
+@media all and (min-width: 0px) and (max-width: 1023px) {
+  #nav_1 {
+    display: none;
+  }
+  #searchBox_Div {
+    display: none;
+  }
+  #navbar {
+    border: 1px solid;
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
+  #Navlinks_div {
+    display: none;
+  }
+  #accountDiv-Parent {
+    position: absolute;
+    right: 0;
+  }
+  #menuDiv_hamburger {
+    display: block;
+  }
+}
