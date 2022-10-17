@@ -9,13 +9,31 @@ export const Footer = () => {
       textAlign={"left"}
       padding={"30px 80px"}
     >
-      <Flex color={"white"} align="center">
+      <Flex
+        color={"white"}
+        align="center"
+        flexDirection={{
+          base: "column",
+          sm: "column",
+          md: "row",
+          lg: "row",
+        }}
+      >
         <Box w={"350px"} fontSize={"15px"}>
           © Copyright 2022, Overstock.com®, Inc. 799 Coliseum Way Midvale, UT
           84047 | 1-800-843-2446
         </Box>
         <Spacer />
-        <Flex align={"center"} gap={8} fontSize={"15px"}>
+        <Flex
+          align={"center"}
+          gap={{
+            base: 0,
+            sm: 2,
+            md: 4,
+            lg: 8,
+          }}
+          fontSize={"15px"}
+        >
           <Text>Privacy Policy</Text>
           <Text>Terms & Conditions</Text>
           <Text>*Promotion Terms</Text>

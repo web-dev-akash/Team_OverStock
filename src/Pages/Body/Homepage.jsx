@@ -11,7 +11,6 @@ import {
   Flex,
   Spacer,
 } from "@chakra-ui/react";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { slides } from "./SliderData";
 import { Footer } from "../../Components/Footer/Footer";
@@ -41,12 +40,40 @@ export const Homepage = () => {
             alt="header-pic2"
           />
         </Box>
-        <Container maxW="98.5%">
+        <Container
+          maxW={{
+            base: "100%",
+            sm: "100%",
+            md: "99%",
+            lg: "98.5%",
+          }}
+        >
           <Box pt={8} pb={16}>
-            <Heading pb={8} fontSize="32px">
+            <Heading
+              pb={8}
+              fontSize={{
+                base: "20px",
+                sm: "20px",
+                md: "30px",
+                lg: "35px",
+              }}
+            >
               Limited-Time Deals
             </Heading>
-            <SimpleGrid columns={6} gap={4}>
+            <SimpleGrid
+              columns={{
+                base: 3,
+                sm: 3,
+                md: 3,
+                lg: 6,
+              }}
+              gap={{
+                base: 1,
+                sm: 1,
+                md: 2,
+                lg: 4,
+              }}
+            >
               <Box>
                 <Box bgColor="#f8f8f8">
                   <Image
@@ -114,10 +141,32 @@ export const Homepage = () => {
             />
           </Box>
           <Box w="95%" margin="40px auto">
-            <Heading pb={9} fontSize="32px">
+            <Heading
+              pb={9}
+              fontSize={{
+                base: "20px",
+                sm: "20px",
+                md: "30px",
+                lg: "35px",
+              }}
+            >
               Fresh Finds In Each Category
             </Heading>
-            <SimpleGrid columns={6} gap={6} fontSize="18px">
+            <SimpleGrid
+              columns={{
+                base: 3,
+                sm: 3,
+                md: 3,
+                lg: 6,
+              }}
+              gap={{
+                base: 1,
+                sm: 1,
+                md: 2,
+                lg: 6,
+              }}
+              fontSize="18px"
+            >
               <Box>
                 <Image
                   src="https://ak1.ostkcdn.com/img/mxc/11192021-CatSilo-Furniture.png?imwidth=1920"
@@ -205,7 +254,16 @@ export const Homepage = () => {
             </SimpleGrid>
           </Box>
           <Box margin={"40px auto"} overflow={"hidden"}>
-            <Heading pt={10} pb={4}>
+            <Heading
+              pt={10}
+              pb={4}
+              fontSize={{
+                base: "20px",
+                sm: "20px",
+                md: "30px",
+                lg: "35px",
+              }}
+            >
               Fall Home Updates for Every Budget
             </Heading>
             <Button
@@ -234,14 +292,37 @@ export const Homepage = () => {
             >
               <FaChevronRight />
             </Button>
-            <SimpleGrid columns={8} w="200%" gap={3}>
+            <SimpleGrid
+              columns={{
+                base: 1,
+                sm: 1,
+                md: 4,
+                lg: 4,
+              }}
+              gap={{
+                base: 1,
+                sm: 1,
+                md: 2,
+                lg: 4,
+              }}
+              w="200%"
+            >
               {slides.map(
                 ({ image, heading, text }, index) =>
                   index <= end &&
                   index >= start && (
                     <Box bgColor="#f5f5f5" key={index}>
                       <Image src={image} alt="logo" />
-                      <Heading textAlign="left" p="15px" fontSize={"22px"}>
+                      <Heading
+                        textAlign="left"
+                        p="15px"
+                        fontSize={{
+                          base: "20px",
+                          sm: "20px",
+                          md: "30px",
+                          lg: "35px",
+                        }}
+                      >
                         {heading}
                       </Heading>
                       <Text textAlign="left" p="0 15px 35px 15px">
@@ -262,8 +343,31 @@ export const Homepage = () => {
             />
           </Box>
           <Box mb="70px">
-            <Heading mb={10}>Overstock Featured Brands</Heading>
-            <SimpleGrid columns={4} gap={4}>
+            <Heading
+              mb={10}
+              fontSize={{
+                base: "20px",
+                sm: "20px",
+                md: "30px",
+                lg: "35px",
+              }}
+            >
+              Overstock Featured Brands
+            </Heading>
+            <SimpleGrid
+              columns={{
+                base: 2,
+                sm: 2,
+                md: 4,
+                lg: 4,
+              }}
+              gap={{
+                base: 2,
+                sm: 2,
+                md: 3,
+                lg: 4,
+              }}
+            >
               <Box bgColor={"#f5f6f7"}>
                 <Image
                   src="https://ak1.ostkcdn.com/img/mxc/HP_C_Mod_39470048.jpg?imwidth=1920"
@@ -312,14 +416,46 @@ export const Homepage = () => {
             />
           </Box>
           <Box mb="50px">
-            <Heading mb={10}>We've Got Your Style</Heading>
-            <SimpleGrid columns={3} gap={4}>
+            <Heading
+              mb={10}
+              fontSize={{
+                base: "20px",
+                sm: "20px",
+                md: "30px",
+                lg: "35px",
+              }}
+            >
+              We've Got Your Style
+            </Heading>
+            <SimpleGrid
+              columns={{
+                base: 1,
+                sm: 1,
+                md: 3,
+                lg: 3,
+              }}
+              gap={{
+                base: 2,
+                sm: 2,
+                md: 2,
+                lg: 4,
+              }}
+            >
               <Box bgColor="#f5f5f5">
                 <Image
                   src="https://ak1.ostkcdn.com/img/mxc/030822-SBS-Traditional.jpg?imwidth=1920"
                   alt=""
                 />
-                <Heading textAlign="left" p="15px" fontSize={"22px"}>
+                <Heading
+                  textAlign="left"
+                  p="15px"
+                  fontSize={{
+                    base: "20px",
+                    sm: "20px",
+                    md: "30px",
+                    lg: "35px",
+                  }}
+                >
                   Traditional
                 </Heading>
                 <Text textAlign="left" p="0 15px 25px 15px">
@@ -332,7 +468,16 @@ export const Homepage = () => {
                   src="https://ak1.ostkcdn.com/img/mxc/030822-SBS-Farmhouse.jpg?imwidth=1920"
                   alt=""
                 />
-                <Heading textAlign="left" p="15px" fontSize={"22px"}>
+                <Heading
+                  textAlign="left"
+                  p="15px"
+                  fontSize={{
+                    base: "20px",
+                    sm: "20px",
+                    md: "30px",
+                    lg: "35px",
+                  }}
+                >
                   Farmhouse
                 </Heading>
                 <Text textAlign="left" p="0 15px 25px 15px">
@@ -345,7 +490,16 @@ export const Homepage = () => {
                   src="https://ak1.ostkcdn.com/img/mxc/030822-SBS-MidCenMod.jpg?imwidth=1920"
                   alt=""
                 />
-                <Heading textAlign="left" p="15px" fontSize={"22px"}>
+                <Heading
+                  textAlign="left"
+                  p="15px"
+                  fontSize={{
+                    base: "20px",
+                    sm: "20px",
+                    md: "30px",
+                    lg: "35px",
+                  }}
+                >
                   Mid-Century Modern
                 </Heading>
                 <Text textAlign="left" p="0 15px 25px 15px">
@@ -367,8 +521,31 @@ export const Homepage = () => {
             </Button>
           </Box>
           <Box mb={"50px"}>
-            <Heading mb={10}>Trending Searches</Heading>
-            <SimpleGrid columns={3} gap={4}>
+            <Heading
+              mb={10}
+              fontSize={{
+                base: "20px",
+                sm: "20px",
+                md: "30px",
+                lg: "35px",
+              }}
+            >
+              Trending Searches
+            </Heading>
+            <SimpleGrid
+              columns={{
+                base: 1,
+                sm: 1,
+                md: 2,
+                lg: 3,
+              }}
+              gap={{
+                base: 1,
+                sm: 1,
+                md: 2,
+                lg: 4,
+              }}
+            >
               <Box background={"#f5f6f7"} p="10px 0">
                 <Text color="#545658" as="b" fontSize={22}>
                   Mugs
@@ -434,8 +611,27 @@ export const Homepage = () => {
         </Container>
       </Container>
       <Box w={"107.9%"} h="1px" background={"#cecece"} mb={10}></Box>
-      <Box p={"50px 100px"} background={"#545658"} color="white" w="107.9%">
-        <SimpleGrid columns={4} fontSize="15px" textAlign={"left"}>
+      <Box
+        p={{
+          base: "10px",
+          sm: "10px",
+          md: "30px",
+          lg: "50px 100px",
+        }}
+        background={"#545658"}
+        color="white"
+        w="107.9%"
+      >
+        <SimpleGrid
+          columns={{
+            base: 1,
+            sm: 1,
+            md: 4,
+            lg: 4,
+          }}
+          fontSize="15px"
+          textAlign={"left"}
+        >
           <Box>
             <Text as="b">MY ACCOUNT</Text>
             <Text m={"15px 0"}>Orders & Returns </Text>

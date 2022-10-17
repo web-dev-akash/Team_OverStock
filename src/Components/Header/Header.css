@@ -17,7 +17,7 @@ body {
 }
 #navbar {
   width: 100%;
-  height: auto;
+  box-sizing: border-box;
   position: fixed;
   margin-bottom: 30px;
   background-color: white;

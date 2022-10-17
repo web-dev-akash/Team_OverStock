@@ -4,6 +4,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getCartData, removeFromCart } from "../../redux/action";
+import { BsFillEmojiLaughingFill } from "react-icons/bs";
 import "./checkout.css";
 function Cartpage() {
   const dispatch = useDispatch();
@@ -60,7 +61,18 @@ function Cartpage() {
                       </p>
                       <p>INR {elm.price}</p>
                       <p>Ends in 1 day 18 hrs 52 min</p>
-                      <p className="selected"> High Satisfaction Item</p>
+                      <Flex
+                        style={{
+                          marginLeft: "0px",
+                        }}
+                        align={"center"}
+                        className="selected"
+                        width={"200px"}
+                        gap={2}
+                      >
+                        {" "}
+                        <BsFillEmojiLaughingFill /> High Satisfaction Item
+                      </Flex>
                     </div>
                     <div>
                       <div className="innerBox">
