@@ -21,6 +21,7 @@ import {
   AiOutlineSearch,
   AiOutlineLeft,
   AiOutlineRight,
+  AiOutlineMenu,
 } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -42,7 +43,6 @@ export const Header = () => {
     dispatch(signoutPerformed());
     navigate("/");
   };
-
   return (
     <Container id="header-container" maxW={"2xl"}>
       <Box id="navbar">
@@ -62,20 +62,53 @@ export const Header = () => {
           </Text>
         </Flex>
         <Flex
-          h={"80px"}
+          h={{
+            base: "40px",
+            sm: "40px",
+            md: "60px",
+            lg: "80px",
+          }}
           align={"center"}
           justify={"space-between"}
-          borderBottom={"1px solid #cecece"}
+          borderBottom={{
+            base: "0",
+            sm: "0",
+            md: "0",
+            lg: "1px solid #cecece",
+          }}
         >
+          <Link to={"/furniture"}>
+            <Box id="menuDiv_hamburger" fontSize={"30px"} ml={2}>
+              {" "}
+              <AiOutlineMenu />
+            </Box>
+          </Link>
           <Flex gap={"2px"} alignItems={"center"}>
-            <Image
-              mt={"5px"}
-              ml={"20px"}
-              w={"30px"}
-              h={"30px"}
-              src="https://media.glassdoor.com/sqll/14907/overstock-com-squarelogo-1529535998697.png"
-              alt=""
-            />
+            <Link to={"/"}>
+              <Image
+                mt={"5px"}
+                ml={{
+                  base: "15px",
+                  sm: "15px",
+                  md: "15px",
+                  lg: "0px",
+                }}
+                w={{
+                  base: "30px",
+                  sm: "30px",
+                  md: "30px",
+                  lg: "30px",
+                }}
+                h={{
+                  base: "30px",
+                  sm: "30px",
+                  md: "30px",
+                  lg: "30px",
+                }}
+                src="https://media.glassdoor.com/sqll/14907/overstock-com-squarelogo-1529535998697.png"
+                alt=""
+              />
+            </Link>
             <Link
               to={"/"}
               _hover={{
@@ -84,12 +117,20 @@ export const Header = () => {
               letterSpacing={"tighter"}
               end
             >
-              <Heading fontWeight={"400"} fontSize={"35px"}>
+              <Heading
+                fontWeight={"400"}
+                fontSize={{
+                  base: "0",
+                  sm: "0",
+                  md: "0",
+                  lg: "35px",
+                }}
+              >
                 overstock
               </Heading>
             </Link>
           </Flex>
-          <Flex>
+          <Flex id="searchBox_Div">
             <Input
               borderRadius={"5px 0 0 5px"}
               h={"35px"}
@@ -109,7 +150,13 @@ export const Header = () => {
               <AiOutlineSearch fontSize={28} fontWeight={"800"} color="white" />{" "}
             </Button>
           </Flex>
-          <Flex gap={5} align={"center"} justify={"space-between"} pr={"20px"}>
+          <Flex
+            gap={5}
+            align={"center"}
+            justify={"space-between"}
+            pr={"20px"}
+            id={"accountDiv-Parent"}
+          >
             <Box id="accountDiv">
               <Link to={"/signup"}>
                 <Flex direction={"column"} align={"center"}>
@@ -217,6 +264,7 @@ export const Header = () => {
           </Flex>
         </Flex>
         <Flex
+          id="Navlinks_div"
           gap={14}
           p={"0 20px"}
           align={"center"}

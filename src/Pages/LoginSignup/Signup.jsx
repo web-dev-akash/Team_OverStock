@@ -1,6 +1,7 @@
-import { Box, Container } from "@chakra-ui/react";
+import { Box, Container, useToast } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
 import { Spinner, Image } from "@chakra-ui/react";
+import "./LoginSignup.css";
 
 import {
   Input,
@@ -12,8 +13,8 @@ import {
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { Divider, Stack } from "@chakra-ui/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 function Signup() {
+  const toast = useToast();
   const initialvalues = { email: "", password: "" };
   const [inputValues, setInputValues] = useState(initialvalues);
   const [loading, setLoading] = useState(false);
@@ -33,16 +34,35 @@ function Signup() {
       },
     })
       .then(() => {
-        alert("Signup successful");
+        succesFunctionSignup()();
       })
-      .catch(() => alert("Duplicate username"))
+      .catch(() => errorFunctionSignup()())
       .finally(() => setLoading(false));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSignup(inputValues);
   };
-
+  const succesFunctionSignup = () => {
+    return () =>
+      toast({
+        title: "Account Created Successfully",
+        description: "Please Login and Start Shopping",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+  };
+  const errorFunctionSignup = () => {
+    return () =>
+      toast({
+        title: "Account Not Created",
+        description: "Please Enter Valid Email or Password",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+  };
   if (loading) {
     return (
       <Container mt={100}>
@@ -56,19 +76,24 @@ function Signup() {
       </Container>
     );
   }
-
+  const { email, password } = inputValues;
   return (
     <>
       <Box w={"75%"}>
         <Box>
-          <Heading fontSize="xl" mt="12%" textAlign={"left"}>
+          <Heading
+            id="Heading_SignUp"
+            fontSize="xl"
+            mt="12%"
+            textAlign={"left"}
+          >
             Create Account
           </Heading>
           <Text mt="12%" textAlign={"left"}>
             Email Address*
           </Text>
           <Input
-            type="text"
+            type="email"
             autoComplete="off"
             name="email"
             id="email"
@@ -121,6 +146,7 @@ function Signup() {
           width="322px"
           mt="25px"
           colorScheme="blue"
+          disabled={email === "" || password === ""}
         >
           Create Account
         </Button>

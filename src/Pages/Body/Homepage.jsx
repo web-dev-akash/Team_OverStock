@@ -29,7 +29,16 @@ export const Homepage = () => {
   };
 
   return (
-    <Container maxW="8xl" centerContent mt={130}>
+    <Container
+      maxW="8xl"
+      centerContent
+      mt={{
+        base: 70,
+        sm: 70,
+        md: 70,
+        lg: 130,
+      }}
+    >
       <Navbar />
       <Container maxW="100%" centerContent>
         <Box
@@ -297,7 +306,7 @@ export const Homepage = () => {
                 base: 1,
                 sm: 1,
                 md: 4,
-                lg: 4,
+                lg: 8,
               }}
               gap={{
                 base: 1,
@@ -319,8 +328,8 @@ export const Homepage = () => {
                         fontSize={{
                           base: "20px",
                           sm: "20px",
-                          md: "30px",
-                          lg: "35px",
+                          md: "20px",
+                          lg: "22px",
                         }}
                       >
                         {heading}
