@@ -14,7 +14,12 @@ import { StarIcon } from "@chakra-ui/icons";
 import { Grid, GridItem } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFurniture, getFurnitureData, getFurnitureDataFilter, getLoading } from "../../redux/action";
+import {
+  getFurniture,
+  getFurnitureData,
+  getFurnitureDataFilter,
+  getLoading,
+} from "../../redux/action";
 import { Link, useSearchParams } from "react-router-dom";
 
 function AirbnbCard({ elements }) {
@@ -96,155 +101,235 @@ function AirbnbCard({ elements }) {
     </Link>
   );
 }
-export const Products = ({page,setPage,sort,filterDataCat,filterDataBrand}) => {
+export const Products = ({
+  page,
+  setPage,
+  sort,
+  filterDataCat,
+  filterDataBrand,
+}) => {
   const state = useSelector((state) => state);
   const { loading, error, furnitures } = state;
-  const [totalItem,setTotalItems] = useState(0);
-  const [searchParams,setSearchParams] = useSearchParams();
+  const [totalItem, setTotalItems] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   // -------------
-  
+
   useEffect(() => {
-    dispatch(getLoading())
+    dispatch(getLoading());
     if (filterDataBrand.length && filterDataCat.length) {
       if (sort != "") {
-        getFurnitureDataFilter(filterDataCat, filterDataBrand, "price", sort, page).then((res) => {
+        getFurnitureDataFilter(
+          filterDataCat,
+          filterDataBrand,
+          "price",
+          sort,
+          page
+        ).then((res) => {
           setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+          dispatch(getFurniture(res.data));
+        });
       } else {
-        getFurnitureDataFilter(filterDataCat, filterDataBrand, undefined, undefined, page).then((res) => {
+        getFurnitureDataFilter(
+          filterDataCat,
+          filterDataBrand,
+          undefined,
+          undefined,
+          page
+        ).then((res) => {
           setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+          dispatch(getFurniture(res.data));
+        });
       }
-    }
-    else if (filterDataBrand.length == 0)
+    } else if (filterDataBrand.length == 0)
       if (sort != "") {
-        getFurnitureDataFilter(filterDataCat, undefined, "price", sort, page).then((res) => {
+        getFurnitureDataFilter(
+          filterDataCat,
+          undefined,
+          "price",
+          sort,
+          page
+        ).then((res) => {
           setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+          dispatch(getFurniture(res.data));
+        });
       } else {
-        getFurnitureDataFilter(filterDataCat, undefined, undefined, undefined, page).then((res) => {
+        getFurnitureDataFilter(
+          filterDataCat,
+          undefined,
+          undefined,
+          undefined,
+          page
+        ).then((res) => {
           setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+          dispatch(getFurniture(res.data));
+        });
       }
     else if (filterDataCat.length == 0) {
       if (sort != "") {
-        getFurnitureDataFilter(undefined, filterDataBrand, "price", sort, page).then((res) => {
+        getFurnitureDataFilter(
+          undefined,
+          filterDataBrand,
+          "price",
+          sort,
+          page
+        ).then((res) => {
           setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+          dispatch(getFurniture(res.data));
+        });
       } else {
-        getFurnitureDataFilter(undefined, filterDataBrand, undefined, undefined, page).then((res) => {
+        getFurnitureDataFilter(
+          undefined,
+          filterDataBrand,
+          undefined,
+          undefined,
+          page
+        ).then((res) => {
           setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+          dispatch(getFurniture(res.data));
+        });
       }
     } else {
       getFurnitureDataFilter(undefined, undefined, sort, page).then((res) => {
-          setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+        setTotalItems(res.headers["x-total-count"]);
+        dispatch(getFurniture(res.data));
+      });
     }
-  }, [filterDataCat, filterDataBrand, page, sort])
+  }, [filterDataCat, filterDataBrand, page, sort]);
 
   useEffect(() => {
-    dispatch(getLoading())
+    dispatch(getLoading());
     if (filterDataBrand.length && filterDataCat.length) {
       if (sort != "") {
-        getFurnitureDataFilter(filterDataCat, filterDataBrand, "price", sort, page).then((res) => {
+        getFurnitureDataFilter(
+          filterDataCat,
+          filterDataBrand,
+          "price",
+          sort,
+          page
+        ).then((res) => {
           setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+          dispatch(getFurniture(res.data));
+        });
       } else {
-        getFurnitureDataFilter(filterDataCat, filterDataBrand, undefined, undefined, page).then((res) => {
+        getFurnitureDataFilter(
+          filterDataCat,
+          filterDataBrand,
+          undefined,
+          undefined,
+          page
+        ).then((res) => {
           setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+          dispatch(getFurniture(res.data));
+        });
       }
-    }else if(!filterDataBrand.length && !filterDataCat.length) {
-      getFurnitureDataFilter(undefined, undefined, "price", sort, page).then((res) => {
-        setTotalItems(res.headers["x-total-count"]);
-        dispatch(getFurniture(res.data))
-      })
-    }
-    else if (filterDataBrand.length == 0)
+    } else if (!filterDataBrand.length && !filterDataCat.length) {
+      getFurnitureDataFilter(undefined, undefined, "price", sort, page).then(
+        (res) => {
+          setTotalItems(res.headers["x-total-count"]);
+          dispatch(getFurniture(res.data));
+        }
+      );
+    } else if (filterDataBrand.length == 0)
       if (sort != "") {
-        getFurnitureDataFilter(filterDataCat, undefined, "price", sort, page).then((res) => {
+        getFurnitureDataFilter(
+          filterDataCat,
+          undefined,
+          "price",
+          sort,
+          page
+        ).then((res) => {
           setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+          dispatch(getFurniture(res.data));
+        });
       } else {
-        getFurnitureDataFilter(filterDataCat, undefined, undefined, undefined, page).then((res) => {
+        getFurnitureDataFilter(
+          filterDataCat,
+          undefined,
+          undefined,
+          undefined,
+          page
+        ).then((res) => {
           setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+          dispatch(getFurniture(res.data));
+        });
       }
     else if (filterDataCat.length == 0) {
       if (sort != "") {
-        getFurnitureDataFilter(undefined, filterDataBrand, "price", sort, page).then((res) => {
+        getFurnitureDataFilter(
+          undefined,
+          filterDataBrand,
+          "price",
+          sort,
+          page
+        ).then((res) => {
           setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+          dispatch(getFurniture(res.data));
+        });
       } else {
-        getFurnitureDataFilter(undefined, filterDataBrand, undefined, undefined, page).then((res) => {
+        getFurnitureDataFilter(
+          undefined,
+          filterDataBrand,
+          undefined,
+          undefined,
+          page
+        ).then((res) => {
           setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
+          dispatch(getFurniture(res.data));
+        });
       }
     }
-
-  }, [])
+  }, []);
   useEffect(() => {
     const obj = { page };
     if (filterDataBrand.length && filterDataCat.length) {
       if (sort != "") {
         obj.order = sort;
-        obj.sort = "price"
+        obj.sort = "price";
       }
       obj.category = filterDataCat;
-      obj.brands = filterDataBrand
-    }
-    else if (filterDataBrand.length == 0) {
+      obj.brands = filterDataBrand;
+    } else if (filterDataBrand.length == 0) {
       if (sort != "") {
         obj.order = sort;
-        obj.sort = "price"
+        obj.sort = "price";
       }
       obj.category = filterDataCat;
-    }
-    else if (filterDataCat.length == 0) {
+    } else if (filterDataCat.length == 0) {
       if (sort != "") {
         obj.order = sort;
-        obj.sort = "price"
+        obj.sort = "price";
       }
-      obj.brands = filterDataBrand
+      obj.brands = filterDataBrand;
     } else {
       if (sort != "") {
         obj.order = sort;
-        obj.sort = "price"
+        obj.sort = "price";
       }
     }
 
     setSearchParams(obj);
-  }, [filterDataCat, filterDataBrand, page, sort])
-
-
+  }, [filterDataCat, filterDataBrand, page, sort]);
 
   // ---------
   if (loading) {
     return (
-        
-        <Grid templateColumns='repeat(3, 1fr)' gap={6} ml={3}>
-          <Skeleton width="360px" height="500px">
-          </Skeleton>
-          <Skeleton width="360px" height="500px">
-          </Skeleton>
-          <Skeleton width="360px" height="500px">
-          </Skeleton>
+      <Center>
+        <Grid
+          templateColumns={{
+            base: "repeat(1, 1fr)",
+            sm: "repeat(1, 1fr)",
+            md: "repeat(1, 1fr)",
+            lg: "repeat(3, 1fr)",
+          }}
+          gap={6}
+          ml={3}
+        >
+          <Skeleton width="360px" height="500px"></Skeleton>
+          <Skeleton width="360px" height="500px"></Skeleton>
+          <Skeleton width="360px" height="500px"></Skeleton>
         </Grid>
+      </Center>
     );
   }
   if (error) {
@@ -253,16 +338,55 @@ export const Products = ({page,setPage,sort,filterDataCat,filterDataBrand}) => {
   return (
     <>
       <Center key={Math.random()}>
-        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+        <Grid
+          templateColumns={{
+            base: "repeat(1, 1fr)",
+            sm: "repeat(1, 1fr)",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(3, 1fr)",
+          }}
+          gap={{
+            base: 2,
+            sm: 2,
+            md: 4,
+            lg: 6,
+          }}
+        >
           {furnitures.map((elm) => (
             <AirbnbCard key={elm.position} elements={elm} />
           ))}
         </Grid>
       </Center>
-      <Center ml="273%" mb="30px" mt="10px">
-        <Button colorScheme='blue' onClick={()=>setPage((page)=>+page-1)} borderRadius="50%" disabled={page==1}>-</Button>
-        <Button colorScheme='white' color="black" disabled="true">{page}</Button>
-        <Button colorScheme='blue' onClick={()=>setPage((page)=>+page+1)}  borderRadius="50%" disabled={page >= totalItem /9}>+</Button>
+      <Center
+        pos={"relative"}
+        left={{
+          base: 0,
+          sm: 0,
+          md: 0,
+          lg: "770px",
+        }}
+        mb="30px"
+        mt="10px"
+      >
+        <Button
+          colorScheme="blue"
+          onClick={() => setPage((page) => +page - 1)}
+          borderRadius="50%"
+          disabled={page == 1}
+        >
+          -
+        </Button>
+        <Button colorScheme="white" color="black" disabled="true">
+          {page}
+        </Button>
+        <Button
+          colorScheme="blue"
+          onClick={() => setPage((page) => +page + 1)}
+          borderRadius="50%"
+          disabled={page >= totalItem / 9}
+        >
+          +
+        </Button>
       </Center>
     </>
   );
