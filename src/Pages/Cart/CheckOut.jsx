@@ -13,23 +13,20 @@ import {
   AlertDialogOverlay,
   Button,
   useDisclosure,
-  AlertDialogCloseButton,
-} from '@chakra-ui/react'
-import { useRef } from 'react';
+} from "@chakra-ui/react";
+import { useRef } from "react";
 import { clearCartData, getCartData, orderDone } from "../../redux/action";
 import { useNavigate } from "react-router-dom";
 
 export default function CheckoutPage() {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cancelRef = useRef()
-  const [demo,setDemo] = useState("");
+  const cancelRef = useRef();
+  const [demo, setDemo] = useState("");
   const { cart } = useSelector((state) => state);
 
-  useEffect(() => {
-  },[demo]);
-
+  useEffect(() => {}, [demo]);
 
   const getTotalPrice = () => {
     let totalPrice = cart.reduce(
@@ -39,14 +36,13 @@ export default function CheckoutPage() {
     return totalPrice.toFixed(2);
   };
 
-  const paymentSuccessFul= () => {
-    cart.map((elm)=> {
+  const paymentSuccessFul = () => {
+    cart.map((elm) => {
       dispatch(clearCartData(elm.id));
       dispatch(orderDone());
-    })
+    });
     onClose();
-  }
-
+  };
 
   return (
     <div className="maincontainer" style={{ marginTop: "150px" }}>
@@ -264,14 +260,17 @@ export default function CheckoutPage() {
             <ul class="list-group mb-3">
               {cart.map((elm) => {
                 return (
-                  <li class="list-group-item d-flex justify-content-between lh-condensed" key={Math.random()}>
+                  <li
+                    class="list-group-item d-flex justify-content-between lh-condensed"
+                    key={Math.random()}
+                  >
                     <div style={{ textAlign: "initial" }}>
                       <h6 class="my-0">{elm.title}</h6>
                       <small class="text-muted">{elm.category}</small>
                     </div>
                     <span class="text-muted">${elm.price}</span>
                   </li>
-                )
+                );
               })}
 
               <li class="list-group-item d-flex justify-content-between bg-light">
@@ -279,7 +278,9 @@ export default function CheckoutPage() {
                   <h6 class="my-0">Special discount</h6>
                   <small>Only for you</small>
                 </div>
-                <span class="text-success">-${(getTotalPrice() * 0.07).toFixed(2)}</span>
+                <span class="text-success">
+                  -${(getTotalPrice() * 0.07).toFixed(2)}
+                </span>
               </li>
               <li class="list-group-item d-flex justify-content-between">
                 <span>Total (USD)</span>
@@ -289,7 +290,12 @@ export default function CheckoutPage() {
 
             <form class="card p-2">
               <>
-                <button class="btn btn-primary btn-lg btn-block" type="button" onClick={onOpen} disabled={cart.length>0 ? false : true}>
+                <button
+                  class="btn btn-primary btn-lg btn-block"
+                  type="button"
+                  onClick={onOpen}
+                  disabled={cart.length > 0 ? false : true}
+                >
                   Place Orderrr
                 </button>
                 <AlertDialog
@@ -299,7 +305,7 @@ export default function CheckoutPage() {
                 >
                   <AlertDialogOverlay>
                     <AlertDialogContent>
-                      <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                      <AlertDialogHeader fontSize="lg" fontWeight="bold">
                         Status
                       </AlertDialogHeader>
 
@@ -311,14 +317,17 @@ export default function CheckoutPage() {
                         <Button ref={cancelRef} onClick={onClose}>
                           Cancel
                         </Button>
-                        <Button colorScheme='red' onClick={paymentSuccessFul} ml={3}>
+                        <Button
+                          colorScheme="red"
+                          onClick={paymentSuccessFul}
+                          ml={3}
+                        >
                           Done
                         </Button>
                       </AlertDialogFooter>
                     </AlertDialogContent>
                   </AlertDialogOverlay>
                 </AlertDialog>
-
               </>
             </form>
           </div>
@@ -548,7 +557,12 @@ export default function CheckoutPage() {
               </div>
               <hr class="mb-4" />
               <>
-                <button class="btn btn-primary btn-lg btn-block" type="button" onClick={onOpen} disabled={cart.length>0 ? false : true}>
+                <button
+                  class="btn btn-primary btn-lg btn-block"
+                  type="button"
+                  onClick={onOpen}
+                  disabled={cart.length > 0 ? false : true}
+                >
                   Place Order
                 </button>
                 <AlertDialog
@@ -558,7 +572,7 @@ export default function CheckoutPage() {
                 >
                   <AlertDialogOverlay>
                     <AlertDialogContent>
-                      <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                      <AlertDialogHeader fontSize="lg" fontWeight="bold">
                         Status
                       </AlertDialogHeader>
 
@@ -570,7 +584,11 @@ export default function CheckoutPage() {
                         <Button ref={cancelRef} onClick={onClose}>
                           Cancel
                         </Button>
-                        <Button colorScheme='red' onClick={paymentSuccessFul} ml={3}>
+                        <Button
+                          colorScheme="red"
+                          onClick={paymentSuccessFul}
+                          ml={3}
+                        >
                           Done
                         </Button>
                       </AlertDialogFooter>
