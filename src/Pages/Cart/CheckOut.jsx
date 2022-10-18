@@ -296,7 +296,7 @@ export default function CheckoutPage() {
                   onClick={onOpen}
                   disabled={cart.length > 0 ? false : true}
                 >
-                  Place Orderrr
+                  Place Order
                 </button>
                 <AlertDialog
                   isOpen={isOpen}
@@ -341,9 +341,7 @@ export default function CheckoutPage() {
                     type="text"
                     class="form-control"
                     id="firstName"
-                    placeholder=""
-                    value=""
-                    required
+                    placeholder="First Name"
                   />
                   <div class="invalid-feedback">
                     Valid first name is required.
@@ -355,9 +353,7 @@ export default function CheckoutPage() {
                     type="text"
                     class="form-control"
                     id="lastName"
-                    placeholder=""
-                    value=""
-                    required
+                    placeholder="Last Name"
                   />
                   <div class="invalid-feedback">
                     Valid last name is required.
