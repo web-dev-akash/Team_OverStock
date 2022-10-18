@@ -16,6 +16,11 @@ const initState = {
   cart: [],
   isAuth: false
 };
+
+if(window.localStorage.getItem("isAlreadyLogined")) {
+  initState.isAuth = true;
+}
+
 export const reducer = (state = initState, { type, payload }) => {
   switch (type) {
     case GET_LOADING: {
@@ -61,12 +66,14 @@ export const reducer = (state = initState, { type, payload }) => {
       };
     }
     case LOGIN_SIGNUP_SUCCESS: {
+      window.localStorage.setItem("isAlreadyLogined",true);
       return {
         ...state,
         isAuth: true
       }
     }
     case SIGNOUT_SUCCESS: {
+      window.localStorage.removeItem("isAlreadyLogined");
       return {
         ...state,
         isAuth: false

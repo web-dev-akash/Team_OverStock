@@ -102,29 +102,6 @@ export const Products = ({page,setPage,sort,filterDataCat,filterDataBrand}) => {
   const [totalItem,setTotalItems] = useState(0);
   const [searchParams,setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if(sort!="") {
-  //     getFurnitureDataFilter(undefined,undefined,"price",sort,page)
-  //       .then((res)=> dispatch(getFurniture(res.data)))
-  //   }else   dispatch(getFurnitureData(page));
-  //   if(sort !="") {
-  //     setSearchParams({page,sort});
-  //   }else {
-  //     setSearchParams({page});
-  //   }
-  // }, [page,sort]);
-  // useEffect(() => {
-  //   if(sort!="") {
-  //     getFurnitureDataFilter(undefined,undefined,"price",sort,page)
-  //       .then((res)=> dispatch(getFurniture(res.data)))
-  //   }else   dispatch(getFurnitureData(page));
-  //   if(sort !="") {
-  //     setSearchParams({page,sort});
-  //   }else {
-  //     setSearchParams({page});
-  //   }
-  // }, []);
-
   // -------------
   
   useEffect(() => {
@@ -188,6 +165,11 @@ export const Products = ({page,setPage,sort,filterDataCat,filterDataBrand}) => {
           dispatch(getFurniture(res.data))
         })
       }
+    }else if(!filterDataBrand.length && !filterDataCat.length) {
+      getFurnitureDataFilter(undefined, undefined, "price", sort, page).then((res) => {
+        setTotalItems(res.headers["x-total-count"]);
+        dispatch(getFurniture(res.data))
+      })
     }
     else if (filterDataBrand.length == 0)
       if (sort != "") {
@@ -213,11 +195,6 @@ export const Products = ({page,setPage,sort,filterDataCat,filterDataBrand}) => {
           dispatch(getFurniture(res.data))
         })
       }
-    } else {
-      getFurnitureDataFilter(undefined, undefined, sort, page).then((res) => {
-          setTotalItems(res.headers["x-total-count"]);
-          dispatch(getFurniture(res.data))
-        })
     }
 
   }, [])

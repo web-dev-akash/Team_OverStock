@@ -55,8 +55,9 @@ const Login = () => {
         title: "Login Successful",
         description: "You are being redirected to Products",
         status: "success",
-        duration: 3000,
+        duration: 2000,
         isClosable: true,
+        position: "bottom-right"
       });
   };
 
@@ -66,23 +67,24 @@ const Login = () => {
         title: "Wrong Credentials",
         description: "Please provide a valid Email or Password",
         status: "error",
-        duration: 3000,
+        duration: 2000,
         isClosable: true,
+        position: "bottom-right"
       });
   };
-  if (loading) {
-    return (
-      <Container mt={10}>
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="blue.500"
-          size="xl"
-        />
-      </Container>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <Container mt={10}>
+  //       <Spinner
+  //         thickness="4px"
+  //         speed="0.65s"
+  //         emptyColor="gray.200"
+  //         color="blue.500"
+  //         size="xl"
+  //       />
+  //     </Container>
+  //   );
+  // }
 
   return (
     <>
@@ -124,6 +126,7 @@ const Login = () => {
             colorScheme="green"
             onClick={handleLogin}
             disabled={email === "" || password === ""}
+            isLoading={loading}
           >
             Sign In
           </Button>

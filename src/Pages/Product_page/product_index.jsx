@@ -10,7 +10,7 @@ function Product_page_new() {
   const [user, setUser] = useState("");
   const [searchParams,setSearchParams] = useSearchParams();
   const [page,setPage] = useState(searchParams.get("page") || 1);
-  const [sort, setSort] = useState(searchParams.get("sort") || "");
+  const [sort, setSort] = useState(searchParams.get("order") || "");
   const [filterDataCat, setfilterDataCat] = useState(searchParams.getAll("category") || []);
   const [filterDataBrand, setfilterDataBrand] = useState(searchParams.getAll("brands") || []);
 

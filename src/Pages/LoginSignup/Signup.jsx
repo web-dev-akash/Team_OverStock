@@ -18,6 +18,7 @@ function Signup() {
   const initialvalues = { email: "", password: "" };
   const [inputValues, setInputValues] = useState(initialvalues);
   const [loading, setLoading] = useState(false);
+  const [confPassword,setConfPassword] = useState("");
 
   const handleChange = (inp) => {
     const { name, value } = inp.target;
@@ -35,6 +36,8 @@ function Signup() {
     })
       .then(() => {
         succesFunctionSignup()();
+        setInputValues({email: "", password: ""})
+        setConfPassword("");
       })
       .catch(() => errorFunctionSignup()())
       .finally(() => setLoading(false));
@@ -51,6 +54,7 @@ function Signup() {
         status: "success",
         duration: 3000,
         isClosable: true,
+        position: "bottom-right"
       });
   };
   const errorFunctionSignup = () => {
@@ -61,21 +65,22 @@ function Signup() {
         status: "error",
         duration: 3000,
         isClosable: true,
+        position: "bottom-right"
       });
   };
-  if (loading) {
-    return (
-      <Container mt={100}>
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="blue.500"
-          size="xl"
-        />
-      </Container>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <Container mt={100}>
+  //       <Spinner
+  //         thickness="4px"
+  //         speed="0.65s"
+  //         emptyColor="gray.200"
+  //         color="blue.500"
+  //         size="xl"
+  //       />
+  //     </Container>
+  //   );
+  // }
   const { email, password } = inputValues;
   return (
     <>
@@ -102,7 +107,8 @@ function Signup() {
             placeholder="Email"
             onChange={handleChange}
             value={inputValues.email}
-            required
+            isRequired
+            isInvalid={inputValues.email.includes("@",".com") || inputValues.email =="" ? false : true}
           />
         </Box>
         <Box>
@@ -121,14 +127,18 @@ function Signup() {
               placeholder="Paasword"
               onChange={handleChange}
               value={inputValues.password}
+              isRequired
             />
             <Input
               type="password"
               autoComplete="off"
-              name="password2"
+              name="confPasswor"
               id="password2"
               width="50%"
               placeholder="Confirm Password"
+              onChange={(e)=>setConfPassword(e.target.value)}
+              value={confPassword}
+              isRequired
             />
           </HStack>
           <Box mt="23" bg="#f9fafc" h="10" w="322px">
@@ -146,7 +156,8 @@ function Signup() {
           width="322px"
           mt="25px"
           colorScheme="blue"
-          disabled={email === "" || password === ""}
+          disabled={email === "" || password === "" || !email.includes("@",".com") || confPassword.length < 5 || password.length < 5 || password !=confPassword}
+          isLoading={loading}
         >
           Create Account
         </Button>
