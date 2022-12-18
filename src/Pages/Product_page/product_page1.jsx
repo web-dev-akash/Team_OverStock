@@ -2,21 +2,17 @@ import {
   Badge,
   Box,
   Image,
-  Icon,
-  Container,
   Center,
   Button,
-  Spinner,
   Heading,
   Skeleton,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getFurniture,
-  getFurnitureData,
   getFurnitureDataFilter,
   getLoading,
 } from "../../redux/action";
@@ -61,7 +57,7 @@ function AirbnbCard({ elements }) {
             color="red.600"
             fontSize="19px"
           >
-            Sales Starts at USD {property.formattedPrice}
+            Sales Starts at INR {property.formattedPrice}
           </Box>
 
           <Box

@@ -1,9 +1,12 @@
-import axios from "axios"
+import axios from "axios";
 
 export const postToCartItem = (payload) => {
-    return axios .post("https://over-stock.herokuapp.com/AddToCartItems",payload);
-} 
+  return axios.post(
+    "https://overstock-api-akash.onrender.com/AddToCartItems",
+    payload
+  );
+};
 
 export const getToCartItem = () => {
-    return axios .get("https://over-stock.herokuapp.com/AddToCartItems");
-} 
+  return axios.get("https://overstock-api-akash.onrender.com/AddToCartItems");
+};

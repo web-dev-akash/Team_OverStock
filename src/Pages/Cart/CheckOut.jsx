@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-//bootstrap
 import "./checkout.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch, useSelector } from "react-redux";
-import TransitionExample from "../../Components/AlertBar/AlertComponents";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -15,7 +13,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRef } from "react";
-import { clearCartData, getCartData, orderDone } from "../../redux/action";
+import { clearCartData, orderDone } from "../../redux/action";
 import { useNavigate } from "react-router-dom";
 
 export default function CheckoutPage() {
@@ -37,11 +35,12 @@ export default function CheckoutPage() {
   };
 
   const paymentSuccessFul = () => {
-    cart.map((elm) => {
-      dispatch(clearCartData(elm.id));
-      dispatch(orderDone());
+    cart.map(async (elm) => {
+      await dispatch(clearCartData(elm.id));
+      await dispatch(orderDone());
     });
     onClose();
+    navigate("/");
   };
 
   return (

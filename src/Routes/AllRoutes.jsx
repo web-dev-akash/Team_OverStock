@@ -1,4 +1,4 @@
-import { Heading } from "@chakra-ui/react";
+/* eslint-disable react/jsx-pascal-case */
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Homepage } from "../Pages/Body/Homepage";

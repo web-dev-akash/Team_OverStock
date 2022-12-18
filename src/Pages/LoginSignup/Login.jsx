@@ -26,11 +26,11 @@ const Login = () => {
       .then((data) => {
         let filterData = data.filter((elm) => {
           return (
-            elm.email == inputValues.email &&
+            elm.email === inputValues.email &&
             elm.password === inputValues.password
           );
         });
-        if (filterData.length == 0) throw Error;
+        if (filterData.length === 0) throw Error;
         else {
           succesFunction()();
           dispatch(loginSignupSuccess());

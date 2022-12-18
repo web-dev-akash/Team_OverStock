@@ -1,9 +1,8 @@
 import { Box, Image } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const ImageSlider = ({ slides }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  //   useEffect(() => {}, [slides]);
+  const [currentIndex, setCurrentIndex] = useState(6);
   const sliderStyles = {
     height: "100%",
     position: "relative",

@@ -28,7 +28,7 @@ export default function SortDropdown({
   useEffect(() => {
     dispatch(getLoading());
     if (filterDataBrand.length && filterDataCat.length) {
-      if (sort != "") {
+      if (sort !== "") {
         getFurnitureDataFilter(
           filterDataCat,
           filterDataBrand,

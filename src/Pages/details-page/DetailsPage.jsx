@@ -41,11 +41,6 @@ function DetailsPage() {
     width: "48%",
   };
 
-  const image = {
-    width: "90%",
-    height: "450px",
-  };
-
   const name = {
     fontSize: "20px",
     textAlign: "left",

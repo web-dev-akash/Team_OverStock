@@ -1,14 +1,8 @@
-import { Box, Container, useToast } from "@chakra-ui/react";
+import { Box, useToast } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
 import "./LoginSignup.css";
 
-import {
-  Input,
-  HStack,
-  Checkbox,
-  CheckboxGroup,
-  Heading,
-} from "@chakra-ui/react";
+import { Input, HStack, Checkbox, Heading } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { Divider, Stack } from "@chakra-ui/react";
 import { useState } from "react";
@@ -95,7 +89,8 @@ function Signup() {
             value={inputValues.email}
             isRequired
             isInvalid={
-              inputValues.email.includes("@", ".com") || inputValues.email == ""
+              inputValues.email.includes("@", ".com") ||
+              inputValues.email === ""
                 ? false
                 : true
             }
@@ -152,7 +147,7 @@ function Signup() {
             !email.includes("@", ".com") ||
             confPassword.length < 5 ||
             password.length < 5 ||
-            password != confPassword
+            password !== confPassword
           }
           isLoading={loading}
         >

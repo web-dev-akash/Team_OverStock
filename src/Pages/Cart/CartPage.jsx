@@ -1,4 +1,4 @@
-import { Box, Center, Container, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Container, Flex, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,7 +33,6 @@ function Cartpage() {
     <Container maxW={"7xl"}>
       <div className="marginTop">
         <h1 className="heading">Shopping Cart</h1>
-
         <div className="parent">
           <div className="parent-Div1">
             {cart.map((elm) => {
@@ -126,35 +125,8 @@ function Cartpage() {
                 <h3>Your Total:</h3>
                 <h3>{(getTotalPrice() * 0.93).toFixed(2)}</h3>
               </div>
-              <button onClick={()=> navigate("/checkout")}>Check Out</button>
+              <button onClick={() => navigate("/checkout")}>Check Out</button>
             </div>
-          </div>
-        </div>
-        <h3> Things We Know You'll Love</h3>
-        <div className="parent2">
-          <div>
-            <img src="https://ak1.ostkcdn.com/images/products/is/images/direct/6f028d80157c02d1a519d36a0045fa8ef914efb0/Furniture-of-America-Transitional-Espresso-Dining-Buffet.jpg?impolicy=mediumlow" />
-            <button>Add to Cart</button>
-            <h3> Sale $373.49</h3>
-            <p>Furniture of America Rustic Espresso Dining Buffet with Wine</p>
-          </div>
-          <div>
-            <img src="https://ak1.ostkcdn.com/images/products/is/images/direct/6f028d80157c02d1a519d36a0045fa8ef914efb0/Furniture-of-America-Transitional-Espresso-Dining-Buffet.jpg?impolicy=mediumlow" />
-            <button>Add to Cart</button>
-            <h3> Sale $373.49</h3>
-            <p>Furniture of America Rustic Espresso Dining Buffet with Wine</p>
-          </div>
-          <div>
-            <img src="https://ak1.ostkcdn.com/images/products/is/images/direct/6f028d80157c02d1a519d36a0045fa8ef914efb0/Furniture-of-America-Transitional-Espresso-Dining-Buffet.jpg?impolicy=mediumlow" />
-            <button>Add to Cart</button>
-            <h3> Sale $373.49</h3>
-            <p>Furniture of America Rustic Espresso Dining Buffet with Wine</p>
-          </div>
-          <div>
-            <img src="https://ak1.ostkcdn.com/images/products/is/images/direct/6f028d80157c02d1a519d36a0045fa8ef914efb0/Furniture-of-America-Transitional-Espresso-Dining-Buffet.jpg?impolicy=mediumlow" />
-            <button>Add to Cart</button>
-            <h3> Sale $373.49</h3>
-            <p>Furniture of America Rustic Espresso Dining Buffet with Wine</p>
           </div>
         </div>
       </div>
