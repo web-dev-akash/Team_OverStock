@@ -1,14 +1,11 @@
 import "./LoginSignup.css";
-import { Container, filter, Heading, Text, useToast } from "@chakra-ui/react";
+import { Heading, Text, useToast } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import { Box, Button, Link } from "@chakra-ui/react";
 import { useState } from "react";
-import { Spinner } from "@chakra-ui/react";
-
-import { CloseButton } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { loginSignupSuccess } from "../../redux/action";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const toast = useToast();
   const dispatch = useDispatch();
@@ -24,7 +21,7 @@ const Login = () => {
   };
   const handleLogin = () => {
     setLoading(true);
-    fetch(`https://overstock-signup.herokuapp.com/User`)
+    fetch(`https://overstock-api-akash.onrender.com/User`)
       .then((res) => res.json())
       .then((data) => {
         let filterData = data.filter((elm) => {
@@ -57,7 +54,7 @@ const Login = () => {
         status: "success",
         duration: 2000,
         isClosable: true,
-        position: "bottom-right"
+        position: "bottom-right",
       });
   };
 
@@ -69,22 +66,9 @@ const Login = () => {
         status: "error",
         duration: 2000,
         isClosable: true,
-        position: "bottom-right"
+        position: "bottom-right",
       });
   };
-  // if (loading) {
-  //   return (
-  //     <Container mt={10}>
-  //       <Spinner
-  //         thickness="4px"
-  //         speed="0.65s"
-  //         emptyColor="gray.200"
-  //         color="blue.500"
-  //         size="xl"
-  //       />
-  //     </Container>
-  //   );
-  // }
 
   return (
     <>

@@ -1,6 +1,5 @@
 import { Box, Container, useToast } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
-import { Spinner, Image } from "@chakra-ui/react";
 import "./LoginSignup.css";
 
 import {
@@ -10,7 +9,7 @@ import {
   CheckboxGroup,
   Heading,
 } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { Divider, Stack } from "@chakra-ui/react";
 import { useState } from "react";
 function Signup() {
@@ -18,7 +17,7 @@ function Signup() {
   const initialvalues = { email: "", password: "" };
   const [inputValues, setInputValues] = useState(initialvalues);
   const [loading, setLoading] = useState(false);
-  const [confPassword,setConfPassword] = useState("");
+  const [confPassword, setConfPassword] = useState("");
 
   const handleChange = (inp) => {
     const { name, value } = inp.target;
@@ -27,7 +26,7 @@ function Signup() {
   };
   const handleSignup = (body) => {
     setLoading(true);
-    fetch(`https://overstock-signup.herokuapp.com/User`, {
+    fetch(`https://overstock-api-akash.onrender.com/User`, {
       method: "POST",
       body: JSON.stringify(body),
       headers: {
@@ -36,7 +35,7 @@ function Signup() {
     })
       .then(() => {
         succesFunctionSignup()();
-        setInputValues({email: "", password: ""})
+        setInputValues({ email: "", password: "" });
         setConfPassword("");
       })
       .catch(() => errorFunctionSignup()())
@@ -54,7 +53,7 @@ function Signup() {
         status: "success",
         duration: 3000,
         isClosable: true,
-        position: "bottom-right"
+        position: "bottom-right",
       });
   };
   const errorFunctionSignup = () => {
@@ -65,22 +64,9 @@ function Signup() {
         status: "error",
         duration: 3000,
         isClosable: true,
-        position: "bottom-right"
+        position: "bottom-right",
       });
   };
-  // if (loading) {
-  //   return (
-  //     <Container mt={100}>
-  //       <Spinner
-  //         thickness="4px"
-  //         speed="0.65s"
-  //         emptyColor="gray.200"
-  //         color="blue.500"
-  //         size="xl"
-  //       />
-  //     </Container>
-  //   );
-  // }
   const { email, password } = inputValues;
   return (
     <>
@@ -108,7 +94,11 @@ function Signup() {
             onChange={handleChange}
             value={inputValues.email}
             isRequired
-            isInvalid={inputValues.email.includes("@",".com") || inputValues.email =="" ? false : true}
+            isInvalid={
+              inputValues.email.includes("@", ".com") || inputValues.email == ""
+                ? false
+                : true
+            }
           />
         </Box>
         <Box>
@@ -136,7 +126,7 @@ function Signup() {
               id="password2"
               width="50%"
               placeholder="Confirm Password"
-              onChange={(e)=>setConfPassword(e.target.value)}
+              onChange={(e) => setConfPassword(e.target.value)}
               value={confPassword}
               isRequired
             />
@@ -156,7 +146,14 @@ function Signup() {
           width="322px"
           mt="25px"
           colorScheme="blue"
-          disabled={email === "" || password === "" || !email.includes("@",".com") || confPassword.length < 5 || password.length < 5 || password !=confPassword}
+          disabled={
+            email === "" ||
+            password === "" ||
+            !email.includes("@", ".com") ||
+            confPassword.length < 5 ||
+            password.length < 5 ||
+            password != confPassword
+          }
           isLoading={loading}
         >
           Create Account
@@ -185,5 +182,4 @@ function Signup() {
   );
 }
 
-// bg="tomato"
 export default Signup;
